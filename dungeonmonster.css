@@ -1,0 +1,59 @@
+:root{
+	/*to use the custom colors type "var(--color-name)"*/
+	--charcoal: #262626;
+	--off-white: #E7E7E7;
+	--sky-blue: #23C4FF;
+	--bright-green: #3FD453;
+	--crimson: #AE1D20;
+}
+
+body{
+	margin: 0;
+	background-color: var(--charcoal);
+}
+
+.login-container {
+	/*set color scheme and font*/
+	color: var(--off-white);
+	background-color: var(--crimson);
+	box-shadow: inset 0px 0px 4em rgba(0,0,0,0.8);
+	font-family: 'Berkshire Swash', cursive;
+
+	/*sizing*/
+	padding-top: 5%;
+	padding-bottom: 5%;
+	max-width: 45em;
+	width: 50%;
+	font-size: 2em;
+
+	/*center div and fields*/
+	margin: 0 auto;
+	text-align: center;
+}
+
+.login-container input {
+	width: 50%;
+	line-height:2em;
+	padding: 0;
+	background-color: var(--off-white);
+	border-radius: 0.5em;
+	border: none;
+	box-shadow: 0px 0px 0.5em rgba(0,0,0,0.3);
+}
+
+.login-container a {
+	display:inline-block;
+	margin-top: 1em;
+	color: var(--charcoal);
+	text-decoration: none;
+	background-color: var(--off-white);
+	border: outset;
+	border-color: var(--off-white);
+	border-radius: 0.25em;
+}
+
+.login-container a:hover {
+	color:var(--off-white);
+	background-color:var(--crimson);
+	border-color:var(--crimson);
+}
