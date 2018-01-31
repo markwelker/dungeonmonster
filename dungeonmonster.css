@@ -27,7 +27,11 @@ body{
 	font-size: 2em;
 
 	/*center div and fields*/
-	margin: 0 auto;
+	/*margin: 10% auto;*/
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
 	text-align: center;
 }
 
