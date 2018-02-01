@@ -12,6 +12,54 @@ body{
 	background-color: var(--charcoal);
 }
 
+/* Top Menu*/
+nav ul {
+	/*set positionioning*/
+	position: fixed;
+	top:0;
+	width: 80%;
+	margin-top:0;
+	margin-left: 10%;
+	padding: 0;
+
+	/*styles and colors*/
+	color:var(--off-white);
+	background-color:var(--crimson);
+	list-style-type: none;
+}
+
+nav ul li {
+	float: left;
+}
+
+nav ul li.login-button {
+	float: right;
+}
+
+nav ul li.register-button {
+	float: right;
+}
+
+nav ul li.login-button a{
+	background-color:var(--sky-blue);
+}
+
+nav a {
+	/*alignment and positionioning*/
+	text-align: center;
+	padding: 14px 16px;
+	display: block;
+
+	/*styling and color*/
+	text-decoration: none;
+	color:var(--off-white);
+}
+
+nav a:hover{
+	text-decoration: underline;
+}
+
+/*Styles for both the login and registration forms*/
 .login-container {
 	/*set color scheme and font*/
 	color: var(--off-white);
@@ -56,4 +104,26 @@ body{
 	color:var(--off-white);
 	background-color:var(--crimson);
 	border-color:var(--crimson);
+}
+
+.tmp-info {
+	width:50%;
+	padding:0;
+	background-color:var(--off-white);
+	box-shadow: 0px 0px 0.5em rgba(0,0,0,1);
+	border-radius: 1em;
+	margin:10% auto;
+}
+
+.tmp-info h1 {
+	text-align: center;
+	font-family: 'Berkshire Swash', cursive;
+	color:var(--off-white);
+	background-color:var(--bright-green);
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+}
+
+.tmp-info p {
+	padding:1em;
 }
