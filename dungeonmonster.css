@@ -14,6 +14,10 @@ body{
 	background-repeat: repeat;
 }
 
+h1 {
+	font-family: 'Berkshire Swash', cursive;
+}
+
 /* Top Menu*/
 nav ul {
 	/*set positionioning*/
