@@ -5,6 +5,7 @@
 	--sky-blue: #23C4FF;
 	--bright-green: #3FD453;
 	--crimson: #AE1D20;
+	--darkcrimson: #731315;
 }
 
 body{
@@ -61,12 +62,15 @@ nav a:hover{
 }
 
 /*Styles for both the login and registration forms*/
+
 .login-container {
 	/*set color scheme and font*/
 	color: var(--off-white);
 	background-color: var(--crimson);
-	box-shadow: inset 0px 0px 8em rgba(0,0,0,0.8);
+	background-clip: padding-box;
+	border: 5px solid rgba(0, 0, 0, 0.8);
 	font-family: 'Berkshire Swash', cursive;
+	box-shadow: inset 0 0 5em 1.5em rgba(0,0,0,1), 0px 0px 20em 4em rgba(0,0,0,1);
 
 	/*sizing*/
 	padding-top: 5%;
@@ -98,17 +102,19 @@ nav a:hover{
 	display:inline-block;
 	margin-top: 1em;
 	color: var(--charcoal);
+	font-family: 'Georgia';
 	text-decoration: none;
 	background-color: var(--off-white);
 	border: outset;
 	border-color: var(--off-white);
 	border-radius: 0.25em;
+	padding: 0.2em;
 }
 
 .login-container a:hover {
 	color:var(--off-white);
-	background-color:var(--crimson);
-	border-color:var(--crimson);
+	background-color:var(--darkcrimson);
+	border-color:var(--darkcrimson);
 }
 
 .tmp-info {
