@@ -9,7 +9,8 @@
 
 body{
 	margin: 0;
-	background-color: var(--charcoal);
+	background-image: url("assets/brickdark.jpg");
+	background-repeat: repeat;
 }
 
 /* Top Menu*/
@@ -64,7 +65,7 @@ nav a:hover{
 	/*set color scheme and font*/
 	color: var(--off-white);
 	background-color: var(--crimson);
-	box-shadow: inset 0px 0px 4em rgba(0,0,0,0.8);
+	box-shadow: inset 0px 0px 8em rgba(0,0,0,0.8);
 	font-family: 'Berkshire Swash', cursive;
 
 	/*sizing*/
