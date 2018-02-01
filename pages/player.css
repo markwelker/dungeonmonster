@@ -1,0 +1,28 @@
+:root{
+	/*to use the custom colors type "var(--color-name)"*/
+	--charcoal: #262626;
+	--off-white: #E7E7E7;
+	--sky-blue: #23C4FF;
+	--bright-green: #3FD453;
+	--crimson: #AE1D20;
+}
+
+.main-container-player {
+  display:grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas:
+    "party-container chat-bar"
+    "charater-info chat-bar";
+}
+
+.party-container {
+  background-color:var(--off-white);
+}
+
+.chat-box {
+  background-color:var(--off-white);
+}
+
+.character-info {
+  background-color:var(--charcoal);
+}
