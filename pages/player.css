@@ -16,7 +16,6 @@
 .party-container {
   float:left;
   width:70vw;
-  height:40vh;
   background-color:var(--off-white);
 }
 
@@ -27,6 +26,54 @@
   color:var(--off-white);
   background-color:var(--crimson);
   box-shadow: 0px 0px 1em rgba(0,0,0,0.5);
+}
+
+.party-bar{
+  display:flex;
+  width:100%;
+  flex-flow:wrap;
+}
+
+.player-card {
+  margin:1vw;
+  max-width: 10vw;
+  border-radius: 1em;
+  background-color:var(--charcoal);
+  box-shadow: 0 0 1em rgba(0,0,0,0.5);
+}
+
+.player-card:hover{
+
+  box-shadow: 0 0 1em rgba(255,255,255,1);
+}
+
+.player-card h2 {
+  margin:0;
+  padding:3px;
+  text-align: center;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+
+  font-family: 'Berkshire Swash', cursive;
+  color:var(--off-white);
+  background-color:var(--sky-blue);
+}
+
+.player-card h3 {
+  margin:0;
+  padding:3px;
+  text-align: center;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+
+  font-family: 'Berkshire Swash', cursive;
+  color:var(--off-white);
+  background-color:var(--bright-green);
+}
+
+.player-card img {
+  max-width: 10vw;
+  max-height: 10vw;
 }
 
 .chat-box {
