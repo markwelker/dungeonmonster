@@ -34,7 +34,7 @@ nav ul {
 
 	/*styles and colors*/
 	color:var(--off-white);
-	background-color:var(--crimson);
+	background-color:var(--darkcrimson);
 	list-style-type: none;
 }
 
@@ -74,7 +74,7 @@ nav a:hover{
 .login-container {
 	/*set color scheme and font*/
 	color: var(--off-white);
-	background-color: var(--crimson);
+	background-color: var(--darkcrimson);
 	background-clip: padding-box;
 	border: 5px solid rgba(0, 0, 0, 0.8);
 	font-family: 'Berkshire Swash', cursive;
@@ -127,8 +127,12 @@ nav a:hover{
 	border-color:var(--darkcrimson);
 }
 embed {
-	height: 80em;
-	width: 80%;
+	height: 95%;
+	width: 45%;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
 }
 
 .tmp-info {
@@ -144,7 +148,7 @@ embed {
 	text-align: center;
 	font-family: 'Berkshire Swash', cursive;
 	color:var(--off-white);
-	background-color:var(--bright-green);
+	background-color:var(--darkcrimson);
 	border-top-left-radius: 0.5em;
 	border-top-right-radius: 0.5em;
 }
