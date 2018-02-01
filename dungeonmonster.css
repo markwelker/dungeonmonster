@@ -8,6 +8,10 @@
 	--darkcrimson: #731315;
 }
 
+html, body {
+	height: 100%;
+	width: 100%;
+}
 body{
 	margin: 0;
 	background-image: url("assets/brickdark.jpg");
@@ -121,6 +125,10 @@ nav a:hover{
 	color:var(--off-white);
 	background-color:var(--darkcrimson);
 	border-color:var(--darkcrimson);
+}
+embed {
+	height: 80em;
+	width: 80%;
 }
 
 .tmp-info {
