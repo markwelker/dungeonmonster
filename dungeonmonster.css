@@ -24,16 +24,19 @@ footer {
 	bottom:0;
 	width:80%;
 	margin-left:10%;
-
+	color:var(--off-white);
 	background-color:var(--darkcrimson);
 	text-align: center;
 
 }
 
 footer a {
-	padding-top:10px;
-	margin-top:10px;
+	text-decoration: none;
 	color:var(--off-white);
+}
+
+footer a:hover {
+	text-decoration: underline;
 }
 
 h1 {
