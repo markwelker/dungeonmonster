@@ -16,7 +16,7 @@ fixed:root{
 
 .party-container {
 	float:left;
-	width:70vw;
+	width:72vw;
 	background-color:var(--off-white);
 	border-right: 2px solid black;
 	box-sizing: border-box;
@@ -24,7 +24,7 @@ fixed:root{
 
 .creature-container {
 	float:left;
-	width:70vw;
+	width:72vw;
 	/*border-right: 2px solid black;*/
 	box-sizing: border-box;
 }
@@ -89,8 +89,8 @@ fixed:root{
 .chat-box {
 	float:right;
 	position:fixed;
-	transform: translateX(70vw);
-	width:30vw;
+	transform: translateX(72vw);
+	width:28vw;
 	height:100vh;
 	margin: 0;
 	background-color:var(--darkcrimson);
@@ -135,7 +135,7 @@ fixed:root{
 
 .character-info {
 	float:left;
-	width:70vw;
+	width:72vw;
 }
 
 .character-info h1 {
@@ -152,7 +152,7 @@ fixed:root{
 
 .character-sheet {
 	float: left;
-	width: 70vw;
+	width: 72vw;
 	height: 92vh;
 }
 
