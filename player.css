@@ -9,8 +9,8 @@ fixed:root{
 }
 
 .main-container-player {
-	width:100vw;
-	height:100vh;
+	width:100%;
+	height:100%;
 	margin:0;
 }
 
@@ -25,7 +25,6 @@ fixed:root{
 .creature-container {
 	float:left;
 	width:70vw;
-	/*border-right: 2px solid black;*/
 	box-sizing: border-box;
 }
 
@@ -88,10 +87,9 @@ fixed:root{
 }
 
 .chat-box {
-	float:right;
 	position:fixed;
-	transform: translateX(71vw);
-	width:28vw;
+	transform: translateX(70vw);
+	width:30vw;
 	height:100vh;
 	margin: 0;
 	background-color:var(--darkcrimson);
