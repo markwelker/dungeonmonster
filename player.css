@@ -69,6 +69,7 @@ fixed:root{
 }
 
 .player-card h3 {
+	font-size: 1em;
 	margin:0;
 	padding:3px;
 	text-align: center;
@@ -127,6 +128,7 @@ fixed:root{
 }
 
 .character-info h1 {
+	font-size: 2em;
 	margin:0;
 	padding: 0.5em;
 	padding-left: 1em;
@@ -147,4 +149,8 @@ embed {
 	width: 45vw;
 	height: 100%;
 	float: left;
+}
+.icon {
+	width: 1em;
+	height: 1em;
 }
