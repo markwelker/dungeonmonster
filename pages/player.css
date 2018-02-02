@@ -18,7 +18,7 @@ fixed:root{
 	float:left;
 	width:70vw;
 	background-color:var(--off-white);
-	border-right: 3px solid black;
+	border-right: 2px solid black;
 	box-sizing: border-box;
 }
 
@@ -127,6 +127,7 @@ fixed:root{
 
 	color:var(--off-white);
 	background-color:var(--darkcrimson);
+	border-right: 2px solid black;
 }
 
 .character-sheet {
