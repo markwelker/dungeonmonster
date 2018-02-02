@@ -129,11 +129,13 @@ nav a:hover{
 embed {
 	height: 95%;
 	width: 45%;
-	/*position:absolute;
-	transform: translate(-50%,-50%);*/
 	top:50%;
 	left:50%;
+}
 
+.pdf {
+	position:absolute;
+	transform: translate(-50%,-50%);
 }
 
 .tmp-info {
