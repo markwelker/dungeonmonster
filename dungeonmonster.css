@@ -135,6 +135,7 @@ embed {
 
 .pdf {
 	position:absolute;
+	height: 95%;
 	transform: translate(-50%,-50%);
 }
 
@@ -157,5 +158,7 @@ embed {
 }
 
 .tmp-info p {
-	padding:1em;
+	padding:0.5em;
+	font-family: "Garamond";
+	font-size:1.40em;
 }

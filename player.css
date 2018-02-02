@@ -18,18 +18,14 @@ fixed:root{
 	float:left;
 	width:72vw;
 	background-color:var(--off-white);
-	border-right: 2px solid black;
+	border-right: 1px solid black;
 	box-sizing: border-box;
 }
 
 .creature-container {
 	float:left;
-<<<<<<< HEAD
 	width:72vw;
-	/*border-right: 2px solid black;*/
-=======
-	width:70vw;
->>>>>>> 855489928defea218d661120cc99daa762cdeaf9
+	/*border-right: 1px solid black;*/
 	box-sizing: border-box;
 }
 
@@ -51,7 +47,7 @@ fixed:root{
 .player-card {
 	margin:1vw;
 	max-width: 10vw;
-	min-width:5vw;
+	min-width:7vw;
 	border-radius: 1em;
 	background-color:var(--charcoal);
 	box-shadow: 0 0 1em rgba(0,0,0,0.5);
@@ -152,17 +148,14 @@ fixed:root{
 
 	color:var(--off-white);
 	background-color:var(--darkcrimson);
-	border-right: 2px solid black;
+	border-right: 1px solid black;
 	box-sizing:border-box;
 }
 
 .character-sheet {
-<<<<<<< HEAD
 	float: left;
 	width: 72vw;
-=======
 	width: 70vw;
->>>>>>> 855489928defea218d661120cc99daa762cdeaf9
 	height: 92vh;
 }
 
