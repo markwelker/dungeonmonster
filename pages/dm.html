@@ -7,30 +7,53 @@
 	<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
 </head>
 <body>
-
 	<div class="main-container-player">
 		<div class="party-container">
 			<h1 class="party-header">Party</h1>
 			<div class="party-bar">
-				<div class="player-card" onclick = location.href="sheet/fighter.html">
+				<div class="player-card" onclick = location.href="sheet/fighter.html" title = "Open Character Sheet">
 					<h2>Fighter</h2>
 					<img src="../assets/Fighter.png">
-					<h3>34/50</h3>
+					<h3>
+						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+						&nbsp
+						34/50
+						&nbsp
+						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+					</h3>
 				</div>
 				<div class="player-card">
 					<h2>Bard</h2>
-					<img src="../assets/Bard.png" onclick = location.href="sheet/bard.html">
-					<h3>28/28</h3>
+					<img src="../assets/Bard.png" onclick = location.href="sheet/bard.html"  title = "Open Character Sheet">
+					<h3>
+						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+						&nbsp
+						28/28
+						&nbsp
+						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+					</h3>
 				</div>
 				<div class="player-card">
 					<h2>Cleric</h2>
-					<img src="../assets/Cleric.png" onclick = location.href="sheet/cleric.html">
-					<h3>36/38</h3>
+					<img src="../assets/Cleric.png" onclick = location.href="sheet/cleric.html"  title = "Open Character Sheet">
+					<h3>
+						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+						&nbsp
+						36/38
+						&nbsp
+						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+					</h3>
 				</div>
 				<div class="player-card">
 					<h2>Wizard</h2>
-					<img src="../assets/Wizard.png" onclick = location.href="sheet/wizard.html">
-					<h3>18/21</h3>
+					<img src="../assets/Wizard.png" onclick = location.href="sheet/wizard.html"  title = "Open Character Sheet">
+					<h3>
+						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+						&nbsp
+						18/21
+						&nbsp
+						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+					</h3>
 				</div>
 			</div>
 		</div>
@@ -83,6 +106,7 @@
 				<h1 class="party-header">NPCs</h1>
 				<div class="party-bar">
 					<div class="player-card" onclick = swapCharSheets("../assets/Fighter.pdf")>
+
 						<h2>Goblin 1</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It">
@@ -96,24 +120,73 @@
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It">
 							28/28
 							<img class = "icon" src = "../assets/damage.png" title = "Damage It">
+						<h2>Orc Chief</h2>
+						<h3>
+							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+							&nbsp
+							14/27
+							&nbsp
+							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
 					<div class="player-card">
-						<h2>Goblin 3</h2>
-
+						<h2>Orc 1</h2>
 						<h3>
-							<img class = "icon" src = "../assets/heal.png" title = "Heal It">
-							36/38
-							<img class = "icon" src = "../assets/damage.png" title = "Damage It">
+							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+							&nbsp
+							2/15
+							&nbsp
+							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
-
 					</div>
 					<div class="player-card">
-						<h2>Goblin 4</h2>
+						<h2>Orc 2</h2>
 						<h3>
-							<img class = "icon" src = "../assets/heal.png" title = "Heal It">
-							18/21
-							<img class = "icon" src = "../assets/damage.png" title = "Damage It">
+							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+							&nbsp
+							15/15
+							&nbsp
+							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+						</h3>
+					</div>
+					<div class="player-card">
+						<h2>Orc 3</h2>
+						<h3>
+							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+							&nbsp
+							15/15
+							&nbsp
+							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+						</h3>
+					</div>
+					<div class="player-card">
+						<h2>Goblin 1</h2>
+						<h3>
+							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+							&nbsp
+							7/7
+							&nbsp
+							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+						</h3>
+					</div>
+					<div class="player-card">
+						<h2>Worg 1</h2>
+						<h3>
+							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+							&nbsp
+							8/26
+							&nbsp
+							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+						</h3>
+					</div>
+					<div class="player-card">
+						<h2>Worg 2</h2>
+						<h3>
+							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+							&nbsp
+							10/26
+							&nbsp
+							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
 				</div>
