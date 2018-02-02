@@ -25,10 +25,7 @@ fixed:root{
 .creature-container {
 	float:left;
 	width:70vw;
-<<<<<<< HEAD
-=======
 	/*border-right: 2px solid black;*/
->>>>>>> a0b9d6980b9e35b19f6e0f69af9243345c32692a
 	box-sizing: border-box;
 }
 
