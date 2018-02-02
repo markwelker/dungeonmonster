@@ -12,7 +12,7 @@ html, body {
 	height: 100%;
 	width: 100%;
 }
-body{
+body {
 	margin: 0;
 	background-image: url("assets/brickdark.jpg");
 	background-repeat: repeat;
@@ -140,12 +140,15 @@ embed {
 }
 
 .tmp-info {
+	position:absolute;
+	top:25%;
+	left:25%;
 	width:50%;
-	padding:0;
+	padding:0 0;
 	background-color:var(--off-white);
-	box-shadow: 0px 0px 0.5em rgba(0,0,0,1);
+	box-shadow: 0px 0px 10em 5em rgba(0,0,0,1);
 	border-radius: 1em;
-	margin:10% auto;
+	margin:0 0;
 }
 
 .tmp-info h1 {
