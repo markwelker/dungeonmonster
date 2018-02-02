@@ -25,6 +25,10 @@ fixed:root{
 .creature-container {
 	float:left;
 	width:70vw;
+<<<<<<< HEAD
+=======
+	/*border-right: 2px solid black;*/
+>>>>>>> a0b9d6980b9e35b19f6e0f69af9243345c32692a
 	box-sizing: border-box;
 }
 
@@ -109,17 +113,28 @@ fixed:root{
 	padding:1em;
 }
 
-.chat-box input {
-	width: 75%;
-	margin-left: 2.5%;
+.chat-header {
+	margin:0;
+	padding:0;
+	margin-left:1em;
+	margin-bottom:0.5em;
+	color:var(--off-white);
+	font-family: Garamond, serif;
+}
+
+.chat-box textarea {
+	width: 26.2vw;
+	height: 10%;
+	margin-left: 1em;
 	padding: 0.25em;
 	padding-left: 0.5em;
-
 }
 
 .chat-box button {
 	padding: 0.25em;
 	width:15%;
+	margin-left:1em;
+	margin-top:1%;
 }
 
 .character-info {
@@ -136,6 +151,7 @@ fixed:root{
 	color:var(--off-white);
 	background-color:var(--darkcrimson);
 	border-right: 2px solid black;
+	box-sizing:border-box;
 }
 
 .character-sheet {
