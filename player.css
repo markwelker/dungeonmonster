@@ -25,7 +25,6 @@ fixed:root{
 .creature-container {
 	float:left;
 	width:70vw;
-	border-right: 2px solid black;
 	box-sizing: border-box;
 }
 
@@ -47,6 +46,7 @@ fixed:root{
 .player-card {
 	margin:1vw;
 	max-width: 10vw;
+	min-width:5vw;
 	border-radius: 1em;
 	background-color:var(--charcoal);
 	box-shadow: 0 0 1em rgba(0,0,0,0.5);
@@ -89,8 +89,8 @@ fixed:root{
 .chat-box {
 	float:right;
 	position:fixed;
-	transform: translateX(70vw);
-	width:30vw;
+	transform: translateX(71vw);
+	width:28vw;
 	height:100vh;
 	margin: 0;
 	background-color:var(--darkcrimson);
@@ -139,7 +139,6 @@ fixed:root{
 }
 
 .character-sheet {
-	float: left;
 	width: 70vw;
 	height: 92vh;
 }
