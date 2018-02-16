@@ -55,12 +55,16 @@ function fetchCreatureByURL(url){
 			$('#c_int').text(creature.intelligence);
 			$('#c_wis').text(creature.wisdom);
 			$('#c_cha').text(creature.charisma);
-			var feature = "";
-			for (var i = 0; i < creature.special_abilities.length; i++){
-				feature += "<strong>" + creature.special_abilities[i].name + "</strong>: " + creature.special_abilities[i].desc;
-				feature += "<br />";
+			if (creature.special_abilities !== undefined) {
+				//console.log(creature.special_abilities);
+				var feature = "";
+				for (var i = 0; i < creature.special_abilities.length; i++){
+					feature += "<strong>" + creature.special_abilities[i].name + "</strong>: " + creature.special_abilities[i].desc;
+					feature += "<br />";
+				}
+				$('#c_features').html(feature);
 			}
-			$('#c_features').html(feature);
+			else $('#c_features').html("&nbsp");
 			var actions = "";
 			for (var i = 0; i < creature.actions.length; i++){
 				actions += "<strong>" + creature.actions[i].name + "</strong>: " + creature.actions[i].desc;

@@ -52,7 +52,7 @@ html {
   flex-flow: wrap;
   flex-direction: row;
   overflow: auto;
-  max-height: calc(60vh - 6.5vh);
+  max-height: 54.25vh;
 }
 
 .party-pane, .monster-pane {
@@ -228,7 +228,7 @@ embed {
 .creature-content{
 	width:100%;
 	display:flex;
-  max-height: calc(40vh - 5.5vh);
+  max-height: 34vh;
   overflow: auto;
 }
 
