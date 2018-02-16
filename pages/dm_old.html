@@ -4,60 +4,57 @@
 	<title>Dungeon Master</title>
 	<link rel = "stylesheet" href="../css/dungeonmonster.css">
 	<link rel = "stylesheet" href="../css/player.css">
+	<link rel = "stylesheet" href="../css/dm.css">
 	<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="script.js"></script>
+	<script src="../script/script.js"></script>
 </head>
 <body>
 	<div class="main-container-player">
 		<div class="party-container">
-			<h1 class="party-header">Party</h1>
-			<div class="party-bar">
-				<div class="player-card" onclick = location.href="sheet/fighter.html" title = "Open Character Sheet">
-					<h2>Fighter</h2>
-					<img src="../assets/Fighter.png">
-					<h3>
-						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-						&nbsp
-						34/50
-						&nbsp
-						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
-					</h3>
+			<h1 class="party-header">Creature Stat Block</h1>
+			<div class = "content">
+				<div class = "column">
+					<h2 id = "c_name">Orc</h2>
+					<h4 id = "c_description">Medium Humanoid (orc), chaotic evil</h4>
+					<h4 id = "c_ac">AC: 13</h4>
+					<h4 id = "c_hp">HP: 27</h4>
+					<div class = "stat-bar">
+						<div class = "stat">
+							<h3>STR</h3>
+							<h3 id = "c_str">15</h3>
+						</div>
+						<div class = "stat">
+							<h3>DEX</h3>
+							<h3 id = "c_dex">15</h3>
+						</div>
+						<div class = "stat">
+							<h3>CON</h3>
+							<h3 id = "c_con">15</h3>
+						</div>
+						<div class = "stat">
+							<h3>INT</h3>
+							<h3 id = "c_int">15</h3>
+						</div>
+						<div class = "stat">
+							<h3>WIS</h3>
+							<h3 id = "c_wis">15</h3>
+						</div>
+						<div class = "stat">
+							<h3>CHA</h3>
+							<h3 id = "c_cha">15</h3>
+						</div>
+					</div>
 				</div>
-				<div class="player-card">
-					<h2>Bard</h2>
-					<img src="../assets/Bard.png" onclick = location.href="sheet/bard.html"  title = "Open Character Sheet">
-					<h3>
-						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-						&nbsp
-						28/28
-						&nbsp
-						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
-					</h3>
-				</div>
-				<div class="player-card">
-					<h2>Cleric</h2>
-					<img src="../assets/Cleric.png" onclick = location.href="sheet/cleric.html"  title = "Open Character Sheet">
-					<h3>
-						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-						&nbsp
-						36/38
-						&nbsp
-						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
-					</h3>
-				</div>
-				<div class="player-card">
-					<h2>Wizard</h2>
-					<img src="../assets/Wizard.png" onclick = location.href="sheet/wizard.html"  title = "Open Character Sheet">
-					<h3>
-						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-						&nbsp
-						18/21
-						&nbsp
-						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
-					</h3>
+				<div class = "column">
+					<h2>Actions:</h2>
+					<h4>Greataxe: Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 9 (1d12 + 3) slashing damage.</h4>
 				</div>
 			</div>
+			<h3 id = "c_feature_name">Aggressive</h3>
+			<h4 id = "c_feature_description">As a bonus action, the orc can move up to its speed toward a hostile creature that it can see.</h4>
+
+
 		</div>
 		<div class="chat-box">
 			<div class="chat-log">
