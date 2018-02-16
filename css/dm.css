@@ -1,0 +1,17 @@
+.stat {
+	width:auto;
+	float:left;
+	padding-left:1em;
+}
+.stat-bar{
+	display:flex;
+	width:100%;
+	flex-flow:wrap;
+}
+.content{
+	display:table-cell
+}
+.column{
+	width: 48%;
+	padding: 1%;
+}
