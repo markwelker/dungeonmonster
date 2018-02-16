@@ -7,20 +7,24 @@ $(document).ready(function() {
 		dataType : "json",
 		success : function(json) {
 			creatures = json.results;
-			for (var i=0; i<creatures.length; i++){
-				var creature = creatures[i]
-				var element = "";
-				element += "<div class=\"lookup-card\" ";
-				element += "onclick=\"fetchCreatureByName('" + creature.name + "')\">"
-				element += "<h1>" + creature.name + "</h1>";
-				element += "</div";
-				$('#lookup_pane').html(element);
-				console.log('added: ' + creature.name);
-			}
+			loadCreatures();
 		}
 	});
 	fetchCreatureByName("Zombie");
 });
+
+function loadCreatures() {
+	var content = "";
+	for (var i=0; i<creatures.length; i++){
+		var creature = creatures[i]
+		content += "<div class=\"lookup-card\" ";
+		content += "onclick=\"fetchCreatureByName('" + creature.name + "')\">"
+		content += "<h1>" + creature.name + "</h1>";
+		content += "</div>";
+		console.log('added: ' + creature.name);
+	}
+	$('#lookup_pane').html(content);
+}
 
 function fetchCreatureByName(creatureName){
 	$.ajax({

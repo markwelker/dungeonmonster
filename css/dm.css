@@ -59,23 +59,29 @@ html {
   width: calc(24vw + 18px);
 }
 
+#lookup_pane {
+  width: calc(72vw - 48vw - 18px * 2);
+  max-height: calc(60vh - 5vw);
+}
+
 .lookup-container {
   width: calc(72vw - 48vw - 18px * 2);
 }
 
 .lookup-container input{
   width: calc(calc(72vw - 48vw - 18px * 2) * 0.8);
-  margin: calc(calc(72vw - 48vw - 18px * 2) * 0.1);
+  margin-left: calc(calc(72vw - 48vw - 18px * 2) * 0.1);
   text-align: center;
-  font-size: 1.5em;
+  font-size: 3vh;
   font-family: 'Garamond';
 }
 
 .lookup-card{
   width: calc(calc(72vw - 48vw - 18px * 2) * 0.8);
-  margin: calc(calc(72vw - 48vw - 18px * 2) * 0.1);
+  margin-top: 1vh;
+  margin-left: calc(calc(72vw - 48vw - 18px * 2) * 0.1);
   text-align: center;
-  font-size: 1.5em;
+  font-size: 2vh;
   font-family: 'Garamond';
   background-color: var(--darkcrimson);
   color: var(--off-white);
@@ -221,6 +227,8 @@ embed {
 .creature-content{
 	width:100%;
 	display:flex;
+  max-height: calc(40vh - 3.5em);
+  overflow: auto;
 }
 
 .creature-column{
