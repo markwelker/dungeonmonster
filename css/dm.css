@@ -180,6 +180,7 @@ embed {
   height: 1.25em;
 }
 
+<<<<<<< HEAD
 .stat {
 	width:auto;
 	float:left;
@@ -207,4 +208,33 @@ embed {
 	font-family: 'Garamond';
 	padding: 0;
 	margin: 0.25em;
+=======
+.stat {
+	width:auto;
+	float:left;
+	padding-right:1em;
+}
+
+.stat-bar{
+	display:flex;
+	width:100%;
+	flex-flow:wrap;
+}
+
+.creature-content{
+	width:100%;
+	display:flex;
+}
+
+.creature-column{
+	width: 48%;
+	padding: 1%;
+	padding-left:2em;
+}
+
+.creature-column h3, h4 {
+	font-family: 'Garamond';
+	padding: 0;
+	margin: 0.25em;
+>>>>>>> b686f003107deecd338bc8be3679a2ec9e343cbd
 }
