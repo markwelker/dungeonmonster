@@ -12,7 +12,7 @@ html {
 }
 
 .red-header {
-  padding: 0.5em;
+  padding: 1vh;
   padding-left: 1em;
   margin: 0;
   color: var(--off-white);
@@ -20,6 +20,7 @@ html {
   box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.5);
   border-right: solid var(--charcoal) 1px;
   box-sizing: border-box;
+  font-size: 3vh;
 }
 
 .main-container {
@@ -51,7 +52,7 @@ html {
   flex-flow: wrap;
   flex-direction: row;
   overflow: auto;
-  max-height: calc(60vh - 5vw);
+  max-height: calc(60vh - 6.5vh);
 }
 
 .party-pane, .monster-pane {
@@ -61,7 +62,6 @@ html {
 
 #lookup_pane {
   width: calc(72vw - 48vw - 18px * 2);
-  max-height: calc(60vh - 5vw);
 }
 
 .lookup-container {
@@ -228,7 +228,7 @@ embed {
 .creature-content{
 	width:100%;
 	display:flex;
-  max-height: calc(40vh - 3.5em);
+  max-height: calc(40vh - 5.5vh);
   overflow: auto;
 }
 
