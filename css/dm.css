@@ -38,7 +38,7 @@ fixed:root {
 }
 
 .party-container, .creature-container, .lookup-container {
-  flex-grow: 1;
+
 }
 
 .party-pane, .monster-pane {
@@ -49,15 +49,14 @@ fixed:root {
   max-height: calc(60vh - 5em);
 }
 
-.party-pane {
+.party-pane, .monster-pane {
   /*width of 2 cards + scrollbar*/
   width: calc(24vw + 18px);
 }
 
 .character-card {
   margin: 1vw;
-  max-width: 10vw;
-  min-width: 7vw;
+  width: 10vw;
   border-radius: 1em;
   background-color: var(--charcoal);
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
@@ -68,7 +67,7 @@ fixed:root {
 }
 
 .character-card h2 {
-  font-size: 1.5em;
+  font-size: 1.5vw;
   margin: 0;
   padding: 3px;
   text-align: center;
@@ -80,7 +79,7 @@ fixed:root {
 }
 
 .character-card h3 {
-  font-size: 1.25em;
+  font-size: 1.25vw;
   font-family: "Garamond";
   margin: 0;
   padding: 3px;
@@ -108,7 +107,7 @@ fixed:root {
 }
 
 .chat-log {
-  margin: 1em;
+  margin: 2vh;
   box-shadow: inset 0px 0px 1em rgba(0, 0, 0, 0.2);
   background-color: var(--off-white);
   overflow: auto;
@@ -122,16 +121,16 @@ fixed:root {
 .chat-header {
   margin: 0;
   padding: 0;
-  margin-left: 1em;
-  margin-bottom: 0.5em;
+  margin-left: 2vw;
+  margin-bottom: 2vh;
   color: var(--off-white);
   font-family: Garamond, serif;
 }
 
 .chat-box textarea {
-  width: 26.2vw;
+  width: calc(24vw + 17px);
   height: 10%;
-  margin-left: 1em;
+  margin-left: 2vh;
   padding: 0.25em;
   padding-left: 0.5em;
 }
@@ -139,8 +138,8 @@ fixed:root {
 .chat-box button {
   padding: 0.25em;
   width: 15%;
-  margin-left: 1em;
-  margin-top: 1%;
+  margin-left: 2vh;
+  margin-top: 2vh;
 }
 
 .character-info {
