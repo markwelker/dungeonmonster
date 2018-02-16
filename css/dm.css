@@ -51,12 +51,34 @@ html {
   flex-flow: wrap;
   flex-direction: row;
   overflow: auto;
-  max-height: calc(60vh - 5em);
+  max-height: calc(60vh - 5vw);
 }
 
 .party-pane, .monster-pane {
   /*width of 2 cards + scrollbar*/
   width: calc(24vw + 18px);
+}
+
+.lookup-container {
+  width: calc(72vw - 48vw - 18px * 2);
+}
+
+.lookup-container input{
+  width: calc(calc(72vw - 48vw - 18px * 2) * 0.8);
+  margin: calc(calc(72vw - 48vw - 18px * 2) * 0.1);
+  text-align: center;
+  font-size: 1.5em;
+  font-family: 'Garamond';
+}
+
+.lookup-card{
+  width: calc(calc(72vw - 48vw - 18px * 2) * 0.8);
+  margin: calc(calc(72vw - 48vw - 18px * 2) * 0.1);
+  text-align: center;
+  font-size: 1.5em;
+  font-family: 'Garamond';
+  background-color: var(--darkcrimson);
+  color: var(--off-white);
 }
 
 .character-card {

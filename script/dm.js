@@ -8,6 +8,16 @@ $(document).ready(function() {
 		dataType : "json",
 		success : function(json) {
 			creatures = json.results;
+			for (var i=0; i<creatures.length; i++){
+				var creature = creatures[i]
+				var element = "";
+				element += "<div class=\"lookup-card\" ";
+				element += "onclick=\"fetchCreatureByName('" + creature.name + "')\">"
+				element += "<h1>" + creature.name + "</h1>";
+				element += "</div";
+				$('#lookup_pane').html(element);
+				console.log('added: ' + creature.name);
+			}
 		}
 	});
 	fetchCreatureByName("Orc");
