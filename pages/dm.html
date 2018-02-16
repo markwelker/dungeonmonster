@@ -80,7 +80,7 @@
 			<div class="party-container">
 				<h1 class="red-header">Party</h1>
 				<div class="party-pane">
-					<div class="character-card" onclick=l ocation.href="sheet/fighter.html" title="Open Character Sheet">
+					<div class="character-card" onclick=location.href="sheet/fighter.html" title="Open Character Sheet">
 						<h2>Fighter</h2>
 						<img src="../assets/Fighter.png">
 						<h3>
@@ -93,7 +93,7 @@
 					</div>
 					<div class="character-card">
 						<h2>Bard</h2>
-						<img src="../assets/Bard.png" onclick=l ocation.href="sheet/bard.html" title="Open Character Sheet">
+						<img src="../assets/Bard.png" onclick=location.href="sheet/bard.html" title="Open Character Sheet">
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
 							&nbsp
@@ -104,7 +104,7 @@
 					</div>
 					<div class="character-card">
 						<h2>Cleric</h2>
-						<img src="../assets/Cleric.png" onclick=l ocation.href="sheet/cleric.html" title="Open Character Sheet">
+						<img src="../assets/Cleric.png" onclick=location.href="sheet/cleric.html" title="Open Character Sheet">
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
 							&nbsp
@@ -115,7 +115,7 @@
 					</div>
 					<div class="character-card">
 						<h2>Wizard</h2>
-						<img src="../assets/Wizard.png" onclick=l ocation.href="sheet/wizard.html" title="Open Character Sheet">
+						<img src="../assets/Wizard.png" onclick=location.href="sheet/wizard.html" title="Open Character Sheet">
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
 							&nbsp
@@ -245,7 +245,8 @@
 
 			<div class="lookup-container">
 				<h1 class="red-header">Monster Lookup</h1>
-				<div class="monster-pane">
+				<input type="search" role="search" name="search" placeholder="search"/>
+				<div class="monster-pane" id="lookup_pane">
 					<!--The full list of available monsters goes here-->
 				</div>
 			</div>
