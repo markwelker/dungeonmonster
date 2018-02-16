@@ -3,62 +3,17 @@
 <head>
 	<title>Dungeon Master</title>
 	<link rel = "stylesheet" href="../dungeonmonster.css">
-	<link rel = "stylesheet" href="../player.css">
+	<link rel = "stylesheet" href="../dm.css">
 	<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="script.js"></script>
 </head>
 <body>
-	<div class="main-container-player">
-		<div class="party-container">
-			<h1 class="party-header">Party</h1>
-			<div class="party-bar">
-				<div class="player-card" onclick = location.href="sheet/fighter.html" title = "Open Character Sheet">
-					<h2>Fighter</h2>
-					<img src="../assets/Fighter.png">
-					<h3>
-						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-						&nbsp
-						34/50
-						&nbsp
-						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
-					</h3>
-				</div>
-				<div class="player-card">
-					<h2>Bard</h2>
-					<img src="../assets/Bard.png" onclick = location.href="sheet/bard.html"  title = "Open Character Sheet">
-					<h3>
-						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-						&nbsp
-						28/28
-						&nbsp
-						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
-					</h3>
-				</div>
-				<div class="player-card">
-					<h2>Cleric</h2>
-					<img src="../assets/Cleric.png" onclick = location.href="sheet/cleric.html"  title = "Open Character Sheet">
-					<h3>
-						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-						&nbsp
-						36/38
-						&nbsp
-						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
-					</h3>
-				</div>
-				<div class="player-card">
-					<h2>Wizard</h2>
-					<img src="../assets/Wizard.png" onclick = location.href="sheet/wizard.html"  title = "Open Character Sheet">
-					<h3>
-						<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-						&nbsp
-						18/21
-						&nbsp
-						<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
-					</h3>
-				</div>
-			</div>
+	<div class="main-container">
+		<div class="stats-container">
+			<!--Info for currently selected Player/NPC goes here-->
 		</div>
+
 		<div class="chat-box">
 			<div class="chat-log">
 				<p>
@@ -103,11 +58,62 @@
 			<textarea type="text" name="chat" placeholder="Enter Message"></textarea><br>
 			<button type="submit" name="chatSubmit">Send</button>
 		</div>
-		<div class="character-info">
-			<div class="creature-container">
-				<h1 class="party-header">NPCs</h1>
-				<div class="party-bar">
-					<div class="player-card">
+
+		<div class="bottom-container">
+			<div class="party-container">
+				<h1 class="red-header">Party</h1>
+				<div class="party-pane">
+					<div class="character-card" onclick = location.href="sheet/fighter.html" title = "Open Character Sheet">
+						<h2>Fighter</h2>
+						<img src="../assets/Fighter.png">
+						<h3>
+							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+							&nbsp
+							34/50
+							&nbsp
+							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+						</h3>
+					</div>
+					<div class="character-card">
+						<h2>Bard</h2>
+						<img src="../assets/Bard.png" onclick = location.href="sheet/bard.html"  title = "Open Character Sheet">
+						<h3>
+							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+							&nbsp
+							28/28
+							&nbsp
+							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+						</h3>
+					</div>
+					<div class="character-card">
+						<h2>Cleric</h2>
+						<img src="../assets/Cleric.png" onclick = location.href="sheet/cleric.html"  title = "Open Character Sheet">
+						<h3>
+							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+							&nbsp
+							36/38
+							&nbsp
+							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+						</h3>
+					</div>
+					<div class="character-card">
+						<h2>Wizard</h2>
+						<img src="../assets/Wizard.png" onclick = location.href="sheet/wizard.html"  title = "Open Character Sheet">
+						<h3>
+							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
+							&nbsp
+							18/21
+							&nbsp
+							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+						</h3>
+					</div>
+				</div>
+			</div>
+
+			<div class="monster-container">
+				<h1 class="red-header">Encounter Monsters</h1>
+				<div class="monster-bar">
+					<div class="character-card">
 						<h2>Orc Chief</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
@@ -117,7 +123,7 @@
 							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
-					<div class="player-card">
+					<div class="character-card">
 						<h2>Orc 1</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
@@ -127,7 +133,7 @@
 							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
-					<div class="player-card">
+					<div class="character-card">
 						<h2>Orc 2</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
@@ -137,7 +143,7 @@
 							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
-					<div class="player-card">
+					<div class="character-card">
 						<h2>Orc 3</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
@@ -147,7 +153,7 @@
 							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
-					<div class="player-card">
+					<div class="character-card">
 						<h2>Goblin 1</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
@@ -157,7 +163,7 @@
 							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
-					<div class="player-card">
+					<div class="character-card">
 						<h2>Goblin 2</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
@@ -167,7 +173,7 @@
 							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
-					<div class="player-card">
+					<div class="character-card">
 						<h2>Goblin 3</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
@@ -177,7 +183,7 @@
 							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
-					<div class="player-card">
+					<div class="character-card">
 						<h2>Goblin 4</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
@@ -187,7 +193,7 @@
 							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
-					<div class="player-card">
+					<div class="character-card">
 						<h2>Worg 1</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
@@ -197,7 +203,7 @@
 							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
-					<div class="player-card">
+					<div class="character-card">
 						<h2>Worg 2</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
@@ -207,7 +213,7 @@
 							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
 						</h3>
 					</div>
-					<div class="player-card">
+					<div class="character-card">
 						<h2>Worg 3</h2>
 						<h3>
 							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
@@ -219,7 +225,15 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="lookup-container">
+				<h1 class="red-header">Monster Lookup</h1>
+				<div class="monster-bar">
+					<!--The full list of available monsters goes here-->
+				</div>
+			</div>
 		</div>
+		
 	</div>
 </body>
 
