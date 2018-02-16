@@ -7,6 +7,9 @@ fixed:root {
   --crimson: #AE1D20;
   --darkcrimson: #731315;
 }
+html {
+	font-family: 'Garamond';
+}
 
 .red-header {
   padding: 0.5em;
