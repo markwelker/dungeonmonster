@@ -85,6 +85,7 @@ html {
   font-family: 'Garamond';
   background-color: var(--darkcrimson);
   color: var(--off-white);
+  cursor: pointer;
 }
 
 .character-card {
@@ -93,6 +94,7 @@ html {
   border-radius: 1em;
   background-color: var(--charcoal);
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .character-card:hover {
@@ -174,6 +176,7 @@ html {
   width: 15%;
   margin-left: 2vh;
   margin-top: 2vh;
+  cursor: pointer;
 }
 
 .character-info {
