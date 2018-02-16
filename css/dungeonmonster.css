@@ -14,7 +14,7 @@ html, body {
 }
 body {
 	margin: 0;
-	background-image: url("assets/brickdark.jpg");
+	background-image: url("../assets/brickdark.jpg");
 	background-repeat: repeat;
 }
 
