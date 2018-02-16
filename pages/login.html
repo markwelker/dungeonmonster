@@ -13,9 +13,9 @@
 			<div>
 				Username <br> <input type="text" id="username" placeholder="Username"><br />
 				Password <br> <input type="password" id = "password" placeholder="Password"><br />
-				<button class = "login-button" onclick = "loginDM()">DM Login</button>
-				<button class = "login-button" onclick = "loginPlayer()">PC Login</button>
-				<button class = "login-button" onclick = "info()">?</button>
+				<!--<button class = "login-button" onclick = "loginDM()">DM Login</button>-->
+				<button class = "login-button" onclick = "login()">Login</button>&nbsp
+				<button class = "login-button" onclick = "info()">&nbsp?&nbsp</button>
 			</div>
 		</div>
 	</div>
@@ -24,18 +24,25 @@
 	/**
 	*	Insecure, yes, but necessary without a server node.js running. Mock users and passwords.
 	*/
-	function loginPlayer() {
+	function login() {
 		console.log("Logging in Player");
 		var users = [{user: "Fighter", password: "fighter"}, {user: "Wizard", password: "P0wroverwhelming"},
-				{user: "Cleric", password: "healsalot"}, {user: "Bard", password: "shakespeare"},];
+				{user: "Cleric", password: "healsalot"}, {user: "Bard", password: "Shakespeare"},];
 		var username = document.getElementById("username").value;
 		var password = document.getElementById("password").value;
 		var success = false;
-		for (var i = 0; i < users.length; i++){
-			if(username === users[i].user && password === users[i].password) {
-				document.location.href = "player.html";
-				success = true;
-				break;
+		if(username === "DM" && password === "dungeonmonster") {
+			document.location.href = "dm.html";
+			success = true;
+		}
+		else {
+
+			for (var i = 0; i < users.length; i++){
+				if(username === users[i].user && password === users[i].password) {
+					document.location.href = "player.html";
+					success = true;
+					break;
+				}
 			}
 		}
 		// Didn't match any valid credentials, so alert them.
