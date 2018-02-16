@@ -5,6 +5,8 @@
 	<link rel = "stylesheet" href="../css/dungeonmonster.css">
 	<link rel = "stylesheet" href="../css/player.css">
 	<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="../script/script.js"></script>
 </head>
 <body>
 	<div class="main-container-player">
@@ -34,7 +36,7 @@
 			</div>
 		</div>
 		<div class="chat-box">
-			<div class="chat-log">
+			<div class="chat-log" id = "chat_log">
 				<p>
 					DM: Are you sure you want to touch that?<br>
 					Fighter: Yes, yes I am.<br>
@@ -74,8 +76,8 @@
 				</p>
 			</div>
 			<h1 class="chat-header">Chat</h1>
-			<textarea type="text" name="chat" placeholder="Enter Message"></textarea><br>
-			<button type="submit" name="chatSubmit">Send</button>
+			<textarea type="text" id="chat_message" placeholder="Enter Message"></textarea><br>
+			<button onclick = "chat()">Send</button>
 		</div>
 		<div class="character-info">
 			<h1>Character Information</h1>

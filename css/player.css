@@ -100,7 +100,7 @@ fixed:root{
 }
 
 .chat-log {
-	margin:1em;
+	margin: 2vh;
 	box-shadow: inset 0px 0px 1em rgba(0,0,0,0.2);
 	background-color: var(--off-white);
 	overflow:auto;
@@ -108,22 +108,23 @@ fixed:root{
 }
 
 .chat-log p {
-	padding:1em;
+	margin:0 0 0 1em;
+    padding:0;
 }
 
 .chat-header {
 	margin:0;
 	padding:0;
-	margin-left:1em;
-	margin-bottom:0.5em;
+	margin-left: 2vw;
+    margin-bottom: 2vh;
 	color:var(--off-white);
 	font-family: Garamond, serif;
 }
 
 .chat-box textarea {
-	width: 26.2vw;
+	width: calc(24vw + 17px);
 	height: 10%;
-	margin-left: 1em;
+	margin-left: 2vh;
 	padding: 0.25em;
 	padding-left: 0.5em;
 }
