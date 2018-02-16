@@ -1,30 +1,3 @@
-<<<<<<< HEAD
-.stat {
-	width:auto;
-	float:left;
-	padding-right:1em;
-}
-.stat-bar{
-	display:flex;
-	width:100%;
-	flex-flow:wrap;
-}
-.creature-content{
-	width:100%;
-	display:flex;
-}
-.creature-column{
-	width: 48%;
-	padding: 1%;
-	padding-left:2em;
-}
-
-.creature-column h3, h4 {
-	font-family: 'Garamond';
-	padding: 0;
-	margin: 0.25em;
-}
-=======
 fixed:root {
   /*to use the custom colors type "var(--color-name)"*/
   --charcoal: #262626;
@@ -210,18 +183,28 @@ embed {
 .stat {
 	width:auto;
 	float:left;
-	padding-left:1em;
+	padding-right:1em;
 }
+
 .stat-bar{
 	display:flex;
 	width:100%;
 	flex-flow:wrap;
 }
-.content{
-	display:table-cell
+
+.creature-content{
+	width:100%;
+	display:flex;
 }
-.column{
+
+.creature-column{
 	width: 48%;
 	padding: 1%;
+	padding-left:2em;
 }
->>>>>>> e9d91938b26bc3f7c5d346fddea8cd9ddff4e679
+
+.creature-column h3, h4 {
+	font-family: 'Garamond';
+	padding: 0;
+	margin: 0.25em;
+}
