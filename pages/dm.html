@@ -250,13 +250,4 @@
 		</div>
 	</div>
 </body>
-
-<script>
-	function swapCharSheets(newSheet) {
-		var oldSheet = document.getElementById("charsheet");
-		var clone = oldSheet.cloneNode(true);
-		clone.setAttribute('src', newSheet);
-		oldSheet.parentNode.replaceChild(clone, oldSheet);
-	}
-</script>
 </html>

@@ -2,7 +2,7 @@ var creatures; // List of all creatures
 var spells;
 
 $(document).ready(function() {
-	console.log("DM is running!")
+	//console.log("DM is running!")
 	$.ajax({
 		url : "http://www.dnd5eapi.co/api/monsters/",
 		dataType : "json",
@@ -22,7 +22,7 @@ function loadCreatures() {
 		content += "onclick=\"fetchCreatureByName('" + creature.name + "')\">"
 		content += "<h1>" + creature.name + "</h1>";
 		content += "</div>";
-		console.log('added: ' + creature.name);
+		//console.log('added: ' + creature.name);
 	}
 	$('#lookup_pane').html(content);
 }
@@ -32,19 +32,19 @@ function fetchCreatureByName(creatureName){
 		url : "http://www.dnd5eapi.co/api/monsters/?name=" + creatureName,
 		dataType : "json",
 		success : function(json) {
-			console.log(json);
+			//console.log(json);
 			fetchCreatureByURL(json.results[0].url);
 		}
 	});
 }
 function fetchCreatureByURL(url){
-	console.log(url);
+	//console.log(url);
 	$.ajax({
 		url : url,
 		dataType : "json",
 		success : function(creature) {
 
-			console.log(creature);
+			//console.log(creature);
 			$('#c_name').text(creature.name);
 			$('#c_description').text(creature.size + " " + creature.type + " (" + creature.subtype + "), " + creature.alignment);
 			$('#c_ac').text("AC: " + creature.armor_class);
