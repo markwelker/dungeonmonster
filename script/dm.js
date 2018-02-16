@@ -1,4 +1,5 @@
 var creatures; // List of all creatures
+var spells;
 
 $(document).ready(function() {
 	console.log("DM is running!")
@@ -10,7 +11,7 @@ $(document).ready(function() {
 			loadCreatures();
 		}
 	});
-	fetchCreatureByName("Zombie");
+	fetchCreatureByName("Orc");
 });
 
 function loadCreatures() {
