@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root{
 	/*to use the custom colors type "var(--color-name)"*/
 	--charcoal: #262626;
@@ -195,3 +196,201 @@ embed {
 	font-family: "Garamond";
 	font-size:1.40em;
 }
+=======
+:root {
+  /*to use the custom colors type "var(--color-name)"*/
+  --charcoal: #262626;
+  --off-white: #E7E7E7;
+  --blue: #1E8BB2;
+  --green: #32A83E;
+  --crimson: #AE1D20;
+  --darkcrimson: #731315;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background-image: url("../assets/brickdark.jpg");
+  background-repeat: repeat;
+}
+
+footer {
+  position: absolute;
+  height: 5%;
+  bottom: 0;
+  width: 80%;
+  margin-left: 10%;
+  color: var(--off-white);
+  background-color: var(--darkcrimson);
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--off-white);
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  margin: 0;
+  font-family: 'Berkshire Swash', cursive;
+  font-size: 2em;
+}
+
+/* Top Menu*/
+
+nav ul {
+  /*set positionioning*/
+  position: fixed;
+  top: 0;
+  width: 80%;
+  margin-top: 0;
+  margin-left: 10%;
+  padding: 0;
+  /*styles and colors*/
+  color: var(--off-white);
+  background-color: var(--darkcrimson);
+  list-style-type: none;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li.login-button {
+  float: right;
+}
+
+nav ul li.register-button {
+  float: right;
+}
+
+nav ul li.login-button a {
+  background-color: var(--sky-blue);
+}
+
+nav a {
+  /*alignment and positionioning*/
+  text-align: center;
+  padding: 14px 16px;
+  display: block;
+  /*styling and color*/
+  text-decoration: none;
+  color: var(--off-white);
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/*Styles for both the login and registration forms*/
+
+.login-container {
+  /*set color scheme and font*/
+  color: var(--off-white);
+  background-color: var(--darkcrimson);
+  background-clip: padding-box;
+  border: 5px solid rgba(0, 0, 0, 0.8);
+  font-family: 'Berkshire Swash', cursive;
+  box-shadow: inset 0 0 5em 1.5em rgba(0, 0, 0, 1), 0px 0px 20em 4.5em rgba(0, 0, 0, 1);
+  /*sizing*/
+  padding-top: 5%;
+  padding-bottom: 5%;
+  max-width: 45em;
+  width: 50%;
+  font-size: 2em;
+  /*center div and fields*/
+  /*margin: 10% auto;*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.login-container input {
+  width: 40%;
+  line-height: 2em;
+  padding: 0.2em;
+  padding-left: 1em;
+  background-color: var(--off-white);
+  border-radius: 0.5em;
+  border: none;
+  box-shadow: 0px 0px 0.5em rgba(0, 0, 0, 0.3);
+}
+
+.login-container .login-button {
+  display: inline-block;
+  margin-top: 1em;
+  color: var(--charcoal);
+  font-family: 'Georgia';
+  font-size: 0.8em;
+  text-decoration: none;
+  background-color: var(--off-white);
+  border: outset;
+  border-color: var(--off-white);
+  border-radius: 0.25em;
+  padding: 0.25em;
+}
+
+.login-container a:hover {
+  color: var(--off-white);
+  background-color: var(--darkcrimson);
+  border-color: var(--darkcrimson);
+}
+
+embed {
+  height: 95%;
+  width: 45%;
+  top: 50%;
+  left: 50%;
+}
+
+.pdf {
+  position: absolute;
+  height: 95%;
+  transform: translate(-50%, -50%);
+}
+
+.back {
+  width: 5em;
+  height: 5em;
+  position: absolute;
+  top: 1%;
+  left: 1%;
+}
+
+.tmp-info {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  padding: 0 0;
+  background-color: var(--off-white);
+  box-shadow: 0px 0px 10em 5em rgba(0, 0, 0, 1);
+  border-radius: 1em;
+  margin: 0 0;
+}
+
+.tmp-info h1 {
+  text-align: center;
+  font-family: 'Berkshire Swash', cursive;
+  color: var(--off-white);
+  background-color: var(--darkcrimson);
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
+
+.tmp-info p {
+  padding: 0.5em;
+  font-family: "Garamond";
+  font-size: 1.40em;
+}
+>>>>>>> e9d91938b26bc3f7c5d346fddea8cd9ddff4e679
