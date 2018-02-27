@@ -10,3 +10,10 @@ function chat(){
 
 	chatLog.scrollTop(chatLog.prop("scrollHeight"));
 }
+
+function swapCharSheets(newSheet) {
+	var oldSheet = document.getElementById("charsheet");
+	var clone = oldSheet.cloneNode(true);
+	clone.setAttribute('src', newSheet);
+	oldSheet.parentNode.replaceChild(clone, oldSheet);
+}

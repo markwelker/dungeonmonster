@@ -2,7 +2,7 @@ var creatures; // List of all creatures
 var spells;
 
 $(document).ready(function() {
-	console.log("DM is running!")
+	//console.log("DM is running!")
 	$.ajax({
 		url : "http://www.dnd5eapi.co/api/monsters/",
 		dataType : "json",
@@ -22,7 +22,7 @@ function loadCreatures() {
 		content += "onclick=\"fetchCreatureByName('" + creature.name + "')\">"
 		content += "<h1>" + creature.name + "</h1>";
 		content += "</div>";
-		console.log('added: ' + creature.name);
+		//console.log('added: ' + creature.name);
 	}
 	$('#lookup_pane').html(content);
 }
@@ -32,19 +32,19 @@ function fetchCreatureByName(creatureName){
 		url : "http://www.dnd5eapi.co/api/monsters/?name=" + creatureName,
 		dataType : "json",
 		success : function(json) {
-			console.log(json);
+			//console.log(json);
 			fetchCreatureByURL(json.results[0].url);
 		}
 	});
 }
 function fetchCreatureByURL(url){
-	console.log(url);
+	//console.log(url);
 	$.ajax({
 		url : url,
 		dataType : "json",
 		success : function(creature) {
 
-			console.log(creature);
+			//console.log(creature);
 			$('#c_name').text(creature.name);
 			$('#c_description').text(creature.size + " " + creature.type + " (" + creature.subtype + "), " + creature.alignment);
 			$('#c_ac').text("AC: " + creature.armor_class);
@@ -55,12 +55,16 @@ function fetchCreatureByURL(url){
 			$('#c_int').text(creature.intelligence);
 			$('#c_wis').text(creature.wisdom);
 			$('#c_cha').text(creature.charisma);
-			var feature = "";
-			for (var i = 0; i < creature.special_abilities.length; i++){
-				feature += "<strong>" + creature.special_abilities[i].name + "</strong>: " + creature.special_abilities[i].desc;
-				feature += "<br />";
+			if (creature.special_abilities !== undefined) {
+				//console.log(creature.special_abilities);
+				var feature = "";
+				for (var i = 0; i < creature.special_abilities.length; i++){
+					feature += "<strong>" + creature.special_abilities[i].name + "</strong>: " + creature.special_abilities[i].desc;
+					feature += "<br />";
+				}
+				$('#c_features').html(feature);
 			}
-			$('#c_features').html(feature);
+			else $('#c_features').html("&nbsp");
 			var actions = "";
 			for (var i = 0; i < creature.actions.length; i++){
 				actions += "<strong>" + creature.actions[i].name + "</strong>: " + creature.actions[i].desc;

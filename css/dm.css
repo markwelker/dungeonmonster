@@ -52,7 +52,7 @@ html {
   flex-flow: wrap;
   flex-direction: row;
   overflow: auto;
-  max-height: calc(60vh - 6.5vh);
+  max-height: 54.25vh;
 }
 
 .party-pane, .monster-pane {
@@ -85,6 +85,7 @@ html {
   font-family: 'Garamond';
   background-color: var(--darkcrimson);
   color: var(--off-white);
+  cursor: pointer;
 }
 
 .character-card {
@@ -93,6 +94,7 @@ html {
   border-radius: 1em;
   background-color: var(--charcoal);
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .character-card:hover {
@@ -174,6 +176,7 @@ html {
   width: 15%;
   margin-left: 2vh;
   margin-top: 2vh;
+  cursor: pointer;
 }
 
 .character-info {
@@ -228,7 +231,7 @@ embed {
 .creature-content{
 	width:100%;
 	display:flex;
-  max-height: calc(40vh - 5.5vh);
+  max-height: 34vh;
   overflow: auto;
 }
 
