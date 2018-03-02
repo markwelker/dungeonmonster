@@ -12,8 +12,13 @@
 	width: 90vw;
 }
 
-.lookup-container {
+.container {
 	margin: 10vh 5vw 5vh 5vw;
+	overflow: hidden;
+	width: 25vw;
+}
+
+.lookup-container {
 	width: 25vw;
 }
 
@@ -29,7 +34,10 @@
 	flex-flow: wrap;
 	flex-direction: row;
 	max-height:80vh;
-	overflow: auto;
+	width:25vw;
+	overflow-y: scroll;
+	overflow-x:hidden;
+	padding-right: 150px;
 }
 
 

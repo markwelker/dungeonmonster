@@ -1,11 +1,6 @@
 var spells = null;
 
-function forceUnicodeEncoding(string) {
-  return unescape(encodeURIComponent(string));
-}
-
 $(document).ready(function() {
-
 	//console.log("DM is running!")
 	$.ajax({
 		url : "http://www.dnd5eapi.co/api/spells/",
