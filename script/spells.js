@@ -1,18 +1,18 @@
-var creatures; // List of all creatures
+var spells = null;
 
 $(document).ready(function() {
 	//console.log("DM is running!")
 	$.ajax({
-		url : "http://www.dnd5eapi.co/api/monsters/",
+		url : "http://www.dnd5eapi.co/api/spells/",
 		dataType : "json",
 		success : function(json) {
-			creatures = json.results;
-			loadCreatures();
+			spells = json.results;
+			//loadSpells();
 		}
 	});
-	fetchCreatureByName("Orc");
+	fetchSpellByName("Wish");
 });
-
+/*
 function loadCreatures() {
 	var content = "";
 	for (var i=0; i<creatures.length; i++){
@@ -25,25 +25,56 @@ function loadCreatures() {
 	}
 	$('#lookup_pane').html(content);
 }
+*/
 
-function fetchCreatureByName(creatureName){
+function fetchSpellByName(creatureName){
 	$.ajax({
-		url : "http://www.dnd5eapi.co/api/monsters/?name=" + creatureName,
+		url : "http://www.dnd5eapi.co/api/spells/?name=" + creatureName,
 		dataType : "json",
 		success : function(json) {
 			//console.log(json);
-			fetchCreatureByURL(json.results[0].url);
+			fetchSpellByURL(json.results[0].url);
 		}
 	});
 }
-function fetchCreatureByURL(url){
+function fetchSpellByURL(url){
 	//console.log(url);
 	$.ajax({
 		url : url,
 		dataType : "json",
-		success : function(creature) {
+		success : function(spell) {
 
-			//console.log(creature);
+			console.log(spell);
+			$('#s_name').text(spell.name);
+			var level;
+			if (spell.level > 0) level = spell.level;
+			else level = "cantrip";
+			$('#s_type').text(spell.school.name + " " + level);
+			$('#s_casting_time').text(spell.casting_time);
+			$('#s_range').text(spell.range);
+			var components = "";
+			for (c in spell.components) {
+				components += c + ", "
+			}
+			if (spell.materials !== undefined) {
+				components += "(" + spell.materials + ")";
+			}
+			else {
+				components = components.substr(0, components.length - 2);
+			}
+			$('#s_components').text(components);
+			$('#s_duration').text(spell.duration);
+			var description = "";
+			for (line in spell.desc) {
+				description += spell.desc[line].replace("nâ€™", "'") + "<br />";
+			}
+			$('#s_description').html(description);
+			description = "";
+			for (line in spell.higher_level) {
+				description += spell.higher_level[line] + "<br />";
+			}
+			$('#s_higher_level').html(description);
+			/*
 			$('#c_name').text(creature.name);
 			$('#c_description').text(creature.size + " " + creature.type + " (" + creature.subtype + "), " + creature.alignment);
 			$('#c_ac').text("AC: " + creature.armor_class);
@@ -70,6 +101,7 @@ function fetchCreatureByURL(url){
 				actions += "<br />";
 			}
 			$('#c_actions').html(actions);
+			*/
 		}
 	});
 }

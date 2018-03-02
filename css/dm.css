@@ -231,8 +231,8 @@ embed {
 .creature-content{
 	width:100%;
 	display:flex;
-  max-height: 34vh;
-  overflow: auto;
+	max-height: 34vh;
+	overflow: auto;
 }
 
 .creature-column{
