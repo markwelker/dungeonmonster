@@ -23,10 +23,11 @@
 }
 
 .lookup-container input{
-	width:18vw;
-	text-align: center;
+	width:20vw;
+	text-align: left;
 	font-size: 3vh;
 	font-family: 'Garamond';
+	margin-left:2vw;
 }
 
 .spell-pane {
@@ -64,7 +65,7 @@
 	border-width: 5px;
 	border-color: var(--darkcrimson);
 	display:flex;
-	max-height: 60vh;
+	height: 83vh;
 	overflow: auto;
 }
 

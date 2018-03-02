@@ -11,7 +11,10 @@
 <body>
 	<div class="main-container-player" id="player-app">
 		<div class="party-container">
-			<h1 class="party-header">Party</h1>
+			<h1 class="party-header">
+				Party
+				<img src="../assets/scroll.png" onclick="window.location='spells.html';">
+			</h1>
 			<div class="party-bar">
 				<div class="player-card" v-for="player in players" v-on:click="select(player.id)">
 					<h2>{{player.name}}</h2>

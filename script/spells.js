@@ -7,21 +7,30 @@ $(document).ready(function() {
 		dataType : "json",
 		success : function(json) {
 			spells = json.results;
-			loadSpells();
+			loadSpells("");
 		}
 	});
 	fetchSpellByName("Cure Wounds");
+
+	$("#spell-search").change(function() {
+		console.log(this.value);
+		loadSpells(this.value);
+  });
 });
 
-function loadSpells() {
+function loadSpells(filterString) {
+	$('#lookup_pane').empty();
 	var content = "";
 	for (var i=0; i<spells.length; i++){
 		var spell = spells[i]
-		content += "<div class=\"lookup-card\" ";
-		content += "onclick=\"fetchSpellByName(\'" + spell.name.replace("'", "$") + "\')\">"
-		content += "<h1>" + spell.name.replace("/", " / ") + "</h1>";
-		content += "</div>";
-		//console.log('added: ' + spell.name);
+		if(~spell.name.toLowerCase().indexOf(filterString.toLowerCase()) || filterString === "") {
+			content += "<div class=\"lookup-card\" ";
+			content += "onclick=\"fetchSpellByName(\'" + spell.name.replace("'", "$") + "\')\">"
+			content += "<h1>" + spell.name.replace("/", " / ") + "</h1>";
+			content += "</div>";
+			//console.log('added: ' + spell.name);
+		}
+		else console.log(spell.name);
 	}
 	$('#lookup_pane').html(content);
 }

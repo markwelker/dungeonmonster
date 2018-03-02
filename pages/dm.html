@@ -5,6 +5,7 @@
 <head>
 	<title>Dungeon Master</title>
 	<link rel="stylesheet" href="../css/dungeonmonster.css">
+	<link rel="stylesheet" href="../css/player.css">
 	<link rel="stylesheet" href="../css/dm.css">
 	<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -15,7 +16,9 @@
 <body>
 	<div class="main-container">
 		<div class="stats-container">
-			<h1 class="red-header">Creature Stat Block</h1>
+			<h1 class="red-header">Creature Stat Block
+				<img src="../assets/scroll.png" onclick="window.location='spells.html';">
+			</h1>
 			<div class = "creature-content">
 				<div class = "creature-column">
 					<h1 id = "c_name">&nbsp</h1> <br />
@@ -75,51 +78,16 @@
 		</div>
 
 		<div class="bottom-container">
-			<div class="party-container">
+			<div class="party-container" id="player-app">
 				<h1 class="red-header">Party</h1>
 				<div class="party-pane">
-					<div class="character-card" onclick=location.href="sheet/fighter.html" title="Open Character Sheet">
-						<h2>Fighter</h2>
-						<img src="../assets/Fighter.png">
+					<div class="player-card" v-for="player in players" v-on:click="select(player.id)">
+						<h2>{{player.name}}</h2>
+						<img v-bind:src="player.profile">
 						<h3>
-							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-							&nbsp
-							34/50
-							&nbsp
-							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
-						</h3>
-					</div>
-					<div class="character-card">
-						<h2>Bard</h2>
-						<img src="../assets/Bard.png" onclick=location.href="sheet/bard.html" title="Open Character Sheet">
-						<h3>
-							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-							&nbsp
-							28/28
-							&nbsp
-							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
-						</h3>
-					</div>
-					<div class="character-card">
-						<h2>Cleric</h2>
-						<img src="../assets/Cleric.png" onclick=location.href="sheet/cleric.html" title="Open Character Sheet">
-						<h3>
-							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-							&nbsp
-							36/38
-							&nbsp
-							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
-						</h3>
-					</div>
-					<div class="character-card">
-						<h2>Wizard</h2>
-						<img src="../assets/Wizard.png" onclick=location.href="sheet/wizard.html" title="Open Character Sheet">
-						<h3>
-							<img class = "icon" src = "../assets/heal.png" title = "Heal It!">
-							&nbsp
-							18/21
-							&nbsp
-							<img class = "icon" src = "../assets/damage.png" title = "Damage It!">
+							<img class="icon" src="../assets/heal.png" v-on:click.stop="heal(player.id)" title="Heal"/>
+							{{player.hp}}/{{player.maxhp}}
+							<img class="icon" src="../assets/damage.png" v-on:click.stop="damage(player.id)" title="Damage"/>
 						</h3>
 					</div>
 				</div>
@@ -251,4 +219,6 @@
 		</div>
 	</div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="../script/PlayerApp.js"></script>
 </html>

@@ -1,46 +1,55 @@
 fixed:root {
-  /*to use the custom colors type "var(--color-name)"*/
-  --charcoal: #262626;
-  --off-white: #E7E7E7;
-  --blue: #1E8BB2;
-  --green: #32A83E;
-  --crimson: #AE1D20;
-  --darkcrimson: #731315;
+	/*to use the custom colors type "var(--color-name)"*/
+	--charcoal: #262626;
+	--off-white: #E7E7E7;
+	--blue: #1E8BB2;
+	--green: #32A83E;
+	--crimson: #AE1D20;
+	--darkcrimson: #731315;
 }
 html {
 	font-family: 'Garamond';
 }
 
 .red-header {
-  padding: 1vh;
-  padding-left: 1em;
-  margin: 0;
-  color: var(--off-white);
-  background-color: var(--darkcrimson);
-  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.5);
-  border-right: solid var(--charcoal) 1px;
-  box-sizing: border-box;
-  font-size: 3vh;
+	padding: 1vh;
+	padding-left: 1em;
+	margin: 0;
+	color: var(--off-white);
+	background-color: var(--darkcrimson);
+	box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.5);
+	border-right: solid var(--charcoal) 1px;
+	box-sizing: border-box;
+	font-size: 3vh;
 }
 
+.red-header img {
+	width:1.4em;
+	float:right;
+	cursor:pointer;
+}
+
+.party-container {
+	background:inherit;
+}
 .main-container {
-  width: 100%;
-  height: 100%;
-  margin: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
 }
 
 .stats-container {
-  float: left;
-  width: 72vw;
-  height: 40vh;
-  background-color: var(--off-white);
-  border-right: 1px solid black;
-  box-sizing: border-box;
+	float: left;
+	width: 72vw;
+	height: 40vh;
+	background-color: var(--off-white);
+	border-right: 1px solid black;
+	box-sizing: border-box;
 }
 
 .bottom-container {
-  display: flex;
-  width: 72vw;
+	display: flex;
+	width: 72vw;
 }
 
 .party-container, .creature-container, .lookup-container {
@@ -48,172 +57,172 @@ html {
 }
 
 .party-pane, .monster-pane {
-  display: flex;
-  flex-flow: wrap;
-  flex-direction: row;
-  overflow: auto;
-  max-height: 54.25vh;
+	display: flex;
+	flex-flow: wrap;
+	flex-direction: row;
+	overflow: auto;
+	max-height: 54.25vh;
 }
 
 .party-pane, .monster-pane {
-  /*width of 2 cards + scrollbar*/
-  width: calc(24vw + 18px);
+	/*width of 2 cards + scrollbar*/
+	width: calc(24vw + 18px);
 }
 
 #lookup_pane {
-  width: calc(72vw - 48vw - 18px * 2);
+	width: calc(72vw - 48vw - 18px * 2);
 }
 
 .lookup-container {
-  width: calc(72vw - 48vw - 18px * 2);
+	width: calc(72vw - 48vw - 18px * 2);
 }
 
 .lookup-container input{
-  width: calc(calc(72vw - 48vw - 18px * 2) * 0.8);
-  margin-left: calc(calc(72vw - 48vw - 18px * 2) * 0.1);
-  text-align: center;
-  font-size: 3vh;
-  font-family: 'Garamond';
+	width: calc(calc(72vw - 48vw - 18px * 2) * 0.8);
+	margin-left: calc(calc(72vw - 48vw - 18px * 2) * 0.1);
+	text-align: center;
+	font-size: 3vh;
+	font-family: 'Garamond';
 }
 
 .lookup-card{
-  width: calc(calc(72vw - 48vw - 18px * 2) * 0.8);
-  margin-top: 1vh;
-  margin-left: calc(calc(72vw - 48vw - 18px * 2) * 0.1);
-  text-align: center;
-  font-size: 2vh;
-  font-family: 'Garamond';
-  background-color: var(--darkcrimson);
-  color: var(--off-white);
-  cursor: pointer;
+	width: calc(calc(72vw - 48vw - 18px * 2) * 0.8);
+	margin-top: 1vh;
+	margin-left: calc(calc(72vw - 48vw - 18px * 2) * 0.1);
+	text-align: center;
+	font-size: 2vh;
+	font-family: 'Garamond';
+	background-color: var(--darkcrimson);
+	color: var(--off-white);
+	cursor: pointer;
 }
 
 .character-card {
-  margin: 1vw;
-  width: 10vw;
-  border-radius: 1em;
-  background-color: var(--charcoal);
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
-  cursor: pointer;
+	margin: 1vw;
+	width: 10vw;
+	border-radius: 1em;
+	background-color: var(--charcoal);
+	box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+	cursor: pointer;
 }
 
 .character-card:hover {
-  box-shadow: 0 0 1em rgba(255, 255, 255, 1);
+	box-shadow: 0 0 1em rgba(255, 255, 255, 1);
 }
 
 .character-card h2 {
-  font-size: 1.5vw;
-  margin: 0;
-  padding: 3px;
-  text-align: center;
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
-  font-family: 'Berkshire Swash', cursive;
-  color: var(--off-white);
-  background-color: var(--blue);
+	font-size: 1.5vw;
+	margin: 0;
+	padding: 3px;
+	text-align: center;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+	font-family: 'Berkshire Swash', cursive;
+	color: var(--off-white);
+	background-color: var(--blue);
 }
 
 .character-card h3 {
-  font-size: 1.25vw;
-  font-family: "Garamond";
-  margin: 0;
-  padding: 3px;
-  text-align: center;
-  border-bottom-left-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
-  font-family: 'Berkshire Swash', cursive;
-  color: var(--off-white);
-  background-color: var(--green);
+	font-size: 1.25vw;
+	font-family: "Garamond";
+	margin: 0;
+	padding: 3px;
+	text-align: center;
+	border-bottom-left-radius: 0.5em;
+	border-bottom-right-radius: 0.5em;
+	font-family: 'Berkshire Swash', cursive;
+	color: var(--off-white);
+	background-color: var(--green);
 }
 
 .character-card img {
-  max-width: 10vw;
-  max-height: 10vw;
+	max-width: 10vw;
+	max-height: 10vw;
 }
 
 .chat-box {
-  position: fixed;
-  transform: translateX(72vw);
-  width: 28vw;
-  height: 100vh;
-  margin: 0;
-  background-color: var(--darkcrimson);
-  box-sizing: border-box;
+	position: fixed;
+	transform: translateX(72vw);
+	width: 28vw;
+	height: 100vh;
+	margin: 0;
+	background-color: var(--darkcrimson);
+	box-sizing: border-box;
 }
 
 .chat-log {
-  margin: 2vh;
-  box-shadow: inset 0px 0px 1em rgba(0, 0, 0, 0.2);
-  background-color: var(--off-white);
-  overflow: auto;
-  height: 70vh;
+	margin: 2vh;
+	box-shadow: inset 0px 0px 1em rgba(0, 0, 0, 0.2);
+	background-color: var(--off-white);
+	overflow: auto;
+	height: 70vh;
 }
 
 .chat-log p {
-  margin:0 0 0 1em;
-  padding:0;
+	margin:0 0 0 1em;
+	padding:0;
 }
 
 .chat-header {
-  margin: 0;
-  padding: 0;
-  margin-left: 2vw;
-  margin-bottom: 2vh;
-  color: var(--off-white);
-  font-family: Garamond, serif;
+	margin: 0;
+	padding: 0;
+	margin-left: 2vw;
+	margin-bottom: 2vh;
+	color: var(--off-white);
+	font-family: Garamond, serif;
 }
 
 .chat-box textarea {
-  width: calc(24vw + 17px);
-  height: 10%;
-  margin-left: 2vh;
-  padding: 0.25em;
-  padding-left: 0.5em;
+	width: calc(24vw + 17px);
+	height: 10%;
+	margin-left: 2vh;
+	padding: 0.25em;
+	padding-left: 0.5em;
 }
 
 .chat-box button {
-  padding: 0.25em;
-  width: 15%;
-  margin-left: 2vh;
-  margin-top: 2vh;
-  cursor: pointer;
+	padding: 0.25em;
+	width: 15%;
+	margin-left: 2vh;
+	margin-top: 2vh;
+	cursor: pointer;
 }
 
 .character-info {
-  float: left;
-  width: 72vw;
+	float: left;
+	width: 72vw;
 }
 
 .character-info h1 {
-  font-size: 2em;
-  margin: 0;
-  padding: 0.5em;
-  padding-left: 1em;
-  color: var(--off-white);
-  background-color: var(--darkcrimson);
-  border-right: 1px solid black;
-  box-sizing: border-box;
+	font-size: 2em;
+	margin: 0;
+	padding: 0.5em;
+	padding-left: 1em;
+	color: var(--off-white);
+	background-color: var(--darkcrimson);
+	border-right: 1px solid black;
+	box-sizing: border-box;
 }
 
 .character-sheet {
-  float: left;
-  width: 72vw;
-  width: 70vw;
-  height: 92vh;
+	float: left;
+	width: 72vw;
+	width: 70vw;
+	height: 92vh;
 }
 
 embed {
-  margin-left: 12.5vw;
-  width: 45vw;
-  height: 100%;
-  float: left;
+	margin-left: 12.5vw;
+	width: 45vw;
+	height: 100%;
+	float: left;
 }
 
 .icon {
-  margin: 0;
-  padding: 0;
-  width: 1.25em;
-  height: 1.25em;
+	margin: 0;
+	padding: 0;
+	width: 1.25em;
+	height: 1.25em;
 }
 
 .stat {
