@@ -14,12 +14,11 @@
 
 .lookup-container {
 	margin: 10vh 5vw 5vh 5vw;
-	width: 20vw;
-	background-color: var(--off-white);
+	width: 25vw;
 }
 
 .lookup-container input{
-	width:15vw;
+	width:18vw;
 	text-align: center;
 	font-size: 3vh;
 	font-family: 'Garamond';
@@ -29,12 +28,13 @@
 	display: flex;
 	flex-flow: wrap;
 	flex-direction: row;
+	max-height:80vh;
 	overflow: auto;
 }
 
 
 .lookup-card{
-	width: calc(calc(72vw - 48vw - 18px * 2) * 0.8);
+	width: 20vw;
 	margin-top: 1vh;
 	margin-left: calc(calc(72vw - 48vw - 18px * 2) * 0.1);
 	text-align: center;

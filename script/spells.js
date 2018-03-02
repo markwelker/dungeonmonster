@@ -1,38 +1,45 @@
 var spells = null;
 
+function forceUnicodeEncoding(string) {
+  return unescape(encodeURIComponent(string));
+}
+
 $(document).ready(function() {
+
 	//console.log("DM is running!")
 	$.ajax({
 		url : "http://www.dnd5eapi.co/api/spells/",
 		dataType : "json",
 		success : function(json) {
 			spells = json.results;
-			//loadSpells();
+			loadSpells();
 		}
 	});
-	fetchSpellByName("Wish");
+	fetchSpellByName("Cure Wounds");
 });
-/*
-function loadCreatures() {
+
+function loadSpells() {
 	var content = "";
-	for (var i=0; i<creatures.length; i++){
-		var creature = creatures[i]
+	for (var i=0; i<spells.length; i++){
+		var spell = spells[i]
 		content += "<div class=\"lookup-card\" ";
-		content += "onclick=\"fetchCreatureByName('" + creature.name + "')\">"
-		content += "<h1>" + creature.name + "</h1>";
+		content += "onclick=\"fetchSpellByName(\'" + spell.name.replace("'", "$") + "\')\">"
+		content += "<h1>" + spell.name.replace("/", " / ") + "</h1>";
 		content += "</div>";
-		//console.log('added: ' + creature.name);
+		//console.log('added: ' + spell.name);
 	}
 	$('#lookup_pane').html(content);
 }
-*/
 
-function fetchSpellByName(creatureName){
+
+function fetchSpellByName(spellName){
+	//console.log("here1");
 	$.ajax({
-		url : "http://www.dnd5eapi.co/api/spells/?name=" + creatureName,
+		url : "http://www.dnd5eapi.co/api/spells/?name=" + spellName.replace("$", "\'"),
 		dataType : "json",
 		success : function(json) {
 			//console.log(json);
+			//console.log(json.results[0].url);
 			fetchSpellByURL(json.results[0].url);
 		}
 	});
@@ -44,7 +51,7 @@ function fetchSpellByURL(url){
 		dataType : "json",
 		success : function(spell) {
 
-			console.log(spell);
+			//console.log(spell);
 			$('#s_name').text(spell.name);
 			var level;
 			if (spell.level > 0) level = spell.level;
@@ -65,8 +72,10 @@ function fetchSpellByURL(url){
 			$('#s_components').text(components);
 			$('#s_duration').text(spell.duration);
 			var description = "";
+			//var test = ["testâ€™test", "tâ€™â€™â€™t"]
 			for (line in spell.desc) {
-				description += spell.desc[line].replace("nâ€™", "'") + "<br />";
+				//description += spell.desc[line].replace("â€�", "\"") + "<br />";
+				description += spell.desc[line].replace("â€™", "\'") + "<br />";
 			}
 			$('#s_description').html(description);
 			description = "";
@@ -74,34 +83,6 @@ function fetchSpellByURL(url){
 				description += spell.higher_level[line] + "<br />";
 			}
 			$('#s_higher_level').html(description);
-			/*
-			$('#c_name').text(creature.name);
-			$('#c_description').text(creature.size + " " + creature.type + " (" + creature.subtype + "), " + creature.alignment);
-			$('#c_ac').text("AC: " + creature.armor_class);
-			$('#c_hp').text("HP: " + creature.hit_points);
-			$('#c_str').text(creature.strength);
-			$('#c_dex').text(creature.dexterity);
-			$('#c_con').text(creature.constitution);
-			$('#c_int').text(creature.intelligence);
-			$('#c_wis').text(creature.wisdom);
-			$('#c_cha').text(creature.charisma);
-			if (creature.special_abilities !== undefined) {
-				//console.log(creature.special_abilities);
-				var feature = "";
-				for (var i = 0; i < creature.special_abilities.length; i++){
-					feature += "<strong>" + creature.special_abilities[i].name + "</strong>: " + creature.special_abilities[i].desc;
-					feature += "<br />";
-				}
-				$('#c_features').html(feature);
-			}
-			else $('#c_features').html("&nbsp");
-			var actions = "";
-			for (var i = 0; i < creature.actions.length; i++){
-				actions += "<strong>" + creature.actions[i].name + "</strong>: " + creature.actions[i].desc;
-				actions += "<br />";
-			}
-			$('#c_actions').html(actions);
-			*/
 		}
 	});
 }
