@@ -1,0 +1,99 @@
+#wrapper {
+  padding-bottom: 5vh;
+  min-height: 100%;
+}
+
+h1 {
+  font-family: 'Berkshire Swash', cursive;
+  font-size: 2em;
+}
+
+/* Top Menu*/
+
+nav {
+  /*set positionioning*/
+  width: 80vw;
+  margin-left: 10vw;
+  /*styles and colors*/
+  color: var(--off-white);
+  background-color: var(--darkcrimson);
+  display: inline-block;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  float: left;
+}
+
+.login-button, .register-button {
+  float: right;
+}
+
+.login-button a {
+  background-color: var(--sky-blue);
+}
+
+nav ul li a {
+  /*alignment and positionioning*/
+  text-align: center;
+  padding: 14px 16px;
+  display: block;
+  /*styling and color*/
+  text-decoration: none;
+  color: var(--off-white);
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+#notice-board {
+  width: 50vw;
+  margin-top: 20vh;
+  margin-left: 25vw;
+  background-color: var(--off-white);
+  box-shadow: 0px 0px 10em 5em rgba(0, 0, 0, 1);
+  border-radius: 1em;
+}
+
+#notice-board h1 {
+  text-align: center;
+  font-family: 'Berkshire Swash', "Garamond";
+  color: var(--off-white);
+  background-color: var(--darkcrimson);
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
+
+#notice-board p {
+  padding: 0.5em;
+  font-family: "Garamond";
+  font-size: 1.40em;
+}
+
+footer {
+  width: 80vw;
+  height: 2em;
+  margin-left: 10vw;
+  position: absolute;
+  bottom:0;
+  left:0;
+  right:0;
+
+  color: var(--off-white);
+  background-color: var(--darkcrimson);
+  text-align: center;
+}
+
+footer a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--off-white);
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
