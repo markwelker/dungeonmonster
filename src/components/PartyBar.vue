@@ -1,30 +1,19 @@
-<template>
-<div class="party-bar">
-  <div class="player-card" v-for="player in party" v-on:click="select(player.id)">
-    <h2>{{player.name}}</h2>
-    <img v-bind:src="player.profile">
-    <h3>
-            <img class="icon" src="../assets/heal.png" v-on:click.stop="heal(player.id)" title="Heal"/>
-            {{player.hp}}/{{player.maxhp}}
-            <img class="icon" src="../assets/damage.png" v-on:click.stop="damage(player.id)" title="Damage"/>
-          </h3>
-  </div>
-</div>
-</template>
-
 <script>
 export default {
   name: 'PartyBar',
+
   data() {
     return {
-      selected: 0;
+      selected: 0
     };
-  }
+  },
+
   computed: {
     party: function() {
       return this.$store.getters.party;
     },
   },
+
   methods: {
     heal: function(id) {
 			var amount = "";
@@ -77,4 +66,18 @@ export default {
       },
     }
 }
-</script
+</script>
+
+<template>
+<div class="party-bar">
+  <div class="player-card" v-for="player in party" v-on:click="select(player.id)">
+    <h2>{{player.name}}</h2>
+    <img v-bind:src="player.profile">
+    <h3>
+            <img class="icon" src="../assets/images/heal.png" v-on:click.stop="heal(player.id)" title="Heal"/>
+            {{player.hp}}/{{player.maxhp}}
+            <img class="icon" src="../assets/images/damage.png" v-on:click.stop="damage(player.id)" title="Damage"/>
+          </h3>
+  </div>
+</div>
+</template>

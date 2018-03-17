@@ -135,18 +135,22 @@ if (doImport) {
 
 app.get('/api/party', (req, res) => {
   res.send(party);
+  console.log("party accessed");
 });
 
 app.get('/api/npcs', (req, res) => {
   res.send(npcs);
+  console.log("npcs accessed");
 });
 
 app.get('/api/creatures', (req, res) => {
   res.send(creatureList);
+  console.log("creature list accessed");
 });
 
 app.get('/api/chat', (req, res) => {
   res.send(chatMessages);
+  console.log("chat accessed");
 });
 
 app.put('/api/party/:id', (req, res) => {

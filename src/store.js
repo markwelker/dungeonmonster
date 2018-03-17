@@ -39,45 +39,45 @@ export default new Vuex.Store({
   },
   actions: {
     getParty(context) {
-      console.log("Getting Party");
+      console.log("STORE: Getting Party");
       axios.get("/api/party").then(response => {
         context.commit('setParty', response.data);
         return true;
       }).catch(err => {
-        console.log("Failed to Fetch Party Data");
+        console.log("STORE: Failed to Fetch Party Data");
         console.log(err);
       });
     },
 
     getNPCs(context) {
-      console.log("Getting NPCs");
+      console.log("STORE: Getting NPCs");
       axios.get("/api/npcs").then(response => {
         context.commit('setNPCs', response.data);
         return true;
       }).catch(err => {
-        console.log("Failed to Fetch NPC Data");
+        console.log("STORE: Failed to Fetch NPC Data");
         console.log(err);
       });
     },
 
     getCreatures(context) {
-      console.log("Getting Creature Data");
+      console.log("STORE: Getting Creature Data");
       axios.get("api/creatures").then(response => {
         context.commit('setCreatures', response.data);
         return true;
       }).catch(err => {
-        console.log("Failed to Fetch Creature Data");
+        console.log("STORE: Failed to Fetch Creature Data");
         console.log(err);
       });
     },
 
     getChat(context){
-      console.log("Getting Chat");
+      console.log("STORE: Getting Chat");
       axios.get("api/chat").then(response => {
         context.commit('setChat', response.data);
         return true;
       }).catch(err => {
-        console.log("Failed to Fetch Chat");
+        console.log("STORE: Failed to Fetch Chat");
         console.log(err);
       });
     },
@@ -86,7 +86,7 @@ export default new Vuex.Store({
       axios.post("/api/party", player).then(response => {
         return context.dispatch('getParty');
       }).catch(err => {
-        console.log("Failed to POST player");
+        console.log("STORE: Failed to POST player");
         console.log(err);
       });
     },
@@ -95,7 +95,7 @@ export default new Vuex.Store({
       axios.post("/api/npcs", npc).then(response => {
         return context.dispatch('getNPCs');
       }).catch(err => {
-        console.log("Failed to POST npc");
+        console.log("STORE: Failed to POST npc");
         console.log(err);
       });
     },
@@ -113,7 +113,7 @@ export default new Vuex.Store({
       axios.put("/api/party/" + player.id, player).then(response => {
         return true;
       }).catch(err => {
-        console.log("Failed to UPDATE player");
+        console.log("STORE: Failed to UPDATE player");
         console.log(err);
       });
     },
@@ -122,7 +122,7 @@ export default new Vuex.Store({
       axios.put("/api/party/" + npc.id, npc).then(response => {
         return true;
       }).catch(err => {
-        console.log("Failed to UPDATE npc");
+        console.log("STORE: Failed to UPDATE npc");
         console.log(err);
       });
     },

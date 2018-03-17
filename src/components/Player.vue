@@ -19,13 +19,22 @@
 </template>
 
 <script>
+import PartyBar from './PartyBar.vue'
+import Chat from './Chat'
+
   export default {
     name: 'Player',
+    components: {
+      PartyBar, Chat
+    },
+
     data() {
       return {
         username: '',
-        
+
       }
     },
   }
 </script>
+
+<style src="../assets/styles/player.css"></style>
