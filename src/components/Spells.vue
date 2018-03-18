@@ -1,15 +1,14 @@
 <template>
 <div id="spells-page">
 	<div class="main-container">
+		<img class = "back" src = "../assets/images/back.png" onclick = "location.href='#/player'"/>
 		<div class="container">
 			<div class="lookup-container">
-				<img class = "back" src = "../assets/images/back.png" onclick = "location.href='#/player'"/>
 				<input id="spell-search" v-model="search" type="text" class="search" placeholder="Search"/>
 				<div class="spell-pane" id="lookup_pane">
 					<div class="lookup-card" v-for="spell in filteredSpells" v-on:click="fetchSpellByName(spell.name)">
 						<h1>{{spell.name}}</h1>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -45,14 +44,7 @@ export default {
 	created: function() {
 		axios.get("http://www.dnd5eapi.co/api/spells/")
 		.then (response => {
-			//console.log(this);
-			//console.log("Spells Retrieved!");
-			//console.log(response.data.results);
 			this.spells = response.data.results;
-			//console.log("Spells Stored!");
-			//console.log(this.spells);
-			//console.log("Filtering Spells!");
-			//console.log(this.filteredSpells);
 		})
 		.catch(error => {
 	    	//console.log(error);
@@ -60,20 +52,9 @@ export default {
 		this.fetchSpellByName("Cure Wounds");
 
 	},
-	watch: {
-		active: function(val) {
-			//console.log("New Active...");
-			//console.log(val);
-		},
-		spells: function(val) {
-			//console.log("New Spells...");
-			//console.log(val);
-		},
-	},
 	computed: {
 		filteredSpells: function () {
 			var filtered = [];
-			//console.log("Starting filteredSpells");
 			for (var i=0; i < this.spells.length; i++) {
 				var spell = this.spells[i];
 				if(~spell.name.toLowerCase().indexOf(this.search.toLowerCase()) || this.search === "") {
@@ -85,7 +66,6 @@ export default {
 	},
 	methods: {
 		fetchSpellByName: function(spellName){
-			//console.log("here1");
 			axios.get("http://www.dnd5eapi.co/api/spells/?name=" + spellName)
 			.then (response => {
 				this.fetchSpellByURL(response.data.results[0].url);
