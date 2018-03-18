@@ -41,6 +41,7 @@ html {
 .stats-container {
 	float: left;
 	width: 72vw;
+	min-width: 72vw;
 	height: 40vh;
 	background-color: var(--off-white);
 	border-right: 1px solid black;
@@ -50,10 +51,6 @@ html {
 .bottom-container {
 	display: flex;
 	width: 72vw;
-}
-
-.party-container, .creature-container, .lookup-container {
-
 }
 
 .party-pane, .monster-pane {

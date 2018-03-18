@@ -2,7 +2,7 @@
 	<div class="main-container">
 		<div class="stats-container">
 			<h1 class="red-header">Creature Stat Block
-				<img src="../assets/images/scroll.png" onclick="location.href='#/npcs';">
+				<img src="../assets/images/scroll.png" v-on:click="toSpellsPage()">
 			</h1>
 			<div class = "creature-content">
 				<div class = "creature-column">
@@ -189,11 +189,14 @@ import PlayerApp from './PlayerApp'
 					this.active = npc;
 				})
 				.catch(error => {
-			    	console.log(error);
+					console.log(error);
 				});
+			},
+			toSpellsPage: function() {
+				this.$router.push('Spells');
+			}
 		}, // end of methods
 	}
-}
 </script>
 
 <style src="../assets/styles/dm.css"></style>
