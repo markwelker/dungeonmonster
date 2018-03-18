@@ -3,7 +3,7 @@
   <div class="party-container">
     <h1 class="party-header">
   				Party
-  				<img src="../assets/images/scroll.png" v-on:click="this.$router.push('spells')">
+  				<img src="../assets/images/scroll.png" onclick = "location.href='#/spells'">
   	</h1>
     <PartyBar/>
   </div>
