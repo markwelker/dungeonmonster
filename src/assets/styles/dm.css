@@ -48,9 +48,10 @@ html {
 	box-sizing: border-box;
 }
 .block-wrapper {
-	display: block;
+	clear: both
 }
 .bottom-container {
+	float:left;
 	display: flex;
 	width: 72vw;
 }
