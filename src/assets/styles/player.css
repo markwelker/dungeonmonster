@@ -119,7 +119,7 @@
 	font-family: Garamond, serif;
 }
 
-.chat-box textarea {
+.chat-box input {
 	width: calc(24vw + 17px);
 	height: 10%;
 	margin-left: 2vh;

@@ -7,18 +7,18 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    username: '',
+    username: 'Fighter',
     party: [],
     npcs: [],
     creatures: [],
-    chatMessages: [],
+    chat: [],
   },
   getters: {
     username: state => state.username,
     party: state => state.party,
     npcs: state => state.npcs,
     creatures: state => state.creatures,
-    chatMessages: state => state.chatMessages,
+    chat: state => state.chat,
   },
   mutations: {
     setParty(state, party) {
@@ -75,6 +75,8 @@ export default new Vuex.Store({
       console.log("STORE: Getting Chat");
       axios.get("api/chat").then(response => {
         context.commit('setChat', response.data);
+        console.log("CHAT: ");
+        console.log(response.data);
         return true;
       }).catch(err => {
         console.log("STORE: Failed to Fetch Chat");

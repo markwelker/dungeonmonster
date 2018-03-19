@@ -1,7 +1,7 @@
 <template>
 <div id="spells-page">
 	<div class="main-container">
-		<img class="back" src="../assets/images/back.png" v-on:click="backPage()"/>
+		<img class="back" src="/static/images/back.png" v-on:click="backPage()"/>
 		<div class="container">
 			<div class="lookup-container">
 				<input id="spell-search" v-model="search" type="text" class="search" placeholder="Search"/>

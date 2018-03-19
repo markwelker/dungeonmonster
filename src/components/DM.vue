@@ -2,7 +2,7 @@
 	<div class="main-container">
 		<div class="stats-container">
 			<h1 class="red-header">Creature Stat Block
-				<img src="../assets/images/scroll.png" v-on:click="toSpellsPage()">
+				<img src="/static/images/scroll.png" v-on:click="toSpellsPage()">
 			</h1>
 			<div class = "creature-content">
 				<div class = "creature-column">
@@ -42,7 +42,7 @@
 					</p>
 				</div>
 				<div class = "creature-column">
-					<img src="../assets/images/add.png" class="add-button">
+					<img src="/static/images/add.png" class="add-button">
 					<h1>Actions:</h1>
 					<p id = "c_actions" v-for="action in active.actions">
 						<strong>{{action.name}}</strong>: {{action.desc}}
@@ -72,19 +72,7 @@
 		<div class="bottom-container">
 			<div class="party-container" id="player-app">
 				<h1 class="red-header">Party</h1>
-				<div class="party-pane">
-					<!--
-					<div class="player-card" v-for="player in players" v-on:click="select(player.id)">
-						<h2>{{player.name}}</h2>
-						<img v-bind:src="player.profile">
-						<h3>
-							<img class="icon" src="../assets/images/heal.png" v-on:click.stop="heal(player.id)" title="Heal"/>
-							{{player.hp}}/{{player.maxhp}}
-							<img class="icon" src="../assets/images/damage.png" v-on:click.stop="damage(player.id)" title="Damage"/>
-						</h3>
-					</div>
-					-->
-				</div>
+				<PartyBar/>
 			</div>
 
 			<div class="monster-container">
@@ -93,11 +81,11 @@
 					<div class="character-card" onclick = "fetchCreatureByName('Orc')">
 						<h2>Orc Chief</h2>
 						<h3>
-							<img class = "icon" src = "../assets/images/heal.png" title = "Heal It!">
+							<img class = "icon" src = "/static/images/heal.png" title = "Heal It!">
 
 							14/27
 
-							<img class = "icon" src = "../assets/images/damage.png" title = "Damage It!">
+							<img class = "icon" src = "/static/images/damage.png" title = "Damage It!">
 						</h3>
 					</div>
 				</div>
@@ -120,11 +108,12 @@
 import axios from 'axios';
 import Chat from './Chat'
 import PlayerApp from './PlayerApp'
+import PartyBar from './PartyBar'
 
 	export default {
 		name: 'DM',
 		components: {
-			Chat
+			PartyBar, Chat
 		},
 
 		data() {

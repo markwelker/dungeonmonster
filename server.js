@@ -38,13 +38,19 @@ function addNPC(name, species) {
   }).then(npc => {
     var specAbil = [];
     if (npc.special_abilities !== undefined) {
-      for(feature in npc.special_abilities){
-        specAbil.push({name:feature.name, desc: feature.desc});
+      for (feature in npc.special_abilities) {
+        specAbil.push({
+          name: feature.name,
+          desc: feature.desc
+        });
       }
     }
     var act = [];
-    for(item in npc.actions){
-      act.push({name: item.name, desc: item.desc});
+    for (item in npc.actions) {
+      act.push({
+        name: item.name,
+        desc: item.desc
+      });
     }
     npcs.push({
       name: name,
@@ -71,8 +77,11 @@ function addNPC(name, species) {
   });
 }
 
-function addChatMessage(plr, msg){
-  chatMessages.push({player: plr, message: msg});
+function addChatMessage(plr, msg) {
+  chatMessages.push({
+    player: plr,
+    message: msg
+  });
 }
 
 function importData() {
@@ -80,17 +89,17 @@ function importData() {
     return response.json();
   }).then(json => {
     console.log(json);
-    for(creature in json){
+    for (creature in json) {
       creatureList.push(creature.name);
     }
     addNPC('Grogg', 'Orc');
     addNPC('Flubber', 'Ochre Jelly');
     addNPC('Whinny', 'Warhorse');
   });
-  addPlayer("Fighter", "../assets/pdf/Fighter.png", "../assets/Fighter.pdf", 50);
-  addPlayer("Bard", "../assets/pdf/Bard.png", "../assets/Bard.pdf", 30);
-  addPlayer("Cleric", "../assets/pdf/Cleric.png", "../assets/Cleric.pdf", 45);
-  addPlayer("Wizard", "../assets/pdf/Wizard.png", "../assets/Wizard.pdf", 25);
+  addPlayer("Fighter", "/static/images/Fighter.png", "/static/pdf/Fighter.pdf", 50);
+  addPlayer("Bard", "/static/images/Bard.png", "/static/pdf/Bard.pdf", 30);
+  addPlayer("Cleric", "/static/images/Cleric.png", "/static/pdf/Cleric.pdf", 45);
+  addPlayer("Wizard", "/static/images/Wizard.png", "/static/pdf/Wizard.pdf", 25);
 
   addChatMessage("DM", "Are you sure you want to touch that?");
   addChatMessage("Fighter", "Yes, yes I am.");
@@ -151,6 +160,7 @@ app.get('/api/creatures', (req, res) => {
 app.get('/api/chat', (req, res) => {
   res.send(chatMessages);
   console.log("chat accessed");
+  console.log(chatMessages);
 });
 
 app.put('/api/party/:id', (req, res) => {
@@ -160,7 +170,7 @@ app.put('/api/party/:id', (req, res) => {
   });
   let index = partyMap.indexOf(id);
   let player = party[index];
-  player.name = req.body.name,
+  player.name = req.body.name;
   player.picture = req.body.imagepath;
   player.sheet = req.body.sheetpath;
   player.maxhp = req.body.maxhp;
@@ -175,6 +185,33 @@ app.post('/api/chat', (req, res) => {
   };
   chatMessages.push(message);
   res.send(message);
+});
+
+app.post('/api/npcs', (req, res) => {
+npc = {
+  name: req.body.name,
+  id: npcId++,
+  species: req.body.species,
+  size: req.body.size,
+  type: req.body.type,
+  subtype: req.body.subtype,
+  alignment: req.body.alignment,
+  ac: req.body.ac,
+  maxhp: req.body.maxhp,
+  hp: req.body.hp,
+  stats: req.body.stats,
+  special: req.body.special,
+  actions: req.body.actions,
+};
+});
+
+app.delete('/api/npcs/:id', (req, res) => {
+  var id = parseInt(req.params.id);
+  for (i = id; i < npcs.length; i++) {
+    npcs[i].id -= 1;
+  }
+  npcs.splice(id, 1);
+  npcId--;
 });
 
 app.listen(3000, () => console.log('Server listening on port 3000!'))

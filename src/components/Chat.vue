@@ -1,28 +1,39 @@
-<template>
-	<div class="chat-box">
-		<div class="chat-log" v-for="message in chatMessages">
-			<p>{{message.player}}: {{message.message}}</p>
-		</div>
-		<h1 class="chat-header">Chat</h1>
-		<textarea type="text" name="chat" placeholder="Enter Message"></textarea><br>
-		<button type="submit" name="chatSubmit">Send</button>
-	</div>
-</template>
-
 <script>
 export default{
 	name: 'Chat',
+
+  data() {
+    return {
+      text: '',
+    };
+  },
+
+  created: function() {
+    this.$store.dispatch('getChat');
+  },
+
 	computed: {
-		chatMessages: function() {
-			this.$store.getters.chatMessages;
+		chat: function() {
+			return this.$store.getters.chat;
 		}
 	},
 	methods:{
-		submitChat(msg){
+		submitChat(){
 			var user = this.$store.getters.username;
-			var message = {player: user, message: msg};
+			var message = {player: user, message: this.text};
 			this.$store.dispatch('addChat', message);
 		}
 	}
 }
 </script>
+
+<template>
+	<div class="chat-box">
+		<div class="chat-log">
+			<p v-for="message in chat">{{message.player}}: {{message.message}}</p>
+		</div>
+		<h1 class="chat-header">Chat</h1>
+		<input  v-model="text" placeholer="Enter Message"></input><br>
+		<button v-on:click.prevent="submitChat()">Send</button>
+	</div>
+</template>

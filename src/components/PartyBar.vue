@@ -8,6 +8,10 @@ export default {
     };
   },
 
+  created: function() {
+    this.$store.dispatch('getParty');
+  },
+
   computed: {
     party: function() {
       return this.$store.getters.party;
@@ -52,8 +56,7 @@ export default {
     select: function(id) {
 			console.log("Selected: " + id);
 			this.selected = id;
-			var newSheet = this.players[this.selection].sheet;
-			swapCharSheets(newSheet);
+      this.$parent.selected(this.party[id]);
     },
 
     isInt: function(value) {
@@ -72,11 +75,11 @@ export default {
 <div class="party-bar">
   <div class="player-card" v-for="player in party" v-on:click="select(player.id)">
     <h2>{{player.name}}</h2>
-    <img v-bind:src="player.profile">
+    <img v-bind:src="player.picture">
     <h3>
-            <img class="icon" src="../assets/images/heal.png" v-on:click.stop="heal(player.id)" title="Heal"/>
+            <img class="icon" src="/static/images/heal.png" v-on:click.stop="heal(player.id)" title="Heal"/>
             {{player.hp}}/{{player.maxhp}}
-            <img class="icon" src="../assets/images/damage.png" v-on:click.stop="damage(player.id)" title="Damage"/>
+            <img class="icon" src="/static/images/damage.png" v-on:click.stop="damage(player.id)" title="Damage"/>
           </h3>
   </div>
 </div>
