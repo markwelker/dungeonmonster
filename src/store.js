@@ -75,8 +75,6 @@ export default new Vuex.Store({
       console.log("STORE: Getting Chat");
       axios.get("api/chat").then(response => {
         context.commit('setChat', response.data);
-        console.log("CHAT: ");
-        console.log(response.data);
         return true;
       }).catch(err => {
         console.log("STORE: Failed to Fetch Chat");
@@ -94,6 +92,7 @@ export default new Vuex.Store({
     },
 
     addNPC(context, npc){
+      console.log("adding npc");
       axios.post("/api/npcs", npc).then(response => {
         return context.dispatch('getNPCs');
       }).catch(err => {

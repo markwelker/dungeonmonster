@@ -16,6 +16,7 @@ let partyId = 0;
 let npcs = [];
 let npcId = 0;
 let creatureList = [];
+let database = [];
 let chatMessages = [];
 
 // setup some random data
@@ -31,11 +32,20 @@ function addPlayer(name, imagepath, sheetpath, maxhp) {
     id: partyId++,
   });
 }
+async function fetchNPC(name, species){
+  fetch("http://www.dnd5eapi.co/api/monsters/?name=" + species).then(res => {
+    res.json().then(json => {
+      var url = json.results[0].url;
+      addNPC(name, url);
+    });
+  });
+}
 
-function addNPC(name, species) {
-  fetch("http://www.dnd5eapi.co/api/monsters/?name=" + species).then(response => {
+function addNPC(name, url) {
+  fetch(url).then(response => {
     return response.json();
   }).then(npc => {
+    console.log("adding " + name);
     var specAbil = [];
     if (npc.special_abilities !== undefined) {
       for (feature in npc.special_abilities) {
@@ -47,6 +57,7 @@ function addNPC(name, species) {
     }
     var act = [];
     for (item in npc.actions) {
+      console.log(item);
       act.push({
         name: item.name,
         desc: item.desc
@@ -55,7 +66,7 @@ function addNPC(name, species) {
     npcs.push({
       name: name,
       id: npcId++,
-      species: species,
+      species: npc.name,
       size: npc.size,
       type: npc.type,
       subtype: npc.subtype,
@@ -88,13 +99,12 @@ function importData() {
   fetch("http://www.dnd5eapi.co/api/monsters/").then(response => {
     return response.json();
   }).then(json => {
-    console.log(json);
-    for (creature in json) {
-      creatureList.push(creature.name);
+    for (i=0; i< json.count; i++) {
+      creatureList.push(json.results[i].name);
     }
-    addNPC('Grogg', 'Orc');
-    addNPC('Flubber', 'Ochre Jelly');
-    addNPC('Whinny', 'Warhorse');
+    fetchNPC('Grogg', 'Orc');
+    fetchNPC('Flubber', 'Ochre Jelly');
+    fetchNPC('Whinny', 'Warhorse');
   });
   addPlayer("Fighter", "/static/images/Fighter.png", "/static/pdf/Fighter.pdf", 50);
   addPlayer("Bard", "/static/images/Bard.png", "/static/pdf/Bard.pdf", 30);
@@ -160,7 +170,6 @@ app.get('/api/creatures', (req, res) => {
 app.get('/api/chat', (req, res) => {
   res.send(chatMessages);
   console.log("chat accessed");
-  console.log(chatMessages);
 });
 
 app.put('/api/party/:id', (req, res) => {
@@ -188,21 +197,10 @@ app.post('/api/chat', (req, res) => {
 });
 
 app.post('/api/npcs', (req, res) => {
-npc = {
-  name: req.body.name,
-  id: npcId++,
-  species: req.body.species,
-  size: req.body.size,
-  type: req.body.type,
-  subtype: req.body.subtype,
-  alignment: req.body.alignment,
-  ac: req.body.ac,
-  maxhp: req.body.maxhp,
-  hp: req.body.hp,
-  stats: req.body.stats,
-  special: req.body.special,
-  actions: req.body.actions,
-};
+  console.log("adding NPC");
+  console.log(req.body);
+  fetchNPC(req.body.name, req.body.name)
+  res.send("OK");
 });
 
 app.delete('/api/npcs/:id', (req, res) => {

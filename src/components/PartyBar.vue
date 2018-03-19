@@ -84,3 +84,57 @@ export default {
   </div>
 </div>
 </template>
+
+<style>
+.party-bar{
+	display:flex;
+	width:100%;
+	flex-flow:wrap;
+}
+
+.player-card {
+	margin:1vw;
+	max-width: 10vw;
+	min-width:7vw;
+	border-radius: 1em;
+	background-color:var(--charcoal);
+	box-shadow: 0 0 1em rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+
+.player-card:hover{
+	box-shadow: 0 0 1em rgba(255,255,255,1);
+}
+
+.player-card h2 {
+	font-size: 1.5em;
+	margin:0;
+	padding:3px;
+	text-align: center;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+
+	font-family: 'Berkshire Swash', cursive;
+	color:var(--off-white);
+	background-color: var(--blue);
+}
+
+.player-card h3 {
+	font-size: 1.25em;
+	font-family: "Garamond";
+	margin:0;
+	padding:3px;
+	text-align: center;
+	border-bottom-left-radius: 0.5em;
+	border-bottom-right-radius: 0.5em;
+
+	font-family: 'Berkshire Swash', cursive;
+	color:var(--off-white);
+	background-color: var(--green);
+}
+
+.player-card img {
+	max-width: 10vw;
+	max-height: 10vw;
+}
+</style>
