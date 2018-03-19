@@ -173,6 +173,7 @@ app.get('/api/chat', (req, res) => {
 });
 
 app.put('/api/party/:id', (req, res) => {
+
   let id = parseInt(req.params.id);
   let partyMap = party.map(item => {
     return item.id;
@@ -180,11 +181,24 @@ app.put('/api/party/:id', (req, res) => {
   let index = partyMap.indexOf(id);
   let player = party[index];
   player.name = req.body.name;
-  player.picture = req.body.imagepath;
-  player.sheet = req.body.sheetpath;
+  player.picture = req.body.picture;
+  player.sheet = req.body.sheet;
   player.maxhp = req.body.maxhp;
-  player.hp = req.body.maxhp;
+  player.hp = req.body.hp;
+  console.log("Sending Back Player:");
+  console.log(player);
   res.send(player);
+});
+
+app.put('/api/npcs/:id', (req, res) => {
+  let id = parseInt(req.params.id);
+  let npcsMap = npcs.map(item => {
+    return item.id;
+  });
+  let index = npcsMap.indexOf(id);
+  let npc = npcs[index];
+  npc.hp = req.body.hp;
+  res.send(npc);
 });
 
 app.post('/api/chat', (req, res) => {
@@ -212,4 +226,4 @@ app.delete('/api/npcs/:id', (req, res) => {
   npcId--;
 });
 
-app.listen(3000, () => console.log('Server listening on port 3000!'))
+app.listen(8080, () => console.log('Server listening on port 8080!'))

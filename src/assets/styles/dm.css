@@ -47,7 +47,9 @@ html {
 	border-right: 1px solid black;
 	box-sizing: border-box;
 }
-
+.block-wrapper {
+	display: block;
+}
 .bottom-container {
 	display: flex;
 	width: 72vw;
@@ -249,7 +251,7 @@ embed {
 	overflow: auto;
 }
 
-.creature-column{
+.creature-column {
 	width: 48%;
 	padding: 1%;
 	padding-left:2em;
@@ -262,7 +264,8 @@ embed {
 }
 
 .add-button {
-	width:2em;
+	width:2.5em;
+	cursor:pointer;
 	/*
 	position:relative;
 	top:0vh;

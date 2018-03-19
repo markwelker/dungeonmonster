@@ -42,7 +42,7 @@
 					</p>
 				</div>
 				<div class = "creature-column">
-					<img src="/static/images/add.png" class="add-button" v-on:click="addNPC()">
+					<img src="/static/images/add.png" class="add-button" title="Add This Creature" v-on:click="addNPC()">
 					<h1>Actions:</h1>
 					<p id = "c_actions" v-for="action in active.actions">
 						<strong>{{action.name}}</strong>: {{action.desc}}
@@ -53,35 +53,36 @@
 		</div>
 
 		<Chat/>
+		<div class="block-wrapper">
+			<div class="bottom-container">
+				<div class="party-container" id="player-app">
+					<h1 class="red-header">Party</h1>
+					<PartyBar/>
+				</div>
 
-		<div class="bottom-container">
-			<div class="party-container" id="player-app">
-				<h1 class="red-header">Party</h1>
-				<PartyBar/>
-			</div>
+				<div class="monster-container">
+					<h1 class="red-header">Encounter Monsters</h1>
+					<div class="monster-pane">
+						<div class="character-card" v-for="npc in this.npcs" v-on:click = "">
+							<h2 v-on:click="fetchNPCByName(npc.species)">{{npc.name}}</h2>
+							<h3>
+								<img class = "icon" src = "/static/images/heal.png" v-on:click="heal(npc)" title = "Heal It!">
 
-			<div class="monster-container">
-				<h1 class="red-header">Encounter Monsters</h1>
-				<div class="monster-pane">
-					<div class="character-card"  v-for="npc in this.npcs" v-on:click = "fetchCreatureByName(npc.species)">
-						<h2>{{npc.name}}</h2>
-						<h3>
-							<img class = "icon" src = "/static/images/heal.png" title = "Heal It!">
+								{{npc.hp}}/{{npc.maxhp}}
 
-							{{npc.hp}}/{{npc.maxhp}}
-
-							<img class = "icon" src = "/static/images/damage.png" title = "Damage It!">
-						</h3>
+								<img class = "icon" src = "/static/images/damage.png" v-on:click="damage(npc)" title = "Damage It!">
+							</h3>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="lookup-container">
-				<h1 class="red-header">Monster Lookup</h1>
-				<input id="npc-search" v-model="search" type="text" class="search" placeholder="Search"/>
-				<div class="monster-pane" id="lookup_pane">
-					<div class="lookup-card" v-for="thing in filteredNPCs" v-on:click="fetchNPCByName(thing)">
-						<h2>{{thing}}</h2>
+				<div class="lookup-container">
+					<h1 class="red-header">Monster Lookup</h1>
+					<input id="npc-search" v-model="search" type="text" class="search" placeholder="Search"/>
+					<div class="monster-pane" id="lookup_pane">
+						<div class="lookup-card" v-for="thing in filteredNPCs" v-on:click="fetchNPCByName(thing)">
+							<h2>{{thing}}</h2>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -111,7 +112,7 @@ import PartyBar from './PartyBar'
 		created: function() {
 			this.$store.dispatch('getNPCs');
 			this.$store.dispatch('getCreatures');
-			this.fetchNPCByName("Orc");
+			this.fetchNPCByName("Warhorse");
 		},
 		computed: {
 			npcs: function() {
@@ -136,6 +137,7 @@ import PartyBar from './PartyBar'
 		methods: {
 			addNPC: function() {
 				this.$store.dispatch('addNPC', this.active);
+				location.reload();
 			},
 
 			fetchNPCByName: function(npcName){
@@ -144,7 +146,7 @@ import PartyBar from './PartyBar'
 					this.fetchNPCByURL(response.data.results[0].url);
 				})
 				.catch(error => {
-			    	console.log(error);
+					console.log(error);
 				});
 			},
 			fetchNPCByURL: function(url){
@@ -174,7 +176,56 @@ import PartyBar from './PartyBar'
 			},
 			toSpellsPage: function() {
 				this.$router.push('Spells');
-			}
+			},
+			heal: function(npc) {
+				var amount = "";
+				while(!this.isInt(amount)) {
+					amount = prompt("Heal how much damage?", 0);
+				}
+				amount = parseInt(amount, 10);
+				npc.hp += amount;
+				if (npc.hp > npc.maxhp) {
+					npc.hp = npc.maxhp;
+				}
+				if (npc.hp <= 0) { 								// If it dies, it needs removed.
+ 					var index = 0;
+ 					console.log("deleting at index: " + index);
+ 					this.$store.dispatch('deleteNPC', index);
+					location.reload();
+				}
+				else { 											// Else it needs updated.
+					this.$store.dispatch('updateNPC', npc);
+				}
+			},
+			damage: function(npc) {
+				var amount = "";
+				while(!this.isInt(amount)){
+					amount = prompt("Take how much damage?", 0);
+				}
+				amount = parseInt(amount, 10);
+				npc.hp -= amount;
+				if(npc.hp > npc.maxhp) {
+					npc.hp = npc.maxhp;
+				}
+				if(npc.hp <= 0){ 								// If it dies, it needs removed.
+					npc.hp = 0;
+ 					var index = 0;
+ 					console.log("deleting at index: " + index);
+ 					this.$store.dispatch('deleteNPC', index);
+					location.reload();
+				}
+				else { 											// Else it needs updated.
+					this.$store.dispatch('updateNPC', npc);
+				}
+			},
+			isInt: function(value) {
+				var x;
+				if (isNaN(value)) {
+					return false;
+				}
+				x = parseFloat(value);
+				return (x | 0) === x;
+			},
 		}, // end of methods
 	}
 </script>

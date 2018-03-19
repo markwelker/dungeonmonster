@@ -112,6 +112,8 @@ export default new Vuex.Store({
 
     updatePlayer(context, player) {
       axios.put("/api/party/" + player.id, player).then(response => {
+		console.log("Updating Player...");
+		console.log(player);
         return true;
       }).catch(err => {
         console.log("STORE: Failed to UPDATE player");
@@ -120,7 +122,9 @@ export default new Vuex.Store({
     },
 
     updateNPC(context, npc) {
-      axios.put("/api/party/" + npc.id, npc).then(response => {
+      axios.put("/api/npcs/" + npc.id, npc).then(response => {
+		  console.log("Updating NPC...");
+		  console.log(npc);
         return true;
       }).catch(err => {
         console.log("STORE: Failed to UPDATE npc");
@@ -137,8 +141,8 @@ export default new Vuex.Store({
       });
     },
 
-    deleteNPC(context, player) {
-      axios.delete("/api/npcs/" + player.id).then(response => {
+    deleteNPC(context, npc) {
+      axios.delete("/api/npcs/" + npc.id).then(response => {
         return context.dispatch('getNPCs');
       }).catch(err => {
         console.log("Failed to REMOVE npc");

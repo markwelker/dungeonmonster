@@ -21,42 +21,42 @@ export default {
   methods: {
     heal: function(id) {
 			var amount = "";
-			while(!isInt(amount)){
-			amount = prompt("Heal how much damage?", 0);
+			while(!this.isInt(amount)){
+				amount = prompt("Heal how much damage?", 0);
 			}
 			amount = parseInt(amount, 10);
-      var player = this.party[id];
+      		var player = this.party[id];
 			player.hp += amount;
-			if(player.hp > player.maxhp){
+			if (player.hp > player.maxhp) {
 				player.hp = player.maxhp;
 			}
 			else if (player.hp < 0){
 				player.hp = 0;
 			}
-      this.$store.dispatch('updatePlayer')
+      		this.$store.dispatch('updatePlayer', player);
 		},
 
 		damage: function(id) {
 			var amount = "";
-			while(!isInt(amount)){
-			amount = prompt("Take how much damage?", 0);
+			while(!this.isInt(amount)){
+				amount = prompt("Take how much damage?", 0);
 			}
 			amount = parseInt(amount, 10);
-      var player = this.party[id];
-      player.hp -= amount;
+			var player = this.party[id];
+			player.hp -= amount;
 			if(player.hp > player.maxhp){
 			   player.hp = player.maxhp;
 			}
 			else if(player.hp < 0){
 			   player.hp = 0;
 			}
-      this.$store.dispatch('updatePlayer', player);
-    },
+	    	this.$store.dispatch('updatePlayer', player);
+	    },
 
     select: function(id) {
-			console.log("Selected: " + id);
-			this.selected = id;
-      this.$parent.selected(this.party[id]);
+		console.log("Selected: " + id);
+		this.selected = id;
+    	this.$parent.selected(this.party[id]);
     },
 
     isInt: function(value) {
@@ -65,7 +65,7 @@ export default {
 	      return false;
 	    }
 	    x = parseFloat(value);
-	      return (x | 0) === x;
+	    return (x | 0) === x;
       },
     }
 }
