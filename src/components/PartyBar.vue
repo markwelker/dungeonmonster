@@ -114,7 +114,9 @@ export default {
 	border-top-left-radius: 0.5em;
 	border-top-right-radius: 0.5em;
 
-	font-family: 'Berkshire Swash', cursive;
+	/* font-family: 'Berkshire Swash', cursive; */
+
+	font-family: 'Garamond';
 	color:var(--off-white);
 	background-color: var(--blue);
 }
@@ -128,7 +130,9 @@ export default {
 	border-bottom-left-radius: 0.5em;
 	border-bottom-right-radius: 0.5em;
 
-	font-family: 'Berkshire Swash', cursive;
+	/* font-family: 'Berkshire Swash', cursive; */
+	
+	font-family: 'Garamond';
 	color:var(--off-white);
 	background-color: var(--green);
 }
