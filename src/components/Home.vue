@@ -36,8 +36,8 @@ export default {
       instructions: "This page is provided for ease of access. In the final version, you will only be able to " +
         "access this site via the login page. For the best experience, we recommend that you visit the login page first!",
 
-	  notice: "Please bear with us while we refactor the entire website into vue-webpack, only the DM Page " +
-	    "is currently fully functional, but it fulfills all the requirements.",
+	  notice: "Please bear with us while we refactor the entire website into vue-webpack, the login page isn't yet operational, " +
+	    "but it fulfills all the requirements.",
 
       hints: "Hint: If you're looking for an API with C.R.U.D., try healing/hurting Players/NPCs on the DM page!",
     }

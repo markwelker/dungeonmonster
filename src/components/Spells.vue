@@ -108,7 +108,7 @@ export default {
 			});
 		},
 		backPage: function() {
-			this.$router.go(-1);
+			this.$router.back();
 		}
 	}, // end of methods
 

@@ -51,7 +51,9 @@ html {
 	clear: both
 }
 .bottom-container {
-	float:left;
+	position: absolute;
+	top: 39.9vh;
+	left: 0;
 	display: flex;
 	width: 72vw;
 }
@@ -60,7 +62,8 @@ html {
 	display: flex;
 	flex-flow: wrap;
 	flex-direction: row;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	max-height: 54.25vh;
 	/*width of 2 cards + scrollbar*/
 	width: calc(24vw + 18px);
