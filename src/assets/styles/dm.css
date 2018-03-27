@@ -77,7 +77,6 @@ html {
 	width: calc(72vw - 48vw - 18px * 2);
 	/* Hide the scroll bar */
 	overflow-x:hidden;
-	padding-right: 150px;
 }
 
 .lookup-container {
@@ -277,4 +276,11 @@ embed {
 	left:60vh;
 	*/
 	float: right;
+}
+
+.icon {
+	margin:0;
+	padding:0;
+	width: 1.25em;
+	height: 1.25em;
 }

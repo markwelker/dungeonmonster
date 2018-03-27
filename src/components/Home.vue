@@ -45,4 +45,4 @@ export default {
 }
 </script>
 
-<style src="../assets/styles/home.css"></style>
+<style scoped src="../assets/styles/home.css"></style>

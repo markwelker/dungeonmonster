@@ -115,4 +115,4 @@ export default {
 }
 </script>
 
-<style src="../assets/styles/spells.css"></style>
+<style scoped src="../assets/styles/spells.css"></style>

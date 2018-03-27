@@ -188,9 +188,7 @@ import PartyBar from './PartyBar'
 					npc.hp = npc.maxhp;
 				}
 				if (npc.hp <= 0) { 								// If it dies, it needs removed.
- 					var index = 0;
- 					console.log("deleting at index: " + index);
- 					this.$store.dispatch('deleteNPC', index);
+ 					this.$store.dispatch('deleteNPC', npc.id);
 					location.reload();
 				}
 				else { 											// Else it needs updated.
@@ -198,6 +196,7 @@ import PartyBar from './PartyBar'
 				}
 			},
 			damage: function(npc) {
+				console.log(npc);
 				var amount = "";
 				while(!this.isInt(amount)){
 					amount = prompt("Take how much damage?", 0);
@@ -208,10 +207,9 @@ import PartyBar from './PartyBar'
 					npc.hp = npc.maxhp;
 				}
 				if(npc.hp <= 0){ 								// If it dies, it needs removed.
-					npc.hp = 0;
- 					var index = 0;
- 					console.log("deleting at index: " + index);
- 					this.$store.dispatch('deleteNPC', index);
+					console.log("Deleting NPC: " + npc.id + ", " + npc.name);
+
+ 					this.$store.dispatch('deleteNPC', npc.id);
 					location.reload();
 				}
 				else { 											// Else it needs updated.
@@ -230,4 +228,4 @@ import PartyBar from './PartyBar'
 	}
 </script>
 
-<style src="../assets/styles/dm.css"></style>
+<style scoped src="../assets/styles/dm.css"></style>

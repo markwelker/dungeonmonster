@@ -38,7 +38,7 @@ export default{
 	</div>
 </template>
 
-<style>
+<style scoped>
 .chat-box {
 	position:fixed;
 	transform: translateX(72vw);

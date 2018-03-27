@@ -218,8 +218,12 @@ app.post('/api/npcs', (req, res) => {
 });
 
 app.delete('/api/npcs/:id', (req, res) => {
+	console.log(npcs);
+	// console.log("id: " + req.params.id);
+	// console.log(npcs[req.params.id].name);
   var id = parseInt(req.params.id);
-  for (i = id; i < npcs.length; i++) {
+  let npc = npcs[index];
+  for (let i = id; i < npcs.length; i++) {
     npcs[i].id -= 1;
   }
   npcs.splice(id, 1);

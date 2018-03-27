@@ -62,4 +62,4 @@ export default {
 }
 </script>
 
-<style src="../assets/styles/player.css"></style>
+<style scoped src="../assets/styles/player.css"></style>

@@ -85,7 +85,7 @@ export default {
 </div>
 </template>
 
-<style>
+<style scoped>
 .party-bar{
 	display:flex;
 	width:100%;
@@ -131,7 +131,7 @@ export default {
 	border-bottom-right-radius: 0.5em;
 
 	/* font-family: 'Berkshire Swash', cursive; */
-	
+
 	font-family: 'Garamond';
 	color:var(--off-white);
 	background-color: var(--green);
@@ -140,5 +140,12 @@ export default {
 .player-card img {
 	max-width: 10vw;
 	max-height: 10vw;
+}
+
+.icon {
+	margin:0;
+	padding:0;
+	width: 1.25em;
+	height: 1.25em;
 }
 </style>
