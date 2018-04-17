@@ -11,6 +11,11 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('dist'))
 
+// Knex Setup
+const env = process.env.NODE_ENV || 'development';
+const config = require('./knexfile')[env];  
+const db = require('knex')(config);
+
 let party = [];
 let partyId = 0;
 let npcs = [];
