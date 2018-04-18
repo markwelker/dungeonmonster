@@ -52,7 +52,7 @@ export default {
     },
   },
   watch: {
-    loginSuccess: function(old, new) {
+    loginSuccess: function(oldval, newval) {
       console.log('watch triggered!');
       let success = this.$store.getters.loginSuccess;
       if(success){
