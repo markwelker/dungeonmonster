@@ -34,7 +34,7 @@ export default {
       password: '',
     }
   },
-  calculated: {
+  computed: {
     loginError: function() {
       error = this.$store.getters.loginError;
       if(error !== '') {
@@ -43,19 +43,23 @@ export default {
       return error;
     },
 
-    registrationError: function() {
-      error = this.$store.getters.registrationError;
-      if(error !== '') {
-        alert(error);
-      }
-      return error;
+    isDMLogin: function() {
+      return this.$store.getters.DMLogin;
     }
   },
   methods: {
     login: function() {
       console.log("Logging in Player");
-	  var player = {name:this.username, password:this.password};
-	  this.$store.dispatch('loginPlayer', player);
+	    var player = {name:this.username, password:this.password};
+	    this.$store.dispatch('loginPlayer', player).then(stuff => {
+        if(loginError === '') {
+          if(isDMLogin) {
+            this.$router.push('DM');
+          }else{
+            this.$router.push('Player');
+          }
+        }
+      })
     },
 
     info: function() {

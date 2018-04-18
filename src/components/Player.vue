@@ -33,10 +33,16 @@ export default {
   data() {
     return {
       username: '',
-      active: 'Fighter',
+      active: '',
       sheet: '/static/pdf/Fighter.pdf',
     }
   },
+
+  calculated: {
+    username: function() {
+      this.$store.getters.username;
+    }
+  }
 
   watch: {
     sheet: function(val) {
