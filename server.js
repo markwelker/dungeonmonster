@@ -171,7 +171,7 @@ app.get('/api/party', (req, res) => {
 app.get('/api/player/:name', (req, res) => {
 	console.log("Login Request Recieved");
   let name = req.params.name;
-	console.log('accessing database');
+	console.log('accessing database, looking for "' + name + '"');
   db('players').select().from('players').where('name', name).then(player => {
     var isDM = false;
     if (player == null) res.status(403);
