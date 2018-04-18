@@ -88,6 +88,7 @@ function importData() {
 			fetchCreature(name);
 		}
 	});
+	/*
 	addPlayer("Fighter", "/static/images/Fighter.png", "/static/pdf/Fighter.pdf", 50);
 	addPlayer("Bard", "/static/images/Bard.png", "/static/pdf/Bard.pdf", 30);
 	addPlayer("Cleric", "/static/images/Cleric.png", "/static/pdf/Cleric.pdf", 45);
@@ -128,6 +129,7 @@ function importData() {
 	addChatMessage("DM", "The cube opens up and releases a horrid smelling substance on you.");
 	addChatMessage("Bard", "Agh! This is the second time this week that I'll be washing this!");
 	addChatMessage("DM", "You hear slurping sounds from the next hallway... a lot of slurping.");
+	*/
 }
 
 if (doImport) {
