@@ -4,9 +4,9 @@
     <nav>
       <ul>
         <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/player">Player Page</router-link></li>
-        <li><router-link to="/dm">DM's Page</router-link></li>
-        <!--<li class="register-button"><router-link to="/register">Register</router-link></li>-->
+        <!--<li><router-link to="/player">Player Page</router-link></li>-->
+        <!--<li><router-link to="/dm">DM's Page</router-link></li>-->
+        <li class="register-button"><router-link to="/register">Register</router-link></li>
         <li class="login-button"><router-link to="/login">Login</router-link></li>
       </ul>
     </nav>

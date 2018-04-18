@@ -38,6 +38,11 @@ export default {
 		}
 	},
 
+  created: function() {
+    if(username === '')
+      this.$router.push('Login');
+  },
+
 	calculated: {
 		username: function() {
 			this.$store.getters.username;

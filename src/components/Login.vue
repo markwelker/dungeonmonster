@@ -34,9 +34,14 @@ export default {
       password: '',
     }
   },
+
+  created: function() {
+    this.$store.dispatch('setLoginSuccess', false);
+  },
+
   computed: {
     loginError: function() {
-      error = this.$store.getters.loginError;
+      let error = this.$store.getters.loginError;
       if(error !== '') {
         alert(error);
       }
@@ -45,21 +50,33 @@ export default {
 
     isDMLogin: function() {
       return this.$store.getters.DMLogin;
+    },
+
+    loginSuccess: function() {
+      return this.$store.getters.loginSuccess;
+    },
+  },
+  watch: {
+    loginSuccess: function(oldval, newval) {
+      console.log('watch triggered!');
+      console.log("success: " + this.loginSuccess);
+      console.log("isDM?: " + this.isDMLogin);
+      let success = this.$store.getters.loginSuccess;
+      if(success){
+        if(this.isDMLogin){
+          this.$router.push('DM');
+        }else{
+          this.$router.push('Player');
+        }
+      }
+      return success;
     }
   },
   methods: {
     login: function() {
       console.log("Logging in Player");
 	    var player = {name:this.username, password:this.password};
-	    this.$store.dispatch('loginPlayer', player).then(stuff => {
-        if(loginError === '') {
-          if(isDMLogin) {
-            this.$router.push('DM');
-          }else{
-            this.$router.push('Player');
-          }
-        }
-      })
+	    this.$store.dispatch('loginPlayer', player);
     },
 
     info: function() {
