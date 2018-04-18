@@ -33,13 +33,12 @@ export default {
         "If you haven't played or heard of that before, no worries! All you need to know is that DnD is a " +
         "cooperative game where you work together with other heroes.",
 
-      instructions: "This page is provided for ease of access. In the final version, you will only be able to " +
-        "access this site via the login page. For the best experience, we recommend that you visit the login page first!",
+      instructions: "If you ever return to the login/register page via the back button, please refresh your page.",
 
-	  notice: "Please bear with us while we refactor the entire website into vue-webpack, the login page isn't yet operational, " +
-	    "but it fulfills all the requirements.",
+	  notice: "Try registering as a player, healing or hurting other players (disclaimer: this is a safe place with only comic " +
+	  	"violence. No players will be permanently harmed/killed), and chat with eachother!",
 
-      hints: "Hint: If you're looking for an API with C.R.U.D., try healing/hurting Players/NPCs on the DM page!",
+      hints: "Hint: If you're looking for a method that requires a login token, try chat!",
     }
   }
 }
