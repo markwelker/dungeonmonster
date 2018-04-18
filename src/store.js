@@ -104,7 +104,7 @@ export default new Vuex.Store({
       console.log("STORE: Getting Party");
       axios.get("/api/party").then(response => {
 		  console.log(response.data);
-        context.commit('setParty', response.data);
+        context.commit('setParty', JSON.parse(response.data));
         return true;
       }).catch(error => {
         console.log("STORE: Failed to Fetch Party Data");

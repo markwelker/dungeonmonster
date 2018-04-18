@@ -43,6 +43,8 @@ export default {
 			}
 			amount = parseInt(amount, 10);
 			console.log(this.party);
+			console.log("id: " + id);
+			console.log(this.party[id]);
 			var player = this.party[id];
 			player.hp -= amount;
 			if(player.hp > player.maxhp){
