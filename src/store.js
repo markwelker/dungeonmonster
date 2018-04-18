@@ -15,6 +15,7 @@ export default new Vuex.Store({
     chat: [],
     loginError: '',
     registrationError: '',
+    loginSuccess: false,
     DMLogin: false,
   },
   getters: {
@@ -26,6 +27,7 @@ export default new Vuex.Store({
     chat: state => state.chat,
     loginError: state => state.loginError,
     registrationError: state => state.registrationError,
+    loginSuccess: state => state.loginSuccess,
     DMLogin: state => state.DMLogin,
   },
   mutations: {
@@ -60,6 +62,10 @@ export default new Vuex.Store({
     setRegistrationError(state, error) {
       state.registrationError = error;
     },
+
+    setLoginSuccess(state, success) {
+      state.loginSuccess = success;
+    }
 
     setDMLogin(state, DMLogin) {
       state.DMLogin = DMLogin;
@@ -150,6 +156,7 @@ export default new Vuex.Store({
           context.commit('setAuthToken', response.data.token);
           context.commit('setLoginError', '');
           context.commit('setRegistrationError', '');
+          context.commit('setLoginSuccess', true);
           context.commit('setDMLogin', response.data.isDM);
           return true;
         }).catch(err => {

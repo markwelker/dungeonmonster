@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     loginError: function() {
-      error = this.$store.getters.loginError;
+      let error = this.$store.getters.loginError;
       if(error !== '') {
         alert(error);
       }
@@ -45,22 +45,25 @@ export default {
 
     isDMLogin: function() {
       return this.$store.getters.DMLogin;
-    }
+    },
+
+    loginSuccess: function() {
+      let success = this.$store.getters.loginSuccess;
+      if(success){
+        if(this.isDMLogin){
+          this.$router.push('DM');
+        }else{
+          this.$router.push('Player');
+        }
+      }
+      return success;
+    },
   },
   methods: {
     login: function() {
       console.log("Logging in Player");
 	    var player = {name:this.username, password:this.password};
-	    this.$store.dispatch('loginPlayer', player).then(() => {
-        console.log("changing page: " + this.loginError);
-        if(this.loginError === '') {
-          if(this.isDMLogin) {
-            this.$router.push('DM');
-          }else{
-            this.$router.push('Player');
-          }
-        }
-      })
+	    this.$store.dispatch('loginPlayer', player);
     },
 
     info: function() {
