@@ -141,7 +141,7 @@ export default new Vuex.Store({
 
 	loginPlayer(context, player) {
 		console.log("STORE: Getting Player from database");
-		axios.get("/api/party/" + player.name).then(response => {
+		axios.get("/api/player/" + player.name).then(response => {
 			console.log("Logging in Player...");
 			console.log(player);
 			context.commit('setUsername', response.data.username);
