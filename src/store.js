@@ -65,9 +65,9 @@ export default new Vuex.Store({
       axios.get("/api/party").then(response => {
         context.commit('setParty', response.data);
         return true;
-      }).catch(err => {
+      }).catch(error => {
         console.log("STORE: Failed to Fetch Party Data");
-        console.log(err);
+        console.log(error);
       });
     },
 
@@ -76,9 +76,9 @@ export default new Vuex.Store({
       axios.get("/api/npcs").then(response => {
         context.commit('setNPCs', response.data);
         return true;
-      }).catch(err => {
+      }).catch(error => {
         console.log("STORE: Failed to Fetch NPC Data");
-        console.log(err);
+        console.log(error);
       });
     },
 
@@ -87,9 +87,9 @@ export default new Vuex.Store({
       axios.get("api/creatures").then(response => {
         context.commit('setCreatures', response.data);
         return true;
-      }).catch(err => {
+      }).catch(error => {
         console.log("STORE: Failed to Fetch Creature Data");
-        console.log(err);
+        console.log(error);
       });
     },
 
@@ -98,18 +98,18 @@ export default new Vuex.Store({
       axios.get("api/chat").then(response => {
         context.commit('setChat', response.data);
         return true;
-      }).catch(err => {
+      }).catch(error => {
         console.log("STORE: Failed to Fetch Chat");
-        console.log(err);
+        console.log(error);
       });
     },
 
     addPlayer(context, player) {
       axios.post("/api/party", player).then(response => {
         return context.dispatch('getParty');
-      }).catch(err => {
+      }).catch(error => {
         console.log("STORE: Failed to POST player");
-        console.log(err);
+        console.log(error);
       });
     },
 
@@ -118,18 +118,18 @@ export default new Vuex.Store({
       console.log(request);
       axios.post("/api/npcs", request).then(response => {
         return context.dispatch('getNPCs');
-      }).catch(err => {
+      }).catch(error => {
         console.log("STORE: Failed to POST npc");
-        console.log(err);
+        console.log(error);
       });
     },
 
     addChat(context, msg) {
       axios.post("/api/chat", msg).then(response => {
         return context.dispatch('getChat');
-      }).catch(err => {
+      }).catch(error => {
         console.log("Failed to POST chat");
-        console.log(err);
+        console.log(error);
       });
     },
 
@@ -143,13 +143,13 @@ export default new Vuex.Store({
       context.commit('setLoginError', '');
       context.commit('setRegistrationError', '');
 		  return true;
-	  }).catch(err => {
+	  }).catch(error => {
       if (error.response.status === 403 || error.response.status === 400) {
           context.commit('setLoginError', 'Invalid Credientials!');
           context.commit('setRegistrationError', '');
       }
 		  console.log("STORE: Failed to Fetch Player Data");
-		  console.log(err);
+		  console.log(error);
 	  });
 	},
 
@@ -167,7 +167,7 @@ export default new Vuex.Store({
           context.commit('setRegistrationError', 'That username has already been taken!');
       }
 		  console.log("STORE: Failed to POST player");
-		  console.log(err);
+		  console.log(error);
 	  });
 	},
 
@@ -176,9 +176,9 @@ export default new Vuex.Store({
         console.log("Updating Player...");
         console.log(player);
         return true;
-      }).catch(err => {
+      }).catch(error => {
         console.log("STORE: Failed to UPDATE player");
-        console.log(err);
+        console.log(error);
       });
     },
 
@@ -187,27 +187,27 @@ export default new Vuex.Store({
         console.log("Updating NPC...");
         console.log(npc);
         return true;
-      }).catch(err => {
+      }).catch(error => {
         console.log("STORE: Failed to UPDATE npc");
-        console.log(err);
+        console.log(error);
       });
     },
 
     deletePlayer(context, player) {
       axios.delete("/api/player/" + player.id).then(response => {
         return context.dispatch('getParty');
-      }).catch(err => {
+      }).catch(error => {
         console.log("Failed to REMOVE player");
-        console.log(err);
+        console.log(error);
       });
     },
 
     deleteNPC(context, id) {
       axios.delete("/api/npcs/" + id).then(response => {
         return context.dispatch('getNPCs');
-      }).catch(err => {
+      }).catch(error => {
         console.log("Failed to REMOVE npc");
-        console.log(err);
+        console.log(error);
       });
     },
 
