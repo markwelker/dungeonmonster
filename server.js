@@ -289,6 +289,7 @@ app.post('/api/chat', verifyToken, (req, res) => {
     player: req.body.player,
     message: req.body.message,
   };
+	console.log("Comparing sender: " + message.player + " to token owner: " + req.userID);
 	if(req.userID !== message.player)
 	{
 		res.status(403).send();
