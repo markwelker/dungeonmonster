@@ -281,7 +281,7 @@ app.post('/api/player', (req, res) => {
   });
 });
 
-app.post('/api/chat', (req, res) => {
+app.post('/api/chat', verifyToken, (req, res) => {
   message = {
     player: req.body.player,
     message: req.body.message,

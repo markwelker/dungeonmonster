@@ -5,7 +5,27 @@ import axios from 'axios';
 
 Vue.use(Vuex);
 
+const getAuthHeader = () => {
+  return { headers: {'Authorization': localStorage.getItem('token')}};
+}
+
 export default new Vuex.Store({
+    // Initialize //
+  initialize(context) {
+    let token = localStorage.getItem('token');
+    if(token) {
+     // see if we can use the token to get my user account
+     axios.get("/api/me",getAuthHeader()).then(response => {
+       context.commit('setAuthToken',token);
+       context.commit('setUsername',response.data.username);
+     }).catch(err => {
+       // remove token and user from state
+       localStorage.removeItem('token');
+       context.commit('setUsername',{});
+       context.commit('setAuthToken','');
+     });
+    }
+  },
   state: {
     username: 'Fighter',
     token: '',
@@ -37,6 +57,11 @@ export default new Vuex.Store({
 
     setAuthToken(state, token) {
       state.token = token;
+      if(token === ''){
+        localStorage.removeItem('token');
+      }else{
+        localStorage.setItem('token', token);
+      }
     },
 
     setParty(state, party) {
@@ -128,7 +153,7 @@ export default new Vuex.Store({
     addNPC(context, request) {
       console.log("adding npc");
       console.log(request);
-      axios.post("/api/npcs", request).then(response => {
+      axios.post("/api/npcs", request, getAuthHeader()).then(response => {
         return context.dispatch('getNPCs');
       }).catch(error => {
         console.log("STORE: Failed to POST npc");
@@ -137,7 +162,7 @@ export default new Vuex.Store({
     },
 
     addChat(context, msg) {
-      axios.post("/api/chat", msg).then(response => {
+      axios.post("/api/chat", msg, getAuthHeader()).then(response => {
         return context.dispatch('getChat');
       }).catch(error => {
         console.log("Failed to POST chat");
@@ -165,6 +190,8 @@ export default new Vuex.Store({
           if (error.response.status === 403 || error.response.status === 400) {
             context.commit('setLoginError', 'Invalid Credientials!');
             context.commit('setRegistrationError', '');
+            context.commit('setAuthToken', '');
+            context.commit('setUsername', '');
           }
           console.log("STORE: Failed to Fetch Player Data");
         });
@@ -184,6 +211,8 @@ export default new Vuex.Store({
         if (error.response.status === 409) {
           context.commit('setLoginError', '');
           context.commit('setRegistrationError', 'That username has already been taken!');
+          context.commit('setAuthToken', '');
+          context.commit('setUsername', '');
         }
         console.log("STORE: Failed to POST player");
         console.log(error);
