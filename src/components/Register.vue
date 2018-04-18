@@ -36,12 +36,23 @@ export default {
 			password: '',
 		}
 	},
+	computed: {
+		registrationError: function() {
+			error = this.$store.getters.registrationError;
+			if(error !== '') {
+				alert(error);
+			}
+			return error;
+		},
+	},
 	methods: {
 		register: function() {
 			console.log("Registering Player");
 			let playerClass = document.getElementsByClassName('selected')[0].getAttribute('title');
 			var player = {name:this.username, password:this.password, playerClass};
-			this.$store.dispatch('registerPlayer', player);
+			this.$store.dispatch('registerPlayer', player).then(stuff => {
+				this.$router.push('Player');
+			});
 		},
 		select: function(event) {
 			let oldSelected = document.getElementsByClassName('selected')[0];

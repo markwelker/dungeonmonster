@@ -15,12 +15,14 @@ export default{
 	computed: {
 		chat: function() {
 			return this.$store.getters.chat;
+		},
+		username: function() {
+			return this.$store.getters.username;
 		}
 	},
 	methods:{
 		submitChat(){
-			var user = this.$store.getters.username;
-			var message = {player: user, message: this.text};
+			var message = {player: this.username, message: this.text};
 			this.$store.dispatch('addChat', message);
 		}
 	}
