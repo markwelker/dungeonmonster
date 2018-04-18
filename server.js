@@ -236,21 +236,16 @@ app.get('/api/me', verifyToken, (req, res) => {
 });
 
 app.put('/api/party/:id', (req, res) => {
-
-	let id = parseInt(req.params.id);
-	let partyMap = party.map(item => {
-		return item.id;
+	console.log("Updating Player: " + req.body.sheet);
+	db('players').where('name', req.body.name).update({
+		picture: req.body.picture,
+		sheet: req.body.sheet,
+		maxhp: req.body.maxhp,
+		hp: req.body.hp
+		res.status(200);
+	}).catch(error => {
+		res.status(500).json({error});
 	});
-	let index = partyMap.indexOf(id);
-	let player = party[index];
-	player.name = req.body.name;
-	player.picture = req.body.picture;
-	player.sheet = req.body.sheet;
-	player.maxhp = req.body.maxhp;
-	player.hp = req.body.hp;
-	console.log("Sending Back Player:");
-	console.log(player);
-	res.send(player);
 });
 
 app.put('/api/npcs/:id', (req, res) => {
