@@ -59,6 +59,8 @@ export default {
   watch: {
     loginSuccess: function(oldval, newval) {
       console.log('watch triggered!');
+      console.log("success: " + this.loginSuccess);
+      console.log("isDM?: " + this.isDMLogin);
       let success = this.$store.getters.loginSuccess;
       if(success){
         if(this.isDMLogin){
