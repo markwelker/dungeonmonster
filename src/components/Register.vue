@@ -13,9 +13,7 @@
 			Password
 			<br />
 			<input type="password" id="password" placeholder="Password" v-model="password">
-			<br />
-			Class
-			<br />
+			<br /><br />
 			<img class="class-select selected" v-on:click="select()" title="Bard" src="/static/images/Bard.png">
 			<img class="class-select" v-on:click="select()" title="Cleric" src="/static/images/Cleric.png">
 			<img class="class-select" v-on:click="select()" title="Fighter" src="/static/images/Fighter.png">
@@ -44,7 +42,9 @@ export default {
 			this.$store.dispatch('registerPlayer', player);
 		},
 		select: function() {
-			document.getElementsByClassName('selected').classList.remove('selected');
+			let oldSelected = document.getElementsByClassName('selected');
+			console.log(oldSelected);
+			oldSelected[0].classList.remove('selected');
 			this.classList.add('selected');
 		},
 	}

@@ -57,11 +57,12 @@ img.class-select {
 	height:5em;
 	display:inline;
 	margin-right:2em;
+	padding:0.1em;
 	cursor: pointer;
 }
 
 img.class-select.selected {
 	border-width: 1px;
 	border-radius: 10px;
-	background-color:#FFDF98;
+	border-color:#FFDF98;
 }
