@@ -16,7 +16,7 @@ let partyId = 0;
 let npcs = [];
 let npcId = 0;
 let creatureList = [];
-let database = [];
+let creatureDatabase = [];
 let chatMessages = [];
 
 // setup some random data
@@ -32,59 +32,37 @@ function addPlayer(name, imagepath, sheetpath, maxhp) {
     id: partyId++,
   });
 }
-async function fetchNPC(name, species){
+
+function addNPC(name, species) {
+  for (var i = 0; i < creatureDatabase.length; i++) {
+    let npc = creatureDatabase[i];
+    if (species == npc.name) {
+      npcs.push({
+        name: name,
+        species: npc,
+        curr_hp: npc.hit_points,
+        id: npcId++,
+      });
+    }
+  }
+}
+
+function fetchCreature(species) {
   fetch("http://www.dnd5eapi.co/api/monsters/?name=" + species).then(res => {
     res.json().then(json => {
       var url = json.results[0].url;
-      addNPC(name, url);
+
+      addCreature(url);
     });
   });
 }
 
-function addNPC(name, url) {
+function addCreature(url) {
   fetch(url).then(response => {
     return response.json();
   }).then(npc => {
-    console.log("adding " + name);
-    var specAbil = [];
-    if (npc.special_abilities !== undefined) {
-      for (feature in npc.special_abilities) {
-        specAbil.push({
-          name: feature.name,
-          desc: feature.desc
-        });
-      }
-    }
-    var act = [];
-    for (item in npc.actions) {
-      console.log(item);
-      act.push({
-        name: item.name,
-        desc: item.desc
-      });
-    }
-    npcs.push({
-      name: name,
-      id: npcId++,
-      species: npc.name,
-      size: npc.size,
-      type: npc.type,
-      subtype: npc.subtype,
-      alignment: npc.alignment,
-      ac: npc.armor_class,
-      maxhp: npc.hit_points,
-      hp: npc.hit_points,
-      stats: {
-        str: npc.strength,
-        dex: npc.dexterity,
-        con: npc.constitution,
-        int: npc.intelligence,
-        wis: npc.wisdom,
-        cha: npc.charisma,
-      },
-      special: specAbil,
-      actions: act,
-    });
+    console.log("importing data for: " + npc.name);
+    creatureDatabase.push(npc);
   });
 }
 
@@ -99,12 +77,11 @@ function importData() {
   fetch("http://www.dnd5eapi.co/api/monsters/").then(response => {
     return response.json();
   }).then(json => {
-    for (i=0; i< json.count; i++) {
-      creatureList.push(json.results[i].name);
+    for (i = 0; i < json.count; i++) {
+      let name = json.results[i].name;
+      creatureList.push(name);
+      fetchCreature(name);
     }
-    fetchNPC('Grogg', 'Orc');
-    fetchNPC('Flubber', 'Ochre Jelly');
-    fetchNPC('Whinny', 'Warhorse');
   });
   addPlayer("Fighter", "/static/images/Fighter.png", "/static/pdf/Fighter.pdf", 50);
   addPlayer("Bard", "/static/images/Bard.png", "/static/pdf/Bard.pdf", 30);
@@ -197,7 +174,7 @@ app.put('/api/npcs/:id', (req, res) => {
   });
   let index = npcsMap.indexOf(id);
   let npc = npcs[index];
-  npc.hp = req.body.hp;
+  npc.curr_hp = req.body.curr_hp;
   res.send(npc);
 });
 
@@ -213,21 +190,20 @@ app.post('/api/chat', (req, res) => {
 app.post('/api/npcs', (req, res) => {
   console.log("adding NPC");
   console.log(req.body);
-  fetchNPC(req.body.name, req.body.name)
-  res.send("OK");
+  addNPC(req.body.name, req.body.species);
+  res.send(npcs);
 });
 
 app.delete('/api/npcs/:id', (req, res) => {
-	console.log(npcs);
-	// console.log("id: " + req.params.id);
-	// console.log(npcs[req.params.id].name);
   var id = parseInt(req.params.id);
-  let npc = npcs[index];
+  console.log(" DELETE: id: " + id + ", " + npcs[id].name);
+  let npc = npcs[id];
   for (let i = id; i < npcs.length; i++) {
     npcs[i].id -= 1;
   }
   npcs.splice(id, 1);
   npcId--;
+  res.send(npcs);
 });
 
 app.listen(3000, () => console.log('Server listening on port 3000!'));
