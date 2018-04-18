@@ -141,7 +141,7 @@ export default new Vuex.Store({
 
 	loginPlayer(context, player) {
 	  console.log("STORE: Getting Player from database");
-	  axios.post("/api/party", player).then(response => {
+	  axios.get("/api/party/" + player.name).then(response => {
 		  console.log("Logging in Player...");
 		  console.log(player);
       context.commit('setUsername', response.data.username);
@@ -168,7 +168,7 @@ export default new Vuex.Store({
       context.commit('setAuthToken', response.data.token);
       context.commit('setLoginError', '');
       context.commit('setRegistrationError', '');		return true;
-	  }).catch(err => {
+  }).catch(error => {
       if (error.response.status === 409) {
           context.commit('setLoginError', '');
           context.commit('setRegistrationError', 'That username has already been taken!');
