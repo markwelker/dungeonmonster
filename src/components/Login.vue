@@ -34,6 +34,11 @@ export default {
       password: '',
     }
   },
+
+  created: function() {
+    this.$store.dispatch('setLoginSuccess' false);
+  },
+
   computed: {
     loginError: function() {
       let error = this.$store.getters.loginError;
