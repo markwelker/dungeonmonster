@@ -175,7 +175,7 @@ app.get('/api/player/:name', (req, res) => {
   db('players').select().from('players').where('name', name).then(player => {
 		console.log('Found: "' + player + '" for "' + name + '"');
     var isDM = false;
-    if (player == null) res.status(403);
+    if (player == null || player === undefined || player === '') res.status(403);
     else {
 			console.log("creating token");
       let token = jwt.sign({
