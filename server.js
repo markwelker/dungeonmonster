@@ -293,7 +293,7 @@ app.post('/api/player', (req, res) => {
 			maxhp = 44;
 			break;
 
-		case 'Wizard'
+		case 'Wizard':
 			picture = "/static/images/Wizard.png";
 			sheet = "/static/pdf/Wizard.pdf";
 			maxhp = 27;
