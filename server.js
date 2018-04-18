@@ -175,7 +175,6 @@ app.get('/api/party', (req, res) => {
 			error
 		});
 	});
-	res.send(party);
 });
 
 // Used to login players / DM
