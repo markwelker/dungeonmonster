@@ -65,7 +65,7 @@ export default new Vuex.Store({
 
     setLoginSuccess(state, success) {
       state.loginSuccess = success;
-    }
+    },
 
     setDMLogin(state, DMLogin) {
       state.DMLogin = DMLogin;
