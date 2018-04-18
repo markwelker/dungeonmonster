@@ -146,7 +146,9 @@ if (doImport) {
 }
 
 const verifyToken = (req, res, next) => {
+	console.console.log("Authenticating token...");
   const token = req.headers['authorization'];
+	console.log(token);
   if (!token)
     return res.status(403).send({
       error: 'No token provided.'
@@ -158,6 +160,7 @@ const verifyToken = (req, res, next) => {
       });
     // if everything good, save to request for use in other routes
     req.userID = decoded.id;
+		console.log("Token authenticated for user: " + req.userID);
     next();
   });
 }
