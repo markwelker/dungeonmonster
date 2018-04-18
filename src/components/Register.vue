@@ -51,7 +51,9 @@ export default {
 			let playerClass = document.getElementsByClassName('selected')[0].getAttribute('title');
 			var player = {name:this.username, password:this.password, class: playerClass};
 			this.$store.dispatch('registerPlayer', player).then(() => {
-				this.$router.push('Player');
+				if(this.registrationError === '') {
+					this.$router.push('Player');
+				}
 			});
 		},
 		select: function(event) {
