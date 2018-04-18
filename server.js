@@ -162,6 +162,17 @@ app.get('/api/party', (req, res) => {
   console.log("party accessed");
 });
 
+app.get('/api/player/:name', (req, res) => {
+  let name = req.params.name;
+  db('players').select().from('players').where('name', name).then(player => {
+	if (player == null) res.status(403);
+    else res.status(200).json({name:player[0]});
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ error });
+  });
+});
+
 app.get('/api/npcs', (req, res) => {
   res.send(npcs);
   console.log("npcs accessed");
@@ -207,7 +218,11 @@ app.put('/api/npcs/:id', (req, res) => {
 });
 
 app.post('/api/player', (req, res) => {
-  db('players').insert({name:req.body.name, password:req.body.password, class: 'Fighter'}).then(player => {
+  db('players').select().from('players').where('name', req.body.name).then(player => {
+	  if (player != null) res.status(409);
+	  return;
+  });
+  db('players').insert({name:req.body.name, password:req.body.password, class: req.body.class}).then(player => {
     res.status(200).json({name:player[0]});
   }).catch(error => {
     console.log(error);

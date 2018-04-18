@@ -112,7 +112,7 @@ export default new Vuex.Store({
 
 	loginPlayer(context, player) {
 	  console.log("STORE: Getting Player from database");
-	  axios.post("/api/party", player).then(response => {
+	  axios.get("/api/party", player).then(response => {
 		console.log("Logging in Player...");
 		console.log(player);
 		// TODO need to login and setup authentication here.
