@@ -35,8 +35,8 @@ export default {
 
       instructions: "If you ever return to the login/register page via the back button, please refresh your page.",
 
-	  notice: "Try registering as a player, healing or hurting other players (disclaimer: this is a safe place with only comic " +
-	  	"violence. No players will be permanently harmed/killed), and chat with eachother!",
+	  notice: "Try registering as a player, healing/hurting other players (disclaimer: this is a safe place with only comic " +
+	  	"violence. No players will be permanently harmed/killed), and chat with each other!",
 
       hints: "Hint: If you're looking for a method that requires a login token, try chat!",
     }
