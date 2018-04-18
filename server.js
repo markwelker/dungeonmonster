@@ -244,6 +244,7 @@ app.put('/api/party/:id', (req, res) => {
 		hp: req.body.hp
 	}).catch(error => {
 		res.status(500).json({error});
+		return;
 	});
 	res.status(200);
 });

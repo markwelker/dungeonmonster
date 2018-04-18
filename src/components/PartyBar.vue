@@ -42,6 +42,7 @@ export default {
 				amount = prompt("Take how much damage?", 0);
 			}
 			amount = parseInt(amount, 10);
+			console.log(this.party);
 			var player = this.party[id];
 			player.hp -= amount;
 			if(player.hp > player.maxhp){

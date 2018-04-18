@@ -103,6 +103,7 @@ export default new Vuex.Store({
     getParty(context) {
       console.log("STORE: Getting Party");
       axios.get("/api/party").then(response => {
+		  console.log(response.data);
         context.commit('setParty', response.data);
         return true;
       }).catch(error => {
