@@ -16,10 +16,12 @@ export default new Vuex.Store({
     if(token) {
      // see if we can use the token to get my user account
      axios.get("/api/me",getAuthHeader()).then(response => {
+       console.log("Successful initialization!")
        context.commit('setAuthToken',token);
-       context.commit('setUsername',response.data.username);
+       context.commit('setUsername', response.data.username);
      }).catch(err => {
        // remove token and user from state
+       console.log("store failed to initialize");
        localStorage.removeItem('token');
        context.commit('setUsername',{});
        context.commit('setAuthToken','');
