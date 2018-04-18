@@ -110,10 +110,24 @@ export default new Vuex.Store({
       });
     },
 
+	loginPlayer(context, player) {
+	  console.log("STORE: Getting Player from database");
+	  axios.post("/api/party", player).then(response => {
+		console.log("Logging in Player...");
+		console.log(player);
+		// TODO need to login and setup authentication here.
+		return true;
+	  }).catch(err => {
+		console.log("STORE: Failed to Fetch Player Data");
+		console.log(err);
+	  });
+	},
+
 	registerPlayer(context, player) {
 	  axios.post("/api/player/", player).then(response => {
 		console.log("Registering Player...");
 		console.log(player);
+		// TODO need to login and setup authentication here.
 		return true;
 	  }).catch(err => {
 		console.log("STORE: Failed to POST player");

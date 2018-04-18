@@ -45,7 +45,7 @@ export default {
 			let oldSelected = document.getElementsByClassName('selected')[0];
 			console.log(oldSelected);
 			oldSelected.classList.remove('selected');
-			$(event.target).classList.add('selected');
+			event.target.classList.add('selected');
 		},
 	}
 }
