@@ -11,6 +11,11 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('dist'))
 
+// Knex Setup
+const env = process.env.NODE_ENV || 'development';
+const config = require('./knexfile')[env];
+const db = require('knex')(config);
+
 let party = [];
 let partyId = 0;
 let npcs = [];
@@ -176,6 +181,15 @@ app.put('/api/npcs/:id', (req, res) => {
   let npc = npcs[index];
   npc.curr_hp = req.body.curr_hp;
   res.send(npc);
+});
+
+app.post('/api/player', (req, res) => {
+  db('players').insert({name:req.body.name, password:req.body.password, class: 'Fighter'}).then(player => {
+    res.status(200).json({name:player[0]});
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ error });
+  });
 });
 
 app.post('/api/chat', (req, res) => {
