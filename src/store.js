@@ -19,7 +19,7 @@ export default new Vuex.Store({
        console.log("Successful initialization!")
        context.commit('setAuthToken',token);
        context.commit('setUsername', response.data.username);
-     }).catch(err => {
+     }).catch(error => {
        // remove token and user from state
        console.log("store failed to initialize");
        localStorage.removeItem('token');
@@ -188,9 +188,9 @@ export default new Vuex.Store({
           context.commit('setLoginSuccess', true);
           context.commit('setDMLogin', response.data.isDM);
           return true;
-        }).catch(err => {
+        }).catch(error => {
           console.log("login had an error!!");
-          console.log(err);
+          console.log(error);
           if (error.response.status === 403 || error.response.status === 400) {
             context.commit('setLoginError', 'Invalid Credentials!');
             context.commit('setRegistrationError', '');
