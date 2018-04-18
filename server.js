@@ -242,10 +242,10 @@ app.put('/api/party/:id', (req, res) => {
 		sheet: req.body.sheet,
 		maxhp: req.body.maxhp,
 		hp: req.body.hp
-		res.status(200);
 	}).catch(error => {
 		res.status(500).json({error});
 	});
+	res.status(200);
 });
 
 app.put('/api/npcs/:id', (req, res) => {
