@@ -18,7 +18,7 @@ const db = require('knex')(config);
 
 // jwt setup
 const jwt = require('jsonwebtoken');
-let jwtSecret = process.env.jwtSecret;
+let jwtSecret = process.env.SECRET_TOKEN;
 if (jwtSecret === undefined) {
   console.log("You need to define a jwtSecret environment variable to continue.");
   db.destroy();
