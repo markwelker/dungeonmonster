@@ -20,6 +20,7 @@ export default {
 
   methods: {
     heal: function(id) {
+			id -= 1; // SQL database increment starts at 1
 			var amount = "";
 			while(!this.isInt(amount)){
 				amount = prompt("Heal how much damage?", 0);
@@ -37,6 +38,7 @@ export default {
 		},
 
 		damage: function(id) {
+			id -= 1; // SQL database increment starts at 1
 			var amount = "";
 			while(!this.isInt(amount)){
 				amount = prompt("Take how much damage?", 0);
@@ -58,6 +60,7 @@ export default {
 	    },
 
     select: function(id) {
+		id -= 1; // SQL database increment starts at 1
 		console.log("Selected: " + id);
 		this.selected = id;
     	this.$parent.selected(this.party[id]);
