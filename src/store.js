@@ -178,7 +178,8 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         console.log("STORE: Getting Player from database");
 		var request = {password: player.password};
-        axios.post("/api/player/" + player.name, request).then(response => {
+		console.log("p: " + player.password);
+        axios.post("/api/player/login/" + player.name, request).then(response => {
           console.log("Logging in Player...");
           console.log(player);
           console.log(response);
