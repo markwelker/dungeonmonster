@@ -52,6 +52,7 @@ export default {
       console.log("Logging in Player");
 	    var player = {name:this.username, password:this.password};
 	    this.$store.dispatch('loginPlayer', player).then(() => {
+        console.log("changing page: " + this.loginError);
         if(this.loginError === '') {
           if(this.isDMLogin) {
             this.$router.push('DM');
