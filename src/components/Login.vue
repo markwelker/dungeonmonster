@@ -18,8 +18,8 @@
           v-model="password">
        <br/>
       <!--<button class = "login-button" onclick = "loginDM()">DM Login</button>-->
-      <button class="login-button" v-on:click="login()">Login</button>&nbsp
-      <button class="login-button" v-on:click="info()">&nbsp?&nbsp</button>
+      <button class="login-button" v-on:click="login()">Login</button>&nbsp;
+      <button class="login-button" v-on:click="info()">&nbsp;?&nbsp;</button>
     </div>
   </div>
 </div>

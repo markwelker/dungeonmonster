@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
+import Register from '@/components/Register'
 import Player from '@/components/Player'
 import Spells from '@/components/Spells'
 import DungeonMaster from '@/components/DM'
@@ -24,6 +25,11 @@ export default new Router({
       path: '/player',
       name: 'Player',
       component: Player
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path: '/spells',

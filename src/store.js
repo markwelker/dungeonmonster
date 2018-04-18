@@ -110,6 +110,17 @@ export default new Vuex.Store({
       });
     },
 
+	registerPlayer(context, player) {
+	  axios.post("/api/player/", player).then(response => {
+		console.log("Registering Player...");
+		console.log(player);
+		return true;
+	  }).catch(err => {
+		console.log("STORE: Failed to POST player");
+		console.log(err);
+	  });
+	},
+
     updatePlayer(context, player) {
       axios.put("/api/party/" + player.id, player).then(response => {
 		console.log("Updating Player...");

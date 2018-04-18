@@ -51,3 +51,10 @@
   background-color: var(--darkcrimson);
   border-color: var(--darkcrimson);
 }
+
+img.class-select {
+	width:5em;
+	height:5em;
+	display:inline;
+	margin-right:2em;
+}
