@@ -42,7 +42,7 @@ export default {
     username: function() {
       this.$store.getters.username;
     }
-  }
+  },
 
   watch: {
     sheet: function(val) {
