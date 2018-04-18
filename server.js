@@ -173,6 +173,7 @@ app.get('/api/player/:name', (req, res) => {
   let name = req.params.name;
 	console.log('accessing database, looking for "' + name + '"');
   db('players').select().from('players').where('name', name).then(player => {
+		conole.log('Found: "' + player + '" for "' + name + '"');
     var isDM = false;
     if (player == null) res.status(403);
     else {

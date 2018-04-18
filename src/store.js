@@ -144,20 +144,21 @@ export default new Vuex.Store({
 		axios.get("/api/player/" + player.name).then(response => {
 			console.log("Logging in Player...");
 			console.log(player);
+      console.log(response);
 			context.commit('setUsername', response.data.username);
 			context.commit('setAuthToken', response.data.token);
 			context.commit('setLoginError', '');
 			context.commit('setRegistrationError', '');
 			context.commit('setDMLogin', response.data.isDM);
 			return true;
-		}).catch(error => {
+		}).catch(err => {
       console.log("login had an error!!");
+      console.log(err);
 			if (error.response.status === 403 || error.response.status === 400) {
 					context.commit('setLoginError', 'Invalid Credientials!');
 					context.commit('setRegistrationError', '');
 			}
 			console.log("STORE: Failed to Fetch Player Data");
-			console.log(error);
 		});
 	},
 
