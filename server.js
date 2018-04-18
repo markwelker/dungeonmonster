@@ -169,11 +169,14 @@ app.get('/api/party', (req, res) => {
 
 // Used to login players / DM
 app.get('/api/player/:name', (req, res) => {
+	console.log("Login Request Recieved");
   let name = req.params.name;
+	console.log('accessing database');
   db('players').select().from('players').where('name', name).then(player => {
     var isDM = false;
     if (player == null) res.status(403);
     else {
+			console.log("creating token");
       let token = jwt.sign({
         id: name
       }, jwtSecret, {
