@@ -34,6 +34,23 @@ export default {
       password: '',
     }
   },
+  calculated: {
+    loginError: function() {
+      error = this.$store.getters.loginError;
+      if(error !== '') {
+        alert(error);
+      }
+      return error;
+    },
+
+    registrationError: function() {
+      error = this.$store.getters.registrationError;
+      if(error !== '') {
+        alert(error);
+      }
+      return error;
+    }
+  },
   methods: {
     login: function() {
       console.log("Logging in Player");

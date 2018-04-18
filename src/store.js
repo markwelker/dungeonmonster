@@ -14,7 +14,7 @@ export default new Vuex.Store({
     creatures: [],
     chat: [],
     loginError: '',
-    registationError: '',
+    registrationError: '',
   },
   getters: {
     username: state => state.username,
@@ -24,7 +24,7 @@ export default new Vuex.Store({
     creatures: state => state.creatures,
     chat: state => state.chat,
     loginError: state => state.loginError,
-    registationError: state => state.registationError,
+    registrationError: state => state.registrationError,
   },
   mutations: {
     setUsername(state, username) {
@@ -56,7 +56,7 @@ export default new Vuex.Store({
     },
 
     setRegistrationError(state, error) {
-      state.registationError = error;
+      state.registrationError = error;
     },
   },
   actions: {
