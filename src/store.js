@@ -195,6 +195,7 @@ export default new Vuex.Store({
           console.log(error);
           if (error.response.status === 403 || error.response.status === 400) {
             context.commit('setLoginError', 'Invalid Credentials!');
+			alert("Invalid Credentials!");
             context.commit('setRegistrationError', '');
             context.commit('setAuthToken', '');
             context.commit('setUsername', '');
@@ -217,6 +218,7 @@ export default new Vuex.Store({
         if (error.response.status === 409) {
           context.commit('setLoginError', '');
           context.commit('setRegistrationError', 'That username has already been taken!');
+		  alert("That username has already been taken!");
           context.commit('setAuthToken', '');
           context.commit('setUsername', '');
         }
