@@ -151,6 +151,7 @@ export default new Vuex.Store({
 			context.commit('setDMLogin', response.data.isDM);
 			return true;
 		}).catch(error => {
+      console.log("login had an error!!");
 			if (error.response.status === 403 || error.response.status === 400) {
 					context.commit('setLoginError', 'Invalid Credientials!');
 					context.commit('setRegistrationError', '');
