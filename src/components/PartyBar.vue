@@ -45,6 +45,7 @@ export default {
 			console.log(this.party);
 			console.log("id: " + id);
 			console.log(this.party[id]);
+			console.log(this.party[id]['hp']);
 			var player = this.party[id];
 			player.hp -= amount;
 			if(player.hp > player.maxhp){
