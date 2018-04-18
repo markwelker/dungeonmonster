@@ -146,7 +146,7 @@ if (doImport) {
 }
 
 const verifyToken = (req, res, next) => {
-	console.console.log("Authenticating token...");
+	console.log("Authenticating token...");
   const token = req.headers['authorization'];
 	console.log(token);
   if (!token)
