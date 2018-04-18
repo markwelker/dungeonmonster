@@ -266,8 +266,10 @@ app.put('/api/npcs/:id', (req, res) => {
 app.post('/api/player', (req, res) => {
 	db('players').select().from('players').where('name', req.body.name).then(player => {
 		console.log(player);
-		if (player.length != 0) res.status(409).send();
-		return;
+		if (player.length != 0)  {
+			res.status(409).send();
+			return;
+		}
 	});
 	var picture = "";
 	var sheet = "";
