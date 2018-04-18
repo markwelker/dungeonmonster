@@ -177,7 +177,7 @@ export default new Vuex.Store({
     loginPlayer(context, player) {
       return new Promise((resolve, reject) => {
         console.log("STORE: Getting Player from database");
-        axios.get("/api/player/" + player.name).then(response => {
+        axios.get("/api/player/" + player.name, player.password).then(response => {
           console.log("Logging in Player...");
           console.log(player);
           console.log(response);
@@ -192,7 +192,7 @@ export default new Vuex.Store({
           console.log("login had an error!!");
           console.log(err);
           if (error.response.status === 403 || error.response.status === 400) {
-            context.commit('setLoginError', 'Invalid Credientials!');
+            context.commit('setLoginError', 'Invalid Credentials!');
             context.commit('setRegistrationError', '');
             context.commit('setAuthToken', '');
             context.commit('setUsername', '');

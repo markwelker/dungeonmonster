@@ -183,7 +183,7 @@ app.get('/api/player/:name', (req, res) => {
 	console.log("Login Request Recieved");
 	let name = req.params.name;
 	console.log('accessing database, looking for "' + name + '"');
-	db('players').select().from('players').where('name', name).then(player => {
+	db('players').select().from('players').where({'name': name, 'password': req.body.password}).then(player => {
 		console.log('Found: "' + player + '" for "' + name + '"');
 		var isDM = false;
 		if (player == null || player == undefined || player == '') {
