@@ -259,7 +259,7 @@ app.put('/api/npcs/:id', (req, res) => {
 // Used to register players
 app.post('/api/player', (req, res) => {
   db('players').select().from('players').where('name', req.body.name).then(player => {
-    if (player != null) res.status(409);
+    if (player != null) res.status(409).send();
     return;
   });
   db('players').insert({
