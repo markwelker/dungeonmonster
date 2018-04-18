@@ -29,7 +29,7 @@ export default new Vuex.Store({
     }
   },
   state: {
-    username: 'Fighter',
+    username: '',
     token: '',
     party: [],
     npcs: [],
