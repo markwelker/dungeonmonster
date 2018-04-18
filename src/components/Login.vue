@@ -48,6 +48,12 @@ export default {
     },
 
     loginSuccess: function() {
+      return this.$store.getters.loginSuccess;
+    },
+  },
+  watch: {
+    loginSuccess: function(old, new) {
+      console.log('watch triggered!');
       let success = this.$store.getters.loginSuccess;
       if(success){
         if(this.isDMLogin){
@@ -57,7 +63,7 @@ export default {
         }
       }
       return success;
-    },
+    }
   },
   methods: {
     login: function() {
