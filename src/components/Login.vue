@@ -36,7 +36,7 @@ export default {
   },
 
   created: function() {
-    this.$store.dispatch('setLoginSuccess' false);
+    this.$store.dispatch('setLoginSuccess', false);
   },
 
   computed: {
