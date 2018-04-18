@@ -14,10 +14,10 @@
 			<br />
 			<input type="password" id="password" placeholder="Password" v-model="password">
 			<br /><br />
-			<img class="class-select selected" v-on:click="select()" title="Bard" src="/static/images/Bard.png">
-			<img class="class-select" v-on:click="select()" title="Cleric" src="/static/images/Cleric.png">
-			<img class="class-select" v-on:click="select()" title="Fighter" src="/static/images/Fighter.png">
-			<img class="class-select" v-on:click="select()" title="Wizard" src="/static/images/Wizard.png">
+			<img class="class-select selected" v-on:click="select" title="Bard" src="/static/images/Bard.png">
+			<img class="class-select" v-on:click="select" title="Cleric" src="/static/images/Cleric.png">
+			<img class="class-select" v-on:click="select" title="Fighter" src="/static/images/Fighter.png">
+			<img class="class-select" v-on:click="select" title="Wizard" src="/static/images/Wizard.png">
 			<br />
 			<button class="login-button" v-on:click="register()">Register</button>
 		</div>
@@ -37,15 +37,15 @@ export default {
 	methods: {
 		register: function() {
 			console.log("Registering Player");
-			let playerClass = document.getElementsByClassName('selected').getAttribute('title');
+			let playerClass = document.getElementsByClassName('selected')[0].getAttribute('title');
 			var player = {name:this.username, password:this.password, playerClass};
 			this.$store.dispatch('registerPlayer', player);
 		},
-		select: function() {
-			let oldSelected = document.getElementsByClassName('selected');
+		select: function(event) {
+			let oldSelected = document.getElementsByClassName('selected')[0];
 			console.log(oldSelected);
-			oldSelected[0].classList.remove('selected');
-			this.classList.add('selected');
+			oldSelected.classList.remove('selected');
+			$(event.target).classList.add('selected');
 		},
 	}
 }
