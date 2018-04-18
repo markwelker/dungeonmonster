@@ -179,7 +179,7 @@ app.get('/api/party', (req, res) => {
 });
 
 // Used to login players / DM
-app.get('/api/player/:name', (req, res) => {
+app.post('/api/player/:name', (req, res) => {
 	console.log("Login Request Recieved");
 	let name = req.params.name;
 	console.log('accessing database, looking for "' + name + '"');
