@@ -273,7 +273,7 @@ app.post('/api/player', (req, res) => {
       expiresIn: 86400 // expires in 24 hours
     });
     res.status(200).json({
-      name: player[0]['name'],
+      name: req.body.name,
       token: token
     });
   }).catch(error => {
