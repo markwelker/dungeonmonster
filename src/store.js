@@ -161,7 +161,7 @@ export default new Vuex.Store({
       context.commit('setAuthToken', response.data.token);
       context.commit('setLoginError', '');
       context.commit('setRegistrationError', '');		return true;
-	  }).catch(err => {
+  }).catch(error => {
       if (error.response.status === 409) {
           context.commit('setLoginError', '');
           context.commit('setRegistrationError', 'That username has already been taken!');
