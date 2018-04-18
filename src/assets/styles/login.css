@@ -1,55 +1,55 @@
 .login-container {
-  /*set color scheme and font*/
-  color: var(--off-white);
-  background-color: var(--darkcrimson);
-  background-clip: padding-box;
-  border: 5px solid rgba(0, 0, 0, 0.8);
-  font-family: 'Berkshire Swash', cursive;
-  box-shadow: inset 0 0 5em 1.5em rgba(0, 0, 0, 1), 0px 0px 20em 4.5em rgba(0, 0, 0, 1);
-  /*sizing*/
-  padding-top: 5%;
-  padding-bottom: 5%;
-  max-width: 45em;
-  width: 50%;
-  font-size: 2em;
-  /*center div and fields*/
-  /*margin: 10% auto;*/
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+	/*set color scheme and font*/
+	color: var(--off-white);
+	background-color: var(--darkcrimson);
+	background-clip: padding-box;
+	border: 5px solid rgba(0, 0, 0, 0.8);
+	font-family: 'Berkshire Swash', cursive;
+	box-shadow: inset 0 0 5em 1.5em rgba(0, 0, 0, 1), 0px 0px 20em 4.5em rgba(0, 0, 0, 1);
+	/*sizing*/
+	padding-top: 5%;
+	padding-bottom: 5%;
+	max-width: 45em;
+	width: 50%;
+	font-size: 2em;
+	/*center div and fields*/
+	/*margin: 10% auto;*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
 }
 
 .login-container input {
-  width: 40%;
-  line-height: 2em;
-  padding: 0.2em;
-  padding-left: 1em;
-  background-color: var(--off-white);
-  border-radius: 0.5em;
-  border: none;
-  box-shadow: 0px 0px 0.5em rgba(0, 0, 0, 0.3);
+	width: 40%;
+	line-height: 2em;
+	padding: 0.2em;
+	padding-left: 1em;
+	background-color: var(--off-white);
+	border-radius: 0.5em;
+	border: none;
+	box-shadow: 0px 0px 0.5em rgba(0, 0, 0, 0.3);
 }
 
 .login-container .login-button {
-  display: inline-block;
-  margin-top: 1em;
-  color: var(--charcoal);
-  font-family: 'Georgia';
-  font-size: 0.8em;
-  text-decoration: none;
-  background-color: var(--off-white);
-  border: outset;
-  border-color: var(--off-white);
-  border-radius: 0.25em;
-  padding: 0.25em;
+	display: inline-block;
+	margin-top: 1em;
+	color: var(--charcoal);
+	font-family: 'Georgia';
+	font-size: 0.8em;
+	text-decoration: none;
+	background-color: var(--off-white);
+	border: outset;
+	border-color: var(--off-white);
+	border-radius: 0.25em;
+	padding: 0.25em;
 }
 
 .login-container a:hover {
-  color: var(--off-white);
-  background-color: var(--darkcrimson);
-  border-color: var(--darkcrimson);
+	color: var(--off-white);
+	background-color: var(--darkcrimson);
+	border-color: var(--darkcrimson);
 }
 
 img.class-select {
@@ -57,4 +57,11 @@ img.class-select {
 	height:5em;
 	display:inline;
 	margin-right:2em;
+	cursor: pointer;
+}
+
+img.class-select.selected {
+	border-width: 1px;
+	border-radius: 10px;
+	background-color:#FFDF98;
 }
