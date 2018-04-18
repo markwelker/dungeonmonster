@@ -95,6 +95,7 @@ export default new Vuex.Store({
     },
 
     setDMLogin(state, DMLogin) {
+      console.log("isDM was set to: " + DMLogin);
       state.DMLogin = DMLogin;
     },
   },
