@@ -167,9 +167,8 @@ const verifyToken = (req, res, next) => {
 
 app.get('/api/party', (req, res) => {
 	console.log("party accessed");
-	db('players').select().from('players').then(party => {
+	db('players').select().from('players').whereNot('name', 'DM').then(party => {
 			res.status(200).json(party);
-		}
 	}).catch(error => {
 		console.log(error);
 		res.status(500).json({
