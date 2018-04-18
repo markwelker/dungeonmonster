@@ -5,6 +5,10 @@ exports.up = function(knex, Promise) {
       table.string('name').primary();
       table.string('password');
       table.string('class');
+	  table.string('picture');
+	  table.string('sheet');
+	  table.string('maxhp');
+	  table.string('hp');
     }),
   ]);
 };
