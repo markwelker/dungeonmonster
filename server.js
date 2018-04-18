@@ -88,55 +88,57 @@ function addChatMessage(plr, msg) {
 }
 
 function importData() {
-  fetch("http://www.dnd5eapi.co/api/monsters/").then(response => {
-    return response.json();
-  }).then(json => {
-    for (i = 0; i < json.count; i++) {
-      let name = json.results[i].name;
-      creatureList.push(name);
-      fetchCreature(name);
-    }
-  });
-  addPlayer("Fighter", "/static/images/Fighter.png", "/static/pdf/Fighter.pdf", 50);
-  addPlayer("Bard", "/static/images/Bard.png", "/static/pdf/Bard.pdf", 30);
-  addPlayer("Cleric", "/static/images/Cleric.png", "/static/pdf/Cleric.pdf", 45);
-  addPlayer("Wizard", "/static/images/Wizard.png", "/static/pdf/Wizard.pdf", 25);
+	fetch("http://www.dnd5eapi.co/api/monsters/").then(response => {
+		return response.json();
+	}).then(json => {
+		for (i = 0; i < json.count; i++) {
+			let name = json.results[i].name;
+			creatureList.push(name);
+			fetchCreature(name);
+		}
+	});
+	/*
+	addPlayer("Fighter", "/static/images/Fighter.png", "/static/pdf/Fighter.pdf", 50);
+	addPlayer("Bard", "/static/images/Bard.png", "/static/pdf/Bard.pdf", 30);
+	addPlayer("Cleric", "/static/images/Cleric.png", "/static/pdf/Cleric.pdf", 45);
+	addPlayer("Wizard", "/static/images/Wizard.png", "/static/pdf/Wizard.pdf", 25);
 
-  addChatMessage("DM", "Are you sure you want to touch that?");
-  addChatMessage("Fighter", "Yes, yes I am.");
-  addChatMessage("Cleric", "Oh no you aren't!");
-  addChatMessage("Fighter", "But why not?");
-  addChatMessage("Cleric", "You don't even know where that's been!");
-  addChatMessage("Wizard", "...or if it is magically protected.");
-  addChatMessage("Bard", "You're all a bunch of party-poopers, I say let him do what he wants!");
-  addChatMessage("Fighter", "Yeah! Let me pick it up!");
-  addChatMessage("DM", "Does anyone try to stop him?");
-  addChatMessage("Cleric", "I try to grapple the Fighter.");
-  addChatMessage("DM", "OK, make a strength check.");
-  addChatMessage("Cleric", "*rolls 1d20+1: 3");
-  addChatMessage("Cleric", "No!");
-  addChatMessage("Wizard", "Uh oh!");
-  addChatMessage("Bard", "Yeah baby!");
-  addChatMessage("Fighter", "Hahaha! I laugh at your puny arms and pick up the artifact!");
-  addChatMessage("Cleric", "...");
-  addChatMessage("DM", "...");
-  addChatMessage("DM", "Nothing happens.");
-  addChatMessage("Fighter", "Really, nothing? Then why'd you make a big deal about not touching it?");
-  addChatMessage("DM", "Oh you'll see.");
-  addChatMessage("Bard", "Well that's not ominous or anything...");
-  addChatMessage("Cleric", "Wait, wasn't it in the gelatinous cube earlier?");
-  addChatMessage("Fighter", "What even is this thing anyways?");
-  addChatMessage("DM", "It appears to be a small cube of some sort, with some small buttons on one side.");
-  addChatMessage("Wizard", "Do the buttons have any sort of markings?");
-  addChatMessage("DM", "Yes, make a history check.");
-  addChatMessage("Wizard", "*rolls 1d20+7: 22");
-  addChatMessage("DM", "You remember seeing these types of symbols in some books on the ancient empire.");
-  addChatMessage("Wizard", "Do they look like the symbols on the note we got earlier?");
-  addChatMessage("DM", "Yes, they do!");
-  addChatMessage("Bard", "Aha! I press the buttons in the sequence found on the note.");
-  addChatMessage("DM", "The cube opens up and releases a horrid smelling substance on you.");
-  addChatMessage("Bard", "Agh! This is the second time this week that I'll be washing this!");
-  addChatMessage("DM", "You hear slurping sounds from the next hallway... a lot of slurping.");
+	addChatMessage("DM", "Are you sure you want to touch that?");
+	addChatMessage("Fighter", "Yes, yes I am.");
+	addChatMessage("Cleric", "Oh no you aren't!");
+	addChatMessage("Fighter", "But why not?");
+	addChatMessage("Cleric", "You don't even know where that's been!");
+	addChatMessage("Wizard", "...or if it is magically protected.");
+	addChatMessage("Bard", "You're all a bunch of party-poopers, I say let him do what he wants!");
+	addChatMessage("Fighter", "Yeah! Let me pick it up!");
+	addChatMessage("DM", "Does anyone try to stop him?");
+	addChatMessage("Cleric", "I try to grapple the Fighter.");
+	addChatMessage("DM", "OK, make a strength check.");
+	addChatMessage("Cleric", "*rolls 1d20+1: 3");
+	addChatMessage("Cleric", "No!");
+	addChatMessage("Wizard", "Uh oh!");
+	addChatMessage("Bard", "Yeah baby!");
+	addChatMessage("Fighter", "Hahaha! I laugh at your puny arms and pick up the artifact!");
+	addChatMessage("Cleric", "...");
+	addChatMessage("DM", "...");
+	addChatMessage("DM", "Nothing happens.");
+	addChatMessage("Fighter", "Really, nothing? Then why'd you make a big deal about not touching it?");
+	addChatMessage("DM", "Oh you'll see.");
+	addChatMessage("Bard", "Well that's not ominous or anything...");
+	addChatMessage("Cleric", "Wait, wasn't it in the gelatinous cube earlier?");
+	addChatMessage("Fighter", "What even is this thing anyways?");
+	addChatMessage("DM", "It appears to be a small cube of some sort, with some small buttons on one side.");
+	addChatMessage("Wizard", "Do the buttons have any sort of markings?");
+	addChatMessage("DM", "Yes, make a history check.");
+	addChatMessage("Wizard", "*rolls 1d20+7: 22");
+	addChatMessage("DM", "You remember seeing these types of symbols in some books on the ancient empire.");
+	addChatMessage("Wizard", "Do they look like the symbols on the note we got earlier?");
+	addChatMessage("DM", "Yes, they do!");
+	addChatMessage("Bard", "Aha! I press the buttons in the sequence found on the note.");
+	addChatMessage("DM", "The cube opens up and releases a horrid smelling substance on you.");
+	addChatMessage("Bard", "Agh! This is the second time this week that I'll be washing this!");
+	addChatMessage("DM", "You hear slurping sounds from the next hallway... a lot of slurping.");
+	*/
 }
 
 if (doImport) {

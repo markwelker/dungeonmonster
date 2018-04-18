@@ -170,8 +170,8 @@ export default new Vuex.Store({
 			context.commit('setRegistrationError', '');		return true;
 	}).catch(error => {
 			if (error.response.status === 409) {
-					context.commit('setLoginError', '');
-					context.commit('setRegistrationError', 'That username has already been taken!');
+				context.commit('setLoginError', '');
+				context.commit('setRegistrationError', 'That username has already been taken!');
 			}
 			console.log("STORE: Failed to POST player");
 			console.log(error);
