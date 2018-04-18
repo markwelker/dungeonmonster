@@ -179,7 +179,7 @@ export default new Vuex.Store({
           console.log("Logging in Player...");
           console.log(player);
           console.log(response);
-          context.commit('setUsername', response.data.username);
+          context.commit('setUsername', response.data.name);
           context.commit('setAuthToken', response.data.token);
           context.commit('setLoginError', '');
           context.commit('setRegistrationError', '');
