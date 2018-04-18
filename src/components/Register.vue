@@ -38,7 +38,7 @@ export default {
 	},
 	computed: {
 		registrationError: function() {
-			error = this.$store.getters.registrationError;
+			let error = this.$store.getters.registrationError;
 			if(error !== '') {
 				alert(error);
 			}
