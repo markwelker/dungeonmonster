@@ -271,9 +271,9 @@ app.post('/api/player', (req, res) => {
 		if (player.length != 0) res.status(409).send();
 		return;
 	});
-	var picture;
-	var sheet;
-	var maxhp;
+	var picture = "";
+	var sheet = "";
+	var maxhp = "";
 	switch(req.body.class) {
 		case 'Bard':
 			picture = "/static/images/Bard.png";
