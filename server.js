@@ -139,11 +139,16 @@ app.get('/api/party', (req, res) => {
   console.log("party accessed");
 });
 
+// Used to login players / DM
 app.get('/api/player/:name', (req, res) => {
   let name = req.params.name;
   db('players').select().from('players').where('name', name).then(player => {
+	var isDM = false;
 	if (player == null) res.status(403);
-    else res.status(200).json({name:player[0]});
+    else {
+	  if (player.name == 'DM') isDM = true;
+	  res.status(200).json({name:player[0]['name'], isDM: isDM});
+	}
   }).catch(error => {
     console.log(error);
     res.status(500).json({ error });
@@ -194,13 +199,14 @@ app.put('/api/npcs/:id', (req, res) => {
   res.send(npc);
 });
 
+// Used to register players
 app.post('/api/player', (req, res) => {
   db('players').select().from('players').where('name', req.body.name).then(player => {
 	  if (player != null) res.status(409);
 	  return;
   });
   db('players').insert({name:req.body.name, password:req.body.password, class: req.body.class}).then(player => {
-    res.status(200).json({name:player[0]});
+    res.status(200).json({name:player[0]['name']});
   }).catch(error => {
     console.log(error);
     res.status(500).json({ error });
