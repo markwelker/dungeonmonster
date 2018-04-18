@@ -205,7 +205,7 @@ export default new Vuex.Store({
       axios.post("/api/player/", player).then(response => {
         console.log("Registering Player...");
         console.log(player);
-        context.commit('setUsername', response.data.username);
+        context.commit('setUsername', response.data.name);
         context.commit('setAuthToken', response.data.token);
         context.commit('setLoginError', '');
         context.commit('setRegistrationError', '');
