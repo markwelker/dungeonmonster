@@ -6,7 +6,7 @@ require('isomorphic-fetch');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+	extended: false
 }));
 
 app.use(express.static('dist'))
@@ -20,9 +20,9 @@ const db = require('knex')(config);
 const jwt = require('jsonwebtoken');
 let jwtSecret = process.env.SECRET_TOKEN;
 if (jwtSecret === undefined) {
-  console.log("You need to define a jwtSecret environment variable to continue.");
-  db.destroy();
-  process.exit();
+	console.log("You need to define a jwtSecret environment variable to continue.");
+	db.destroy();
+	process.exit();
 }
 
 let party = [];
@@ -37,54 +37,54 @@ let chatMessages = [];
 let doImport = true;
 
 function addPlayer(name, imagepath, sheetpath, maxhp) {
-  party.push({
-    name: name,
-    picture: imagepath,
-    sheet: sheetpath,
-    maxhp: maxhp,
-    hp: maxhp,
-    id: partyId++,
-  });
+	party.push({
+		name: name,
+		picture: imagepath,
+		sheet: sheetpath,
+		maxhp: maxhp,
+		hp: maxhp,
+		id: partyId++,
+	});
 }
 
 function addNPC(name, species) {
-  for (var i = 0; i < creatureDatabase.length; i++) {
-    let npc = creatureDatabase[i];
-    if (species == npc.name) {
-      npcs.push({
-        name: name,
-        species: npc,
-        curr_hp: npc.hit_points,
-        id: npcId++,
-      });
-    }
-  }
+	for (var i = 0; i < creatureDatabase.length; i++) {
+		let npc = creatureDatabase[i];
+		if (species == npc.name) {
+			npcs.push({
+				name: name,
+				species: npc,
+				curr_hp: npc.hit_points,
+				id: npcId++,
+			});
+		}
+	}
 }
 
 function fetchCreature(species) {
-  fetch("http://www.dnd5eapi.co/api/monsters/?name=" + species).then(res => {
-    res.json().then(json => {
-      var url = json.results[0].url;
+	fetch("http://www.dnd5eapi.co/api/monsters/?name=" + species).then(res => {
+		res.json().then(json => {
+			var url = json.results[0].url;
 
-      addCreature(url);
-    });
-  });
+			addCreature(url);
+		});
+	});
 }
 
 function addCreature(url) {
-  fetch(url).then(response => {
-    return response.json();
-  }).then(npc => {
-    console.log("importing data for: " + npc.name);
-    creatureDatabase.push(npc);
-  });
+	fetch(url).then(response => {
+		return response.json();
+	}).then(npc => {
+		console.log("importing data for: " + npc.name);
+		creatureDatabase.push(npc);
+	});
 }
 
 function addChatMessage(plr, msg) {
-  chatMessages.push({
-    player: plr,
-    message: msg
-  });
+	chatMessages.push({
+		player: plr,
+		message: msg
+	});
 }
 
 function importData() {
@@ -142,81 +142,90 @@ function importData() {
 }
 
 if (doImport) {
-  importData();
+	importData();
 }
 
 const verifyToken = (req, res, next) => {
 	console.log("Authenticating token...");
-  const token = req.headers['authorization'];
+	const token = req.headers['authorization'];
 	console.log(token);
-  if (!token)
-    return res.status(403).send({
-      error: 'No token provided.'
-    });
-  jwt.verify(token, jwtSecret, function(err, decoded) {
-    if (err)
-      return res.status(500).send({
-        error: 'Failed to authenticate token.'
-      });
-    // if everything good, save to request for use in other routes
-    req.userID = decoded.id;
+	if (!token)
+		return res.status(403).send({
+			error: 'No token provided.'
+		});
+	jwt.verify(token, jwtSecret, function(err, decoded) {
+		if (err)
+			return res.status(500).send({
+				error: 'Failed to authenticate token.'
+			});
+		// if everything good, save to request for use in other routes
+		req.userID = decoded.id;
 		console.log("Token authenticated for user: " + req.userID);
-    next();
-  });
+		next();
+	});
 }
 
 app.get('/api/party', (req, res) => {
-  res.send(party);
-  console.log("party accessed");
+	console.log("party accessed");
+	db('players').select().from('players').then(party => {
+			res.status(200).json(party);
+		}
+	}).catch(error => {
+		console.log(error);
+		res.status(500).json({
+			error
+		});
+	});
+	res.send(party);
 });
 
 // Used to login players / DM
 app.get('/api/player/:name', (req, res) => {
 	console.log("Login Request Recieved");
-  let name = req.params.name;
+	let name = req.params.name;
 	console.log('accessing database, looking for "' + name + '"');
-  db('players').select().from('players').where('name', name).then(player => {
+	db('players').select().from('players').where('name', name).then(player => {
 		console.log('Found: "' + player + '" for "' + name + '"');
-    var isDM = false;
-    if (player == null || player == undefined || player == '') {
+		var isDM = false;
+		if (player == null || player == undefined || player == '') {
 			res.status(403).send();
 			return;
 		}
-    else {
+		else {
 			console.log("creating token");
-      let token = jwt.sign({
-        id: name
-      }, jwtSecret, {
-        expiresIn: 86400 // expires in 24 hours
-      });
-      if (name == 'DM') isDM = true;
-      res.status(200).json({
-        name: player[0]['name'],
-        token: token,
-        isDM: isDM
-      });
-    }
-  }).catch(error => {
-    console.log(error);
-    res.status(500).json({
-      error
-    });
-  });
+			let token = jwt.sign({
+				id: name
+			}, jwtSecret, {
+				expiresIn: 86400 // expires in 24 hours
+			});
+			if (name == 'DM') isDM = true;
+			res.status(200).json({
+				name: player[0]['name'],
+				token: token,
+				isDM: isDM
+			});
+		}
+	}).catch(error => {
+		console.log(error);
+		res.status(500).json({
+			error
+		});
+	});
 });
 
 app.get('/api/npcs', (req, res) => {
-  res.send(npcs);
-  console.log("npcs accessed");
+	res.send(npcs);
+	console.log("npcs accessed");
 });
 
 app.get('/api/creatures', (req, res) => {
-  res.send(creatureList);
-  console.log("creature list accessed");
+	res.send(creatureList);
+	console.log("creature list accessed");
 });
 
 app.get('/api/chat', (req, res) => {
-  res.send(chatMessages);
-  console.log("chat accessed");
+	res.send(chatMessages);
+	console.log("chat accessed");
 });
 
 app.get('/api/me', verifyToken, (req, res) => {
@@ -229,75 +238,107 @@ app.get('/api/me', verifyToken, (req, res) => {
 
 app.put('/api/party/:id', (req, res) => {
 
-  let id = parseInt(req.params.id);
-  let partyMap = party.map(item => {
-    return item.id;
-  });
-  let index = partyMap.indexOf(id);
-  let player = party[index];
-  player.name = req.body.name;
-  player.picture = req.body.picture;
-  player.sheet = req.body.sheet;
-  player.maxhp = req.body.maxhp;
-  player.hp = req.body.hp;
-  console.log("Sending Back Player:");
-  console.log(player);
-  res.send(player);
+	let id = parseInt(req.params.id);
+	let partyMap = party.map(item => {
+		return item.id;
+	});
+	let index = partyMap.indexOf(id);
+	let player = party[index];
+	player.name = req.body.name;
+	player.picture = req.body.picture;
+	player.sheet = req.body.sheet;
+	player.maxhp = req.body.maxhp;
+	player.hp = req.body.hp;
+	console.log("Sending Back Player:");
+	console.log(player);
+	res.send(player);
 });
 
 app.put('/api/npcs/:id', (req, res) => {
-  let id = parseInt(req.params.id);
-  let npcsMap = npcs.map(item => {
-    return item.id;
-  });
-  let index = npcsMap.indexOf(id);
-  let npc = npcs[index];
-  npc.curr_hp = req.body.curr_hp;
-  res.send(npc);
+	let id = parseInt(req.params.id);
+	let npcsMap = npcs.map(item => {
+		return item.id;
+	});
+	let index = npcsMap.indexOf(id);
+	let npc = npcs[index];
+	npc.curr_hp = req.body.curr_hp;
+	res.send(npc);
 });
 
 // Used to register players
 app.post('/api/player', (req, res) => {
-  db('players').select().from('players').where('name', req.body.name).then(player => {
+	db('players').select().from('players').where('name', req.body.name).then(player => {
 		console.log(player);
-    if (player.length != 0) res.status(409).send();
-    return;
-  });
-  db('players').insert({
-    name: req.body.name,
-    password: req.body.password,
-    class: req.body.class
-  }).then(player => {
-    let token = jwt.sign({
-      id: req.body.name
-    }, jwtSecret, {
-      expiresIn: 86400 // expires in 24 hours
-    });
-    res.status(200).json({
-      name: req.body.name,
-      token: token
-    });
-  }).catch(error => {
-    console.log(error);
-    res.status(500).json({
-      error
-    });
-  });
+		if (player.length != 0) res.status(409).send();
+		return;
+	});
+	var picture;
+	var sheet;
+	var maxhp;
+	switch(req.body.class) {
+		case 'Bard':
+			picture = "/static/images/Bard.png";
+			sheet = "/static/pdf/Bard.pdf";
+			maxhp = 38;
+			break;
+
+		case 'Cleric':
+			picture = "/static/images/Cleric.png";
+			sheet = "/static/pdf/Cleric.pdf";
+			maxhp = 33;
+			break;
+
+		case 'Fighter':
+			picture = "/static/images/Fighter.png";
+			sheet = "/static/pdf/Fighter.pdf";
+			maxhp = 44;
+			break;
+
+		case 'Wizard'
+			picture = "/static/images/Wizard.png";
+			sheet = "/static/pdf/Wizard.pdf";
+			maxhp = 27;
+			break;
+	}
+	db('players').insert({
+		name: req.body.name,
+		password: req.body.password,
+		class: req.body.class,
+		picture: picture,
+		sheet: sheet,
+		maxhp: maxhp,
+		hp: maxhp
+	}).then(player => {
+		let token = jwt.sign({
+			id: req.body.name
+		}, jwtSecret, {
+			expiresIn: 86400 // expires in 24 hours
+		});
+		res.status(200).json({
+			name: req.body.name,
+			token: token
+		});
+	}).catch(error => {
+		console.log(error);
+		res.status(500).json({
+			error
+		});
+	});
 });
 
 app.post('/api/chat', verifyToken, (req, res) => {
-  message = {
-    player: req.body.player,
-    message: req.body.message,
-  };
+	message = {
+		player: req.body.player,
+		message: req.body.message,
+	};
 	console.log("Comparing sender: " + message.player + " to token owner: " + req.userID);
 	if(req.userID !== message.player)
 	{
 		res.status(403).send();
 		return;
 	}
-  chatMessages.push(message);
-  res.send(message);
+	chatMessages.push(message);
+	res.send(message);
 });
 
 app.post('/api/npcs', verifyToken, (req, res) => {
@@ -305,22 +346,22 @@ app.post('/api/npcs', verifyToken, (req, res) => {
 		res.status(403).send();
 		return;
 	}
-  console.log("adding NPC");
-  console.log(req.body);
-  addNPC(req.body.name, req.body.species);
-  res.send(npcs);
+	console.log("adding NPC");
+	console.log(req.body);
+	addNPC(req.body.name, req.body.species);
+	res.send(npcs);
 });
 
 app.delete('/api/npcs/:id', (req, res) => {
-  var id = parseInt(req.params.id);
-  console.log(" DELETE: id: " + id + ", " + npcs[id].name);
-  let npc = npcs[id];
-  for (let i = id; i < npcs.length; i++) {
-    npcs[i].id -= 1;
-  }
-  npcs.splice(id, 1);
-  npcId--;
-  res.send(npcs);
+	var id = parseInt(req.params.id);
+	console.log(" DELETE: id: " + id + ", " + npcs[id].name);
+	let npc = npcs[id];
+	for (let i = id; i < npcs.length; i++) {
+		npcs[i].id -= 1;
+	}
+	npcs.splice(id, 1);
+	npcId--;
+	res.send(npcs);
 });
 
 app.listen(3000, () => console.log('Server listening on port 3000!'));
