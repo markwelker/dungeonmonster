@@ -8,19 +8,33 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     username: 'Fighter',
+    token: '',
     party: [],
     npcs: [],
     creatures: [],
     chat: [],
+    loginError: '',
+    registationError: '',
   },
   getters: {
     username: state => state.username,
+    token: state => state.token,
     party: state => state.party,
     npcs: state => state.npcs,
     creatures: state => state.creatures,
     chat: state => state.chat,
+    loginError: state => state.loginError,
+    registationError: state => state.registationError,
   },
   mutations: {
+    setUsername(state, username) {
+      state.username = username;
+    },
+
+    setAuthToken(state, token) {
+      state.token = token;
+    },
+
     setParty(state, party) {
       state.party = party;
     },
@@ -35,6 +49,14 @@ export default new Vuex.Store({
 
     setChat(state, chat) {
       state.chat = chat;
+    },
+
+    setLoginError(state, error) {
+      state.loginError = error;
+    },
+
+    setRegistrationError(state, error) {
+      state.registationError = error;
     },
   },
   actions: {
@@ -114,25 +136,38 @@ export default new Vuex.Store({
 	loginPlayer(context, player) {
 	  console.log("STORE: Getting Player from database");
 	  axios.post("/api/party", player).then(response => {
-		console.log("Logging in Player...");
-		console.log(player);
-		// TODO need to login and setup authentication here.
-		return true;
+		  console.log("Logging in Player...");
+		  console.log(player);
+      context.commit('setUsername', response.data.username);
+      context.commit('setAuthToken', response.data.token);
+      context.commit('setLoginError', '');
+      context.commit('setRegistrationError', '');
+		  return true;
 	  }).catch(err => {
-		console.log("STORE: Failed to Fetch Player Data");
-		console.log(err);
+      if (error.response.status === 403 || error.response.status === 400) {
+          context.commit('setLoginError', 'Invalid Credientials!');
+          context.commit('setRegistrationError', '');
+      }
+		  console.log("STORE: Failed to Fetch Player Data");
+		  console.log(err);
 	  });
 	},
 
 	registerPlayer(context, player) {
 	  axios.post("/api/player/", player).then(response => {
-		console.log("Registering Player...");
-		console.log(player);
-		// TODO need to login and setup authentication here.
-		return true;
+		  console.log("Registering Player...");
+		  console.log(player);
+      context.commit('setUsername', response.data.username);
+      context.commit('setAuthToken', response.data.token);
+      context.commit('setLoginError', '');
+      context.commit('setRegistrationError', '');		return true;
 	  }).catch(err => {
-		console.log("STORE: Failed to POST player");
-		console.log(err);
+      if (error.response.status === 409) {
+          context.commit('setLoginError', '');
+          context.commit('setRegistrationError', 'That username has already been taken!');
+      }
+		  console.log("STORE: Failed to POST player");
+		  console.log(err);
 	  });
 	},
 
