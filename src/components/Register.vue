@@ -2,7 +2,7 @@
 <div class="shadow">
 	<div class="login-container">
 		<div>
-			Username
+			Character Name
 			<br>
 			<input type="text"
 				id="username"
@@ -14,6 +14,8 @@
 			<br />
 			<input type="password" id="password" placeholder="Password" v-model="password">
 			<br /><br />
+			Choose your Class
+			<br />
 			<img class="class-select selected" v-on:click="select" title="Bard" src="/static/images/Bard.png">
 			<img class="class-select" v-on:click="select" title="Cleric" src="/static/images/Cleric.png">
 			<img class="class-select" v-on:click="select" title="Fighter" src="/static/images/Fighter.png">

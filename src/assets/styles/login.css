@@ -59,10 +59,12 @@ img.class-select {
 	margin-right:2em;
 	padding:0.1em;
 	cursor: pointer;
+	box-sizing: border-box;
 }
 
 img.class-select.selected {
 	border-width: 1px;
 	border-radius: 10px;
-	border-color:#FFDF98;
+	border-color: #FFDF98;
+	border-style: solid;
 }
