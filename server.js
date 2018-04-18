@@ -217,7 +217,7 @@ app.get('/api/chat', (req, res) => {
 });
 
 app.get('/api/me', verifyToken, (req, res) => {
-	db('players').select().from('players').where('name', id).then(player => {
+	db('players').select().from('players').where('name', req.name).then(player => {
 		res.status(200).json({player: player});
 	}).catch(error => {
 		res.status(500).json({error});
@@ -286,7 +286,7 @@ app.post('/api/chat', verifyToken, (req, res) => {
     player: req.body.player,
     message: req.body.message,
   };
-	if(id !== message.player)
+	if(req.userID !== message.player)
 	{
 		res.status(403).send();
 		return;
@@ -296,7 +296,7 @@ app.post('/api/chat', verifyToken, (req, res) => {
 });
 
 app.post('/api/npcs', verifyToken, (req, res) => {
-	if(id !== 'DM'){
+	if(req.userID !== 'DM'){
 		res.status(403).send();
 		return;
 	}
