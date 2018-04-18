@@ -64,11 +64,11 @@
 					<h1 class="red-header">Encounter Monsters</h1>
 					<div class="monster-pane">
 						<div class="character-card" v-for="npc in this.npcs" v-on:click = "">
-							<h2 v-on:click="fetchNPCByName(npc.species)">{{npc.name}}</h2>
+							<h2 v-on:click="fetchNPCByName(npc.species.name)">{{npc.name}}</h2>
 							<h3>
 								<img class = "icon" src = "/static/images/heal.png" v-on:click="heal(npc)" title = "Heal It!">
 
-								{{npc.hp}}/{{npc.maxhp}}
+								{{npc.curr_hp}}/{{npc.species.hit_points}}
 
 								<img class = "icon" src = "/static/images/damage.png" v-on:click="damage(npc)" title = "Damage It!">
 							</h3>
@@ -136,8 +136,11 @@ import PartyBar from './PartyBar'
 		},
 		methods: {
 			addNPC: function() {
-				this.$store.dispatch('addNPC', this.active);
-				location.reload();
+				let name = prompt("New creature's name:");
+				let species = this.active.name;
+				let reqest = {name: name, species: species};
+				console.log("telling server to add " + name + " the " + species);
+				this.$store.dispatch('addNPC', reqest);
 			},
 
 			fetchNPCByName: function(npcName){
@@ -183,13 +186,14 @@ import PartyBar from './PartyBar'
 					amount = prompt("Heal how much damage?", 0);
 				}
 				amount = parseInt(amount, 10);
-				npc.hp += amount;
-				if (npc.hp > npc.maxhp) {
-					npc.hp = npc.maxhp;
+				npc.curr_hp += amount;
+				if (npc.curr_hp > npc.species.hit_points) {
+					npc.curr_hp = npc.species.hit_points;
 				}
-				if (npc.hp <= 0) { 								// If it dies, it needs removed.
+				if (npc.curr_hp <= 0) { 								// If it dies, it needs removed.
+					console.log(npc.name + " has died... removing index: " + npc.id);
  					this.$store.dispatch('deleteNPC', npc.id);
-					location.reload();
+				//	location.reload();
 				}
 				else { 											// Else it needs updated.
 					this.$store.dispatch('updateNPC', npc);
@@ -202,15 +206,14 @@ import PartyBar from './PartyBar'
 					amount = prompt("Take how much damage?", 0);
 				}
 				amount = parseInt(amount, 10);
-				npc.hp -= amount;
-				if(npc.hp > npc.maxhp) {
-					npc.hp = npc.maxhp;
+				npc.curr_hp -= amount;
+				if(npc.curr_hp > npc.species.hit_points) {
+					npc.curr_hp = npc.species.hit_points;
 				}
-				if(npc.hp <= 0){ 								// If it dies, it needs removed.
-					console.log("Deleting NPC: " + npc.id + ", " + npc.name);
-
+				if(npc.curr_hp <= 0){ 								// If it dies, it needs removed.
+					console.log(npc.name + " has died... removing index: " + npc.id);
  					this.$store.dispatch('deleteNPC', npc.id);
-					location.reload();
+			//		location.reload();
 				}
 				else { 											// Else it needs updated.
 					this.$store.dispatch('updateNPC', npc);

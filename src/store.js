@@ -8,19 +8,33 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     username: 'Fighter',
+    token: '',
     party: [],
     npcs: [],
     creatures: [],
     chat: [],
+    loginError: '',
+    registationError: '',
   },
   getters: {
     username: state => state.username,
+    token: state => state.token,
     party: state => state.party,
     npcs: state => state.npcs,
     creatures: state => state.creatures,
     chat: state => state.chat,
+    loginError: state => state.loginError,
+    registationError: state => state.registationError,
   },
   mutations: {
+    setUsername(state, username) {
+      state.username = username;
+    },
+
+    setAuthToken(state, token) {
+      state.token = token;
+    },
+
     setParty(state, party) {
       state.party = party;
     },
@@ -29,12 +43,20 @@ export default new Vuex.Store({
       state.npcs = npcs;
     },
 
-    setCreatures(state, creatures){
+    setCreatures(state, creatures) {
       state.creatures = creatures;
     },
 
-    setChat(state, chat){
+    setChat(state, chat) {
       state.chat = chat;
+    },
+
+    setLoginError(state, error) {
+      state.loginError = error;
+    },
+
+    setRegistrationError(state, error) {
+      state.registationError = error;
     },
   },
   actions: {
@@ -71,7 +93,7 @@ export default new Vuex.Store({
       });
     },
 
-    getChat(context){
+    getChat(context) {
       console.log("STORE: Getting Chat");
       axios.get("api/chat").then(response => {
         context.commit('setChat', response.data);
@@ -82,7 +104,7 @@ export default new Vuex.Store({
       });
     },
 
-    addPlayer(context, player){
+    addPlayer(context, player) {
       axios.post("/api/party", player).then(response => {
         return context.dispatch('getParty');
       }).catch(err => {
@@ -91,9 +113,10 @@ export default new Vuex.Store({
       });
     },
 
-    addNPC(context, npc){
+    addNPC(context, request) {
       console.log("adding npc");
-      axios.post("/api/npcs", npc).then(response => {
+      console.log(request);
+      axios.post("/api/npcs", request).then(response => {
         return context.dispatch('getNPCs');
       }).catch(err => {
         console.log("STORE: Failed to POST npc");
@@ -112,33 +135,46 @@ export default new Vuex.Store({
 
 	loginPlayer(context, player) {
 	  console.log("STORE: Getting Player from database");
-	  axios.get("/api/party", player).then(response => {
-		console.log("Logging in Player...");
-		console.log(player);
-		// TODO need to login and setup authentication here.
-		return true;
+	  axios.get("/api/party/" + player.name).then(response => {
+		  console.log("Logging in Player...");
+		  console.log(player);
+      context.commit('setUsername', response.data.username);
+      context.commit('setAuthToken', response.data.token);
+      context.commit('setLoginError', '');
+      context.commit('setRegistrationError', '');
+		  return true;
 	  }).catch(err => {
-		console.log("STORE: Failed to Fetch Player Data");
-		console.log(err);
+      if (error.response.status === 403 || error.response.status === 400) {
+          context.commit('setLoginError', 'Invalid Credientials!');
+          context.commit('setRegistrationError', '');
+      }
+		  console.log("STORE: Failed to Fetch Player Data");
+		  console.log(err);
 	  });
 	},
 
 	registerPlayer(context, player) {
 	  axios.post("/api/player/", player).then(response => {
-		console.log("Registering Player...");
-		console.log(player);
-		// TODO need to login and setup authentication here.
-		return true;
+		  console.log("Registering Player...");
+		  console.log(player);
+      context.commit('setUsername', response.data.username);
+      context.commit('setAuthToken', response.data.token);
+      context.commit('setLoginError', '');
+      context.commit('setRegistrationError', '');		return true;
 	  }).catch(err => {
-		console.log("STORE: Failed to POST player");
-		console.log(err);
+      if (error.response.status === 409) {
+          context.commit('setLoginError', '');
+          context.commit('setRegistrationError', 'That username has already been taken!');
+      }
+		  console.log("STORE: Failed to POST player");
+		  console.log(err);
 	  });
 	},
 
     updatePlayer(context, player) {
       axios.put("/api/party/" + player.id, player).then(response => {
-		console.log("Updating Player...");
-		console.log(player);
+        console.log("Updating Player...");
+        console.log(player);
         return true;
       }).catch(err => {
         console.log("STORE: Failed to UPDATE player");
@@ -148,8 +184,8 @@ export default new Vuex.Store({
 
     updateNPC(context, npc) {
       axios.put("/api/npcs/" + npc.id, npc).then(response => {
-		  console.log("Updating NPC...");
-		  console.log(npc);
+        console.log("Updating NPC...");
+        console.log(npc);
         return true;
       }).catch(err => {
         console.log("STORE: Failed to UPDATE npc");
@@ -166,8 +202,8 @@ export default new Vuex.Store({
       });
     },
 
-    deleteNPC(context, npc) {
-      axios.delete("/api/npcs/" + npc.id).then(response => {
+    deleteNPC(context, id) {
+      axios.delete("/api/npcs/" + id).then(response => {
         return context.dispatch('getNPCs');
       }).catch(err => {
         console.log("Failed to REMOVE npc");
