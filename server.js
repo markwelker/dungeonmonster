@@ -189,7 +189,7 @@ app.get('/api/player/:name', (req, res) => {
       }, jwtSecret, {
         expiresIn: 86400 // expires in 24 hours
       });
-      if (player.name == 'DM') isDM = true;
+      if (name == 'DM') isDM = true;
       res.status(200).json({
         name: player[0]['name'],
         token: token,
